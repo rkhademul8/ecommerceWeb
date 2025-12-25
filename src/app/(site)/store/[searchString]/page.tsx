@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, GridLegacy as Grid } from "@mui/material";
 
 import EmptyState from "../_components/EmptyState";
 import ProductCard from "../_components/ProductCard";

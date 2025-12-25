@@ -6,7 +6,7 @@ import { SuccessAlert } from "@/components/alerts/SuccessAlert";
 import { CustomAutocomplete } from "@/components/custom/CustomAutoComplete";
 import { CustomInput } from "@/components/custom/CustomInput";
 import { handleApiErrors } from "@/utils/api-utils/hanle-api-error";
-import { Box, Grid, TextField, Tooltip, Typography } from "@mui/material";
+import { Box, GridLegacy as Grid, TextField, Tooltip, Typography } from "@mui/material";
 import {
   getMeAgent,
   updateMeAgent,

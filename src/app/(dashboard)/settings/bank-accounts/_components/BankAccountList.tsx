@@ -13,7 +13,7 @@ import {
   Typography,
   MenuItem,
   Menu,
-  Grid,
+  GridLegacy as Grid,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import { CustomSearchInput } from "@/components/custom/CustomSearchInput";

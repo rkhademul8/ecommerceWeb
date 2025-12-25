@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import { Grid, Box, InputBase, IconButton } from "@mui/material";
+import { GridLegacy as Grid, Box, InputBase, IconButton } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -185,7 +185,7 @@ const Header = () => {
     <Box className="header" data-aos="fade-up">
       <Grid container alignItems="center" mb={0.5}>
         {/* Logo */}
-        <Grid size={{ xs: 6, md: 3.5 }} className="logo-section">
+        <Grid item xs={6} md={3.5} className="logo-section">
           <Link
             href="/"
             style={{ display: "inline-block" }}
@@ -203,7 +203,7 @@ const Header = () => {
         </Grid>
 
         {/* Search Bar */}
-        <Grid size={{ md: 5, xs: 12 }} sx={{ order: { xs: 3, md: 2 } }}>
+        <Grid item xs={12} md={5} sx={{ order: { xs: 3, md: 2 } }}>
           <Box className="search-bar">
             <input
               type="file"
@@ -240,10 +240,9 @@ const Header = () => {
 
         {/* Right Section */}
         <Grid
-          size={{
-            xs: 6,
-            md: 3.5,
-          }}
+          item
+          xs={6}
+          md={3.5}
           className="right-section"
           sx={{
             display: "flex",

@@ -18,7 +18,7 @@ import {
   ThemeProvider,
   Pagination,
   Tooltip,
-  Grid,
+  GridLegacy as Grid,
   Menu,
   Modal,
 } from "@mui/material";

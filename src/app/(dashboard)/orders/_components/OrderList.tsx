@@ -14,7 +14,7 @@ import {
   Collapse,
   ThemeProvider,
   Pagination,
-  Grid,
+  GridLegacy as Grid,
   CircularProgress,
   DialogActions,
   DialogContent,

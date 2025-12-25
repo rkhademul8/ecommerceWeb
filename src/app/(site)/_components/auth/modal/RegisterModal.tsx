@@ -3,7 +3,7 @@
 import React, { useState, FormEvent, useEffect } from "react";
 import { handleApiErrors } from "@/utils/api-utils/hanle-api-error";
 import {
-  Grid,
+  GridLegacy as Grid,
   Box,
   TextField,
   Dialog,

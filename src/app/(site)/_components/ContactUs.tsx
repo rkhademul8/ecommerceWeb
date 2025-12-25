@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Divider, Grid } from "@mui/material";
+import { Box, Divider, GridLegacy as Grid } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { officeLocations, supports } from "@/utils/common/array/contact-us";
 

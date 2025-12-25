@@ -13,7 +13,7 @@ import {
   DialogActions,
   CircularProgress,
   Typography,
-  Grid,
+  GridLegacy as Grid,
 } from "@mui/material";
 import { ErrorAlert } from "@/components/alerts/ErrorAlert";
 import { Visibility, VisibilityOff } from "@mui/icons-material";

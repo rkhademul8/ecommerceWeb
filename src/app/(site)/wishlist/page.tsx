@@ -6,7 +6,7 @@ import { getSafeJSON } from "@/utils/func/func";
 import secureLocalStorage from "react-secure-storage";
 import EmptyState from "../shop/_components/EmptyState";
 import ProductCard from "../shop/_components/ProductCard";
-import { Box, Grid, IconButton, Tooltip } from "@mui/material";
+import { Box, GridLegacy as Grid, IconButton, Tooltip } from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ProductCardSkeleton from "../shop/_components/ProductCardSkeleton";
 

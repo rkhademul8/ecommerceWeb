@@ -3,12 +3,13 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
-  Grid,
+  GridLegacy as Grid,
   Typography,
   CircularProgress,
   ClickAwayListener,
   Tooltip,
   ListItem,
+  ListItemButton,
   List,
   ListItemText,
 } from "@mui/material";
@@ -327,50 +328,50 @@ const Header = ({ setIsOpen }: any) => {
                         }}
                       >
                         {searchResults.map((item: any) => (
-                          <ListItem
-                            button
-                            key={item.id}
-                            onClick={() => handleResultClick(item.id)}
-                          >
-                            <ListItemText
-                              primary={item.code}
-                              primaryTypographyProps={{
-                                sx: {
-                                  border: "1px solid #6e6996",
-                                  textAlign: "center",
-                                  fontWeight: 600,
-                                  fontSize: "12px",
-                                  fontFamily: "Outfit",
-                                  padding: "2px 0",
-                                  borderRadius: "3px",
-                                  color: "#6E6996",
-                                },
-                              }}
-                            />
-                            <ListItemText
-                              primary={item.customerName}
-                              primaryTypographyProps={{
-                                sx: {
-                                  textAlign: "center",
-                                  fontWeight: 600,
-                                  fontSize: "12px",
-                                  fontFamily: "Outfit",
-                                  color: "#6E6996",
-                                },
-                              }}
-                            />
-                            <ListItemText
-                              primary={item.customerPhone}
-                              primaryTypographyProps={{
-                                sx: {
-                                  textAlign: "center",
-                                  fontWeight: 600,
-                                  fontSize: "12px",
-                                  fontFamily: "Outfit",
-                                  color: "#6E6996",
-                                },
-                              }}
-                            />
+                          <ListItem key={item.id} disablePadding>
+                            <ListItemButton
+                              onClick={() => handleResultClick(item.id)}
+                            >
+                              <ListItemText
+                                primary={item.code}
+                                primaryTypographyProps={{
+                                  sx: {
+                                    border: "1px solid #6e6996",
+                                    textAlign: "center",
+                                    fontWeight: 600,
+                                    fontSize: "12px",
+                                    fontFamily: "Outfit",
+                                    padding: "2px 0",
+                                    borderRadius: "3px",
+                                    color: "#6E6996",
+                                  },
+                                }}
+                              />
+                              <ListItemText
+                                primary={item.customerName}
+                                primaryTypographyProps={{
+                                  sx: {
+                                    textAlign: "center",
+                                    fontWeight: 600,
+                                    fontSize: "12px",
+                                    fontFamily: "Outfit",
+                                    color: "#6E6996",
+                                  },
+                                }}
+                              />
+                              <ListItemText
+                                primary={item.customerPhone}
+                                primaryTypographyProps={{
+                                  sx: {
+                                    textAlign: "center",
+                                    fontWeight: 600,
+                                    fontSize: "12px",
+                                    fontFamily: "Outfit",
+                                    color: "#6E6996",
+                                  },
+                                }}
+                              />
+                            </ListItemButton>
                           </ListItem>
                         ))}
                       </List>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Tabs, Tab, Box, Typography, Grid } from "@mui/material";
+import { Tabs, Tab, Box, Typography, GridLegacy as Grid } from "@mui/material";
 import { useRouter, usePathname } from "next/navigation";
 import { SyntheticEvent } from "react";
 

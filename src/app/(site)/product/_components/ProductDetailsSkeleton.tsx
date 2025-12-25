@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Grid, Skeleton } from "@mui/material";
+import { Box, GridLegacy as Grid, Skeleton } from "@mui/material";
 
 export default function ProductDetailsSkeleton() {
   return (

@@ -10,7 +10,7 @@ import {
 } from "@/features/auth/service";
 import {
   Box,
-  Grid,
+  GridLegacy as Grid,
   CircularProgress,
   Dialog,
   DialogTitle,

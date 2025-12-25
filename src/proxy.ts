@@ -11,15 +11,15 @@ const getAllowedHosts = () => {
       try {
         const url = new URL(normalizeOrigin(entry));
         return {
-          host: url.host.toLowerCase(),
-          protocol: url.protocol.replace(":", ""),
+          hostname: url.hostname.toLowerCase(),
+          port: url.port,
         };
       } catch {
         return null;
       }
     })
     .filter(
-      (entry): entry is { host: string; protocol: string } => entry !== null
+      (entry): entry is { hostname: string; port: string } => entry !== null
     );
 };
 
@@ -34,15 +34,21 @@ export function proxy(request: NextRequest) {
   const requestHost = hostHeader.split(",")[0]?.trim().toLowerCase();
   if (!requestHost) return NextResponse.next();
 
-  const protocolHeader =
-    request.headers.get("x-forwarded-proto") ??
-    request.nextUrl.protocol.replace(":", "");
+  const [requestHostname, requestPort] = requestHost.split(":");
+  const hostname = requestHostname?.trim();
+  const port = requestPort?.trim();
+  if (!hostname) return NextResponse.next();
 
-  const isAllowed = allowedHosts.some(
-    (entry) =>
-      entry.host === requestHost &&
-      (!protocolHeader || entry.protocol === protocolHeader)
-  );
+  const isAllowed = allowedHosts.some((entry) => {
+    if (entry.hostname !== hostname) return false;
+    if (entry.port && port) {
+      return entry.port === port;
+    }
+    if (entry.port && !port) {
+      return true;
+    }
+    return true;
+  });
 
   if (isAllowed) return NextResponse.next();
 

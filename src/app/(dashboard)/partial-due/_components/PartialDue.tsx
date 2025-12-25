@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Tab, Tabs, Typography } from "@mui/material";
+import { Box, GridLegacy as Grid, Tab, Tabs, Typography } from "@mui/material";
 import PartialDueList from "./PartialDueList";
 import { InfoAlert } from "@/components/alerts/InfoAlert";
 import { ErrorAlert } from "@/components/alerts/ErrorAlert";

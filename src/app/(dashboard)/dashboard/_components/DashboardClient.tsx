@@ -2,7 +2,7 @@
 
 import {
   Box,
-  Grid,
+  GridLegacy as Grid,
   Table,
   TableBody,
   TableCell,

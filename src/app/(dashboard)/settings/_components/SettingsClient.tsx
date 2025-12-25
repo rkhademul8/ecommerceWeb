@@ -1,7 +1,7 @@
 "use client";
 
 import { getMeAgent } from "@/features/agent/apis/service";
-import { Tabs, Tab, Box, Grid, Typography } from "@mui/material";
+import { Tabs, Tab, Box, GridLegacy as Grid, Typography } from "@mui/material";
 import { useRouter, usePathname } from "next/navigation";
 import { SyntheticEvent, useEffect, useState } from "react";
 

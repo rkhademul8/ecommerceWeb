@@ -8,7 +8,7 @@ import {
 import { handleApiErrors } from "@/utils/api-utils/hanle-api-error";
 import { SuccessAlert } from "@/components/alerts/SuccessAlert";
 import {
-  Grid,
+  GridLegacy as Grid,
   Box,
   Tabs,
   Tab,

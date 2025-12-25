@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Box, Grid } from "@mui/material";
+import { Box, GridLegacy as Grid } from "@mui/material";
 
 import "../../../scss/footer.scss";
 import EmailIcon from "@mui/icons-material/Email";

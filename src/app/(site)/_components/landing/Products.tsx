@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, GridLegacy as Grid, Typography } from "@mui/material";
 
 import { productSearch } from "@/features/product/product";
 import ProductCard from "../../shop/_components/ProductCard";
@@ -84,17 +84,17 @@ const Products = () => {
           <Grid container spacing={3}>
             {loading[cat.tag] ? (
               [...Array(6)].map((_, idx) => (
-                <Grid  size={{xs:6, md:2}} key={idx}>
+                <Grid item xs={6} md={2} key={idx}>
                   <ProductCardSkeleton />
                 </Grid>
               ))
             ) : !data[cat.tag] || data[cat.tag].length < 1 ? (
-              <Grid size={{md:12}}>
+              <Grid item xs={12}>
                 <Typography className="err-msg">No products found</Typography>
               </Grid>
             ) : (
               data[cat.tag]?.slice(0, 6)?.map((item, idx) => (
-                <Grid  size={{xs:6, md:2}} key={idx}>
+                <Grid item xs={6} md={2} key={idx}>
                   <ProductCard
                     id={item.id}
                     source={"osee"}

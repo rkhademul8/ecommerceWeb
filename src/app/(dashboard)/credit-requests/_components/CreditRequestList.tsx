@@ -18,7 +18,7 @@ import {
   ThemeProvider,
   Stack,
   Pagination,
-  Grid,
+  GridLegacy as Grid,
   Modal,
   Dialog,
   DialogTitle,

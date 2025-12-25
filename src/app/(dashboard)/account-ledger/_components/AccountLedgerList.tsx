@@ -15,7 +15,7 @@ import {
   Stack,
   Pagination,
   Tooltip,
-  Grid,
+  GridLegacy as Grid,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -176,12 +176,8 @@ const AccountLedgerList: React.FC = () => {
 
   return (
     <Box>
-      <Grid
-        item
+      <Box
         mb={4}
-        xs={12}
-        sm={12}
-        md={12}
         display="flex"
         justifyContent="space-between"
       >
@@ -189,11 +185,11 @@ const AccountLedgerList: React.FC = () => {
           Ledger Report
           <Typography className="form-subtitle">Manage your ledgers</Typography>
         </Typography>
-      </Grid>
+      </Box>
 
       <Box mb={3}>
         <Grid container spacing={2}>
-          <Grid item md={9} xs={12}>
+          <Grid item xs={12} md={9}>
             <Box
               sx={{
                 borderRadius: "2px",
@@ -338,7 +334,7 @@ const AccountLedgerList: React.FC = () => {
                 </Grid>
 
                 {wallet.isActiveCreditBalance ? (
-                  <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6}>
                     <Box
                       sx={{
                         backgroundColor: "#FFFFFF",

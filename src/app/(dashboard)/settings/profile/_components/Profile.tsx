@@ -10,7 +10,7 @@ import { CustomSelect } from "@/components/custom/CustomSelect";
 import { getMe, updateMe } from "@/features/user/service";
 import { handleApiErrors } from "@/utils/api-utils/hanle-api-error";
 import { getMeAgent, getMeWallet } from "@/features/agent/apis/service";
-import { Box, Grid, TextField, Typography } from "@mui/material";
+import { Box, GridLegacy as Grid, TextField, Typography } from "@mui/material";
 import Loader from "@/components/Loader";
 import { currencies } from "@/utils/common/array/currencies";
 import { formattedRegistrationCountries } from "@/utils/common/array/registration-countries";

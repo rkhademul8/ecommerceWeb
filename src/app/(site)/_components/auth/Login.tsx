@@ -11,7 +11,7 @@ import {
 import { useRouter } from "next/navigation";
 import {
   Box,
-  Grid,
+  GridLegacy as Grid,
   CircularProgress,
   Dialog,
   DialogTitle,

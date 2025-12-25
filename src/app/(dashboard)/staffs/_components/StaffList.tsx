@@ -17,7 +17,7 @@ import {
   Stack,
   Pagination,
   Menu,
-  Grid,
+  GridLegacy as Grid,
 } from "@mui/material";
 import {
   FilterList,

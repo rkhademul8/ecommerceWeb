@@ -9,7 +9,7 @@ import {
 import { handleApiErrors } from "@/utils/api-utils/hanle-api-error";
 import {
   CircularProgress,
-  Grid,
+  GridLegacy as Grid,
   Table,
   TableBody,
   TableCell,

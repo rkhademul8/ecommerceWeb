@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Switch, Typography } from "@mui/material";
+import { Box, GridLegacy as Grid, Switch, Typography } from "@mui/material";
 import Loader from "@/components/Loader";
 import { getMeAgent, updateMeAgent } from "@/features/agent/apis/service";
 import { handleApiErrors } from "@/utils/api-utils/hanle-api-error";

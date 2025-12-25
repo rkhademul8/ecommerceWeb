@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, GridLegacy as Grid } from "@mui/material";
 import DepositRequestList from "./_components/DepositRequestList";
 
 const DepositRequestListPage = () => {

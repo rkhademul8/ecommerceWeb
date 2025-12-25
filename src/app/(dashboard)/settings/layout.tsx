@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, GridLegacy as Grid } from "@mui/material";
 import SettingsClient from "./_components/SettingsClient";
 
 const SettingsLayout = ({ children }: { children: React.ReactNode }) => {

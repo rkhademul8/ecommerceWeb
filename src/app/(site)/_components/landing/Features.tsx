@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, GridLegacy as Grid, Typography } from "@mui/material";
 
 import ReplayIcon from "@mui/icons-material/Replay";
 import PublicIcon from "@mui/icons-material/Public";

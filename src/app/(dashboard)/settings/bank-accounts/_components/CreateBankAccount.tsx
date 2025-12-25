@@ -3,7 +3,7 @@
 import React, { useState, FormEvent, useEffect } from "react";
 import { handleApiErrors } from "@/utils/api-utils/hanle-api-error";
 import { SuccessAlert } from "@/components/alerts/SuccessAlert";
-import { Grid, Box, Typography } from "@mui/material";
+import { GridLegacy as Grid, Box, Typography } from "@mui/material";
 import { CustomInput } from "@/components/custom/CustomInput";
 import { ErrorAlert } from "@/components/alerts/ErrorAlert";
 import { useParams, useRouter } from "next/navigation";

@@ -4,7 +4,7 @@ import React, { FormEvent, use, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import {
   Box,
-  Grid,
+  GridLegacy as Grid,
   Typography,
   Divider,
   Card,

@@ -9,7 +9,7 @@ import {
   TableHead,
   TableRow,
   Box,
-  Grid,
+  GridLegacy as Grid,
   Switch,
   CircularProgress,
   DialogTitle,

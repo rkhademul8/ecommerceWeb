@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, GridLegacy as Grid, Typography } from "@mui/material";
 
 const CountdownBlock = ({ numbers }: { numbers: string }) => (
   <Box className="countdown-block">

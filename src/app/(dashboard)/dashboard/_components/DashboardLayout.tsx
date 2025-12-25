@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Container, Grid, useMediaQuery } from "@mui/material";
+import { Box, Container, GridLegacy as Grid, useMediaQuery } from "@mui/material";
 import Header from "@/app/(dashboard)/dashboard/_components/Header";
 
 import Sidebar from "./Sidebar";

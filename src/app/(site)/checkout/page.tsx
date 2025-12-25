@@ -3,7 +3,7 @@
 import { useEffect, useState, FormEvent } from "react";
 import {
   Box,
-  Grid,
+  GridLegacy as Grid,
   Typography,
   Divider,
   Dialog,

@@ -13,7 +13,7 @@ import {
   ThemeProvider,
   Stack,
   Pagination,
-  Grid,
+  GridLegacy as Grid,
   Modal,
   CircularProgress,
 } from "@mui/material";

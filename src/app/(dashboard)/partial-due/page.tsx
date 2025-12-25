@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, GridLegacy as Grid } from "@mui/material";
 import PartialDUeList from "./_components/PartialDueList";
 import PartialDue from "./_components/PartialDue";
 

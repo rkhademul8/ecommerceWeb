@@ -1,20 +1,24 @@
-import "server-only";
-
-import fs from "node:fs";
-import path from "node:path";
-
-import { getEnvValue, getPublicAppUrlList } from "./env";
+const fs = require("node:fs");
+const path = require("node:path");
 
 const DEFAULT_ENV_KEYS = ["NEXT_PUBLIC_APP_URL", "DESHMART_API_ENDPOINT"];
 const ENV_EXAMPLE_PATH = path.join(process.cwd(), ".env.example");
 
-const normalizeOrigin = (value: string) => value.replace(/\/+$/, "");
+const normalizeOrigin = (value) => value.replace(/\/+$/, "");
 
-const readEnvKeysFromExample = (): string[] => {
+const parseEnvList = (value) => {
+  if (!value) return [];
+  return value
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+};
+
+const readEnvKeysFromExample = () => {
   try {
     const contents = fs.readFileSync(ENV_EXAMPLE_PATH, "utf8");
-    const keys: string[] = [];
-    const seen = new Set<string>();
+    const keys = [];
+    const seen = new Set();
 
     contents.split(/\r?\n/).forEach((line) => {
       const trimmed = line.trim();
@@ -33,13 +37,32 @@ const readEnvKeysFromExample = (): string[] => {
   }
 };
 
-const getOrderedEnvKeys = (): string[] => {
+const getOrderedEnvKeys = () => {
   const keys = readEnvKeysFromExample();
   return keys.length ? keys : DEFAULT_ENV_KEYS;
 };
 
-const checkEndpoint = async (url: string) => {
-  const attempt = async (method: "HEAD" | "GET") => {
+const logEnvironmentSummary = (keys, runtime) => {
+  const maxKeyLength = keys.reduce((max, key) => Math.max(max, key.length), 0);
+  const startTime = new Date().toISOString();
+
+  console.log("=====================================");
+  console.log("==  Runtime Environment Variables  ==");
+  console.log("=====================================");
+  console.log(`Started: ${startTime}`);
+  console.log(`Runtime: ${runtime}`);
+  console.log(`Total:   ${keys.length}`);
+  console.log("-------------------------------------");
+  console.log("Configured Environment Variables:");
+  keys.forEach((key) => {
+    const value = process.env[key] ?? "";
+    console.log(`${key.padEnd(maxKeyLength)} : ${value}`);
+  });
+  console.log("=====================================");
+};
+
+const checkEndpoint = async (url) => {
+  const attempt = async (method) => {
     try {
       const response = await fetch(url, {
         method,
@@ -66,7 +89,7 @@ const checkEndpoint = async (url: string) => {
   return attempt("GET");
 };
 
-const isCorsAllowed = (allowOrigin: string | null, origin: string) => {
+const isCorsAllowed = (allowOrigin, origin) => {
   if (!allowOrigin) return false;
   if (allowOrigin === "*") return true;
   return allowOrigin
@@ -75,7 +98,7 @@ const isCorsAllowed = (allowOrigin: string | null, origin: string) => {
     .includes(origin);
 };
 
-const checkCors = async (url: string, appOrigin: string) => {
+const checkCors = async (url, appOrigin) => {
   const attemptOptions = async () => {
     try {
       const response = await fetch(url, {
@@ -125,39 +148,12 @@ const checkCors = async (url: string, appOrigin: string) => {
   }
 };
 
-const logEnvironmentSummary = (keys: string[], runtime: string) => {
-  const maxKeyLength = keys.reduce(
-    (max, key) => Math.max(max, key.length),
-    0
-  );
-  const startTime = new Date().toISOString();
-
-  console.log("=====================================");
-  console.log("==  Runtime Environment Variables  ==");
-  console.log("=====================================");
-  console.log(`Started: ${startTime}`);
-  console.log(`Runtime: ${runtime}`);
-  console.log(`Total:   ${keys.length}`);
-  console.log("-------------------------------------");
-  console.log("Configured Environment Variables:");
-  keys.forEach((key) => {
-    const value = getEnvValue(key) ?? "";
-    console.log(`${key.padEnd(maxKeyLength)} : ${value}`);
-  });
-  console.log("=====================================");
-};
-
-const formatEndpointLabel = (url: string) => {
+const formatEndpointLabel = (url) => {
   if (!url || !/^https?:\/\//i.test(url)) return url || "missing";
   return `[${url}](${url})`;
 };
 
-const logEndpointSummary = (
-  key: string,
-  url: string,
-  status: "ok" | "warning" | "error",
-  lines: string[]
-) => {
+const logEndpointSummary = (key, url, status, lines) => {
   const icon = status === "ok" ? "✅" : status === "warning" ? "⚠️" : "❌";
   const label = `${icon} **${key}:** ${formatEndpointLabel(url)}`;
   console.log(label);
@@ -165,19 +161,16 @@ const logEndpointSummary = (
   console.log("----------");
 };
 
-export const runStartupChecks = async () => {
+const runStartupChecks = async () => {
   const envKeys = getOrderedEnvKeys();
-  const runtime = (
-    process.versions as NodeJS.ProcessVersions & { bun?: string }
-  )?.bun
-    ? "bun"
-    : "nodejs";
+  const runtime = process?.versions?.bun ? "bun" : "nodejs";
 
   console.log("--------- Start of Log ---------");
   logEnvironmentSummary(envKeys, runtime);
 
   const apiKeys = envKeys.filter((key) => key.endsWith("API_ENDPOINT"));
   if (!apiKeys.length) {
+    console.log("");
     console.log("Resource Availability Checks");
     console.log("-------------------------------");
     console.log("No API endpoints configured.");
@@ -187,10 +180,12 @@ export const runStartupChecks = async () => {
   console.log("");
   console.log("Resource Availability Checks");
   console.log("-------------------------------");
-  const appOrigins = getPublicAppUrlList().map(normalizeOrigin);
+  const appOrigins = parseEnvList(process.env.NEXT_PUBLIC_APP_URL).map(
+    normalizeOrigin
+  );
 
   for (const key of apiKeys) {
-    const url = getEnvValue(key);
+    const url = process.env[key];
     if (!url) {
       logEndpointSummary(key, "", "warning", [
         "* ⚠️ Reachable: NO (missing URL)",
@@ -200,16 +195,13 @@ export const runStartupChecks = async () => {
 
     const reachability = await checkEndpoint(url);
     if (!reachability.reachable) {
-      logEndpointSummary(
-        key,
-        url,
-        "error",
-        [`* ❌ Reachable: NO (${reachability.error})`]
-      );
+      logEndpointSummary(key, url, "error", [
+        `* ❌ Reachable: NO (${reachability.error})`,
+      ]);
       continue;
     }
 
-    const corsLines: string[] = [
+    const corsLines = [
       `* ✅ Reachable: YES (status ${reachability.status})`,
     ];
 
@@ -241,4 +233,9 @@ export const runStartupChecks = async () => {
     const hasCorsWarning = corsLines.some((line) => line.includes("⚠️"));
     logEndpointSummary(key, url, hasCorsWarning ? "warning" : "ok", corsLines);
   }
+
+};
+
+module.exports = {
+  runStartupChecks,
 };

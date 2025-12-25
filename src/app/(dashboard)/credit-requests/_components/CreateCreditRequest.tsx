@@ -4,7 +4,7 @@ import React, { useState, FormEvent, useEffect } from "react";
 import { createCreditRequest } from "@/features/agent/credit-request/apis/service";
 import { handleApiErrors } from "@/utils/api-utils/hanle-api-error";
 import { SuccessAlert } from "@/components/alerts/SuccessAlert";
-import { Grid, Box, Typography, ClickAwayListener } from "@mui/material";
+import { GridLegacy as Grid, Box, Typography, ClickAwayListener } from "@mui/material";
 import { CustomInput } from "@/components/custom/CustomInput";
 import { ErrorAlert } from "@/components/alerts/ErrorAlert";
 import { useRouter } from "next/navigation";
@@ -65,11 +65,8 @@ const CreateCreditRequest: React.FC = () => {
   return (
     <Box>
       <Grid
-        item
+        container
         mb={4}
-        xs={12}
-        sm={12}
-        md={12}
         display="flex"
         justifyContent="space-between"
       >
@@ -92,17 +89,19 @@ const CreateCreditRequest: React.FC = () => {
 
       <Box className="form-container">
         <Box className="form-wrapper">
-          <Grid item xs={12} sm={12} md={12} mb={3}>
-            <Typography className="form-title" mb={2}>
-              {formData.id ? "Update Credit Request" : "Send Credit Request"}
-            </Typography>
+          <Grid container spacing={0} mb={3}>
+            <Grid xs={12} sm={12} md={12}>
+              <Typography className="form-title" mb={2}>
+                {formData.id ? "Update Credit Request" : "Send Credit Request"}
+              </Typography>
 
-            <hr className="tab-divider" />
+              <hr className="tab-divider" />
+            </Grid>
           </Grid>
 
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} rowSpacing={3}>
-              <Grid item xs={12} md={4}>
+              <Grid xs={12} md={4}>
                 <label className="form-label">
                   <span className="form-required">*</span> Amount
                 </label>
@@ -117,7 +116,6 @@ const CreateCreditRequest: React.FC = () => {
               </Grid>
 
               <Grid
-                item
                 xs={12}
                 md={4}
                 sx={{
@@ -181,7 +179,7 @@ const CreateCreditRequest: React.FC = () => {
                 ) : null}
               </Grid>
 
-              <Grid item xs={12} md={4}>
+              <Grid xs={12} md={4}>
                 <label className="form-label">Notes</label>
                 <CustomInput
                   name="userNotes"
@@ -191,7 +189,6 @@ const CreateCreditRequest: React.FC = () => {
                 />
               </Grid>
               <Grid
-                item
                 xs={12}
                 sx={{ display: "flex", justifyContent: "flex-end" }}
               >

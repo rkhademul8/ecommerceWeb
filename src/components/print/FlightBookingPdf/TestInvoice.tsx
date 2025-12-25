@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, GridLegacy as Grid, Typography } from "@mui/material";
 import moment from "moment";
 import React from "react";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";

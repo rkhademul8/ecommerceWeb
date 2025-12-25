@@ -68,44 +68,51 @@ const proxyRequest = async (
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const getPathSegments = async (
+  context: { params?: Promise<{ path?: string[] }> | { path?: string[] } }
+) => {
+  const params = await context.params;
+  return params?.path ?? [];
+};
+
 export async function GET(
   request: NextRequest,
-  context: { params: { path?: string[] } }
+  context: { params: Promise<{ path?: string[] }> | { path?: string[] } }
 ) {
-  return proxyRequest(request, context.params.path ?? []);
+  return proxyRequest(request, await getPathSegments(context));
 }
 
 export async function POST(
   request: NextRequest,
-  context: { params: { path?: string[] } }
+  context: { params: Promise<{ path?: string[] }> | { path?: string[] } }
 ) {
-  return proxyRequest(request, context.params.path ?? []);
+  return proxyRequest(request, await getPathSegments(context));
 }
 
 export async function PUT(
   request: NextRequest,
-  context: { params: { path?: string[] } }
+  context: { params: Promise<{ path?: string[] }> | { path?: string[] } }
 ) {
-  return proxyRequest(request, context.params.path ?? []);
+  return proxyRequest(request, await getPathSegments(context));
 }
 
 export async function PATCH(
   request: NextRequest,
-  context: { params: { path?: string[] } }
+  context: { params: Promise<{ path?: string[] }> | { path?: string[] } }
 ) {
-  return proxyRequest(request, context.params.path ?? []);
+  return proxyRequest(request, await getPathSegments(context));
 }
 
 export async function DELETE(
   request: NextRequest,
-  context: { params: { path?: string[] } }
+  context: { params: Promise<{ path?: string[] }> | { path?: string[] } }
 ) {
-  return proxyRequest(request, context.params.path ?? []);
+  return proxyRequest(request, await getPathSegments(context));
 }
 
 export async function OPTIONS(
   request: NextRequest,
-  context: { params: { path?: string[] } }
+  context: { params: Promise<{ path?: string[] }> | { path?: string[] } }
 ) {
-  return proxyRequest(request, context.params.path ?? []);
+  return proxyRequest(request, await getPathSegments(context));
 }

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
-import { Box, Grid } from "@mui/material";
+import { Box, GridLegacy as Grid } from "@mui/material";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -55,7 +55,7 @@ const Hero = () => {
   return (
     <Box mt={2}>
       <Grid container>
-        <Grid size={{ xs: 12, md: 12 }}>
+        <Grid item xs={12} md={12}>
           {banners?.length > 1 ? (
             <Box>
               <Slider {...settings}>

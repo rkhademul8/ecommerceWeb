@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, GridLegacy as Grid } from "@mui/material";
 import ReportsClient from "./_components/ReportsClient";
 
 const ReportsLayout = ({ children }: { children: React.ReactNode }) => {
