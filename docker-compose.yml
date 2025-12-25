@@ -1,0 +1,19 @@
+services:
+  sholoana-commerce:
+    image: sholoana-commerce:local
+    container_name: sholoana-commerce
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+
+      # API Configuration
+      DESHMART_API_ENDPOINT: https://apigwbe.deshmart.com
+
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

@@ -1,12 +1,13 @@
 {
-  "name": "deshmart-ecommerce",
+  "name": "sholoana-commerce",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 4100",
-    "build": "next build",
-    "start": "next start -p 4015",
-    "lint": "next lint"
+    "dev": "bun --bun next dev --turbopack",
+    "build": "bun --bun next build --turbopack",
+    "start": "bun --bun next start",
+    "lint": "eslint",
+    "docker": "docker build -t sholoana-commerce:local -f Dockerfile ./ && docker compose -f docker-compose.yml up"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

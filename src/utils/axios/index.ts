@@ -1,12 +1,11 @@
 import Axios from "axios";
-import { projectConfig } from "@/config";
 import { ApiError } from "../api-utils";
 import { getJWT, getUserLocal } from "@/features/auth/service";
 import { publicEndpoints } from "@/constants/public-endpoint";
 import Cookies from "js-cookie";
 
 const apiClient = Axios.create({
-  baseURL: projectConfig.apiBaseUrl,
+  baseURL: "/api",
   timeout: 120000,
   withCredentials: true,
 });

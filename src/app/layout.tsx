@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { projectConfig } from "@/config";
+import "@/server/startup-log";
 import ClientLayout from "@/components/ClientLayout";
 
 import "../scss/globals.scss";
