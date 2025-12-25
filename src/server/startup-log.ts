@@ -3,7 +3,7 @@ import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 
-import { getEnvValue, getPublicAppUrl } from "./env";
+import { getEnvValue, getPublicAppUrlList } from "./env";
 
 const DEFAULT_ENV_KEYS = ["NEXT_PUBLIC_APP_URL", "DESHMART_API_ENDPOINT"];
 const ENV_EXAMPLE_PATH = path.join(process.cwd(), ".env.example");
@@ -36,14 +36,6 @@ const readEnvKeysFromExample = (): string[] => {
 const getOrderedEnvKeys = (): string[] => {
   const keys = readEnvKeysFromExample();
   return keys.length ? keys : DEFAULT_ENV_KEYS;
-};
-
-const logEnvValues = (keys: string[]) => {
-  console.log("Environment variables (ordered by .env.example):");
-  keys.forEach((key) => {
-    const value = getEnvValue(key) ?? "";
-    console.log(`- ${key}=${value}`);
-  });
 };
 
 const checkEndpoint = async (url: string) => {
@@ -133,132 +125,122 @@ const checkCors = async (url: string, appOrigin: string) => {
   }
 };
 
-const fetchLatestBunVersion = async (): Promise<string | null> => {
-  try {
-    const response = await fetch(
-      "https://api.github.com/repos/oven-sh/bun/releases/latest",
-      {
-        headers: {
-          "User-Agent": "deshmart-ecommerce",
-          Accept: "application/vnd.github+json",
-        },
-      }
-    );
-    if (!response.ok) return null;
-    const payload = (await response.json()) as { tag_name?: string };
-    const tag = payload.tag_name ?? "";
-    if (!tag) return null;
-    return tag.replace(/^bun-?/i, "").replace(/^v/i, "");
-  } catch {
-    return null;
-  }
+const logEnvironmentSummary = (keys: string[], runtime: string) => {
+  const maxKeyLength = keys.reduce(
+    (max, key) => Math.max(max, key.length),
+    0
+  );
+  const startTime = new Date().toISOString();
+
+  console.log("=====================================");
+  console.log("==  Runtime Environment Variables  ==");
+  console.log("=====================================");
+  console.log(`Started: ${startTime}`);
+  console.log(`Runtime: ${runtime}`);
+  console.log(`Total:   ${keys.length}`);
+  console.log("-------------------------------------");
+  console.log("Configured Environment Variables:");
+  keys.forEach((key) => {
+    const value = getEnvValue(key) ?? "";
+    console.log(`${key.padEnd(maxKeyLength)} : ${value}`);
+  });
+  console.log("=====================================");
 };
 
-const compareVersions = (current: string, latest: string) => {
-  const parse = (value: string) =>
-    value
-      .replace(/^v/, "")
-      .split(".")
-      .map((part) => Number(part));
-  const currentParts = parse(current);
-  const latestParts = parse(latest);
-  const length = Math.max(currentParts.length, latestParts.length);
-
-  for (let index = 0; index < length; index += 1) {
-    const currentValue = currentParts[index] ?? 0;
-    const latestValue = latestParts[index] ?? 0;
-    if (currentValue < latestValue) return -1;
-    if (currentValue > latestValue) return 1;
-  }
-
-  return 0;
+const formatEndpointLabel = (url: string) => {
+  if (!url || !/^https?:\/\//i.test(url)) return url || "missing";
+  return `[${url}](${url})`;
 };
 
-const logRuntimeChecks = async () => {
-  const bunVersion = (
-    process.versions as NodeJS.ProcessVersions & { bun?: string }
-  )?.bun;
-  if (!bunVersion) {
-    console.warn(
-      "[runtime] Bun was not detected. Use Bun to run this project (https://bun.sh)."
-    );
-    return;
-  }
-
-  const latestVersion = await fetchLatestBunVersion();
-  if (!latestVersion) {
-    console.warn(
-      `[runtime] Unable to verify the latest Bun version. Current: ${bunVersion}.`
-    );
-    return;
-  }
-
-  if (compareVersions(bunVersion, latestVersion) < 0) {
-    console.warn(
-      `[runtime] Bun ${bunVersion} is not the latest (${latestVersion}). Update with: curl -fsSL https://bun.sh/install | bash`
-    );
-  } else {
-    console.log(`[runtime] Bun ${bunVersion} is up to date.`);
-  }
+const logEndpointSummary = (
+  key: string,
+  url: string,
+  status: "ok" | "warning" | "error",
+  lines: string[]
+) => {
+  const icon = status === "ok" ? "✅" : status === "warning" ? "⚠️" : "❌";
+  const label = `${icon} **${key}:** ${formatEndpointLabel(url)}`;
+  console.log(label);
+  lines.forEach((line) => console.log(line));
+  console.log("----------");
 };
 
-const runStartupChecks = async () => {
+export const runStartupChecks = async () => {
   const envKeys = getOrderedEnvKeys();
-  logEnvValues(envKeys);
+  const runtime = (
+    process.versions as NodeJS.ProcessVersions & { bun?: string }
+  )?.bun
+    ? "bun"
+    : "nodejs";
+
+  console.log("--------- Start of Log ---------");
+  logEnvironmentSummary(envKeys, runtime);
 
   const apiKeys = envKeys.filter((key) => key.endsWith("API_ENDPOINT"));
   if (!apiKeys.length) {
-    console.log("API endpoint checks: none found.");
-    await logRuntimeChecks();
+    console.log("Resource Availability Checks");
+    console.log("-------------------------------");
+    console.log("No API endpoints configured.");
+    console.log("--------- END OF LOG ---------");
     return;
   }
 
-  console.log("API endpoint checks:");
-  const appUrl = getPublicAppUrl();
-  const appOrigin = appUrl ? normalizeOrigin(appUrl) : null;
+  console.log("");
+  console.log("Resource Availability Checks");
+  console.log("-------------------------------");
+  const appOrigins = getPublicAppUrlList().map(normalizeOrigin);
 
   for (const key of apiKeys) {
     const url = getEnvValue(key);
     if (!url) {
-      console.warn(`- ${key}: missing`);
+      logEndpointSummary(key, "", "warning", [
+        "* ⚠️ Reachable: NO (missing URL)",
+      ]);
       continue;
     }
 
     const reachability = await checkEndpoint(url);
     if (!reachability.reachable) {
-      console.warn(`- ${key}: unreachable (${reachability.error})`);
+      logEndpointSummary(
+        key,
+        url,
+        "error",
+        [`* ❌ Reachable: NO (${reachability.error})`]
+      );
       continue;
     }
 
-    console.log(`- ${key}: reachable (status ${reachability.status})`);
+    const corsLines: string[] = [
+      `* ✅ Reachable: YES (status ${reachability.status})`,
+    ];
 
-    if (!appOrigin) {
-      console.warn(`- ${key} CORS: skipped (NEXT_PUBLIC_APP_URL not set)`);
-      continue;
-    }
-
-    const corsResult = await checkCors(url, appOrigin);
-    if ("error" in corsResult) {
-      console.warn(`- ${key} CORS: check failed (${corsResult.error})`);
-      continue;
-    }
-
-    if (isCorsAllowed(corsResult.allowOrigin, appOrigin)) {
-      console.log(`- ${key} CORS: allowed for ${appOrigin}`);
+    if (!appOrigins.length) {
+      corsLines.push(
+        "* ⚠️ CORS Policy: skipped (NEXT_PUBLIC_APP_URL not set)"
+      );
     } else {
-      const allowOrigin = corsResult.allowOrigin ?? "missing header";
-      console.warn(`- ${key} CORS: not allowed (${allowOrigin})`);
+      for (const appOrigin of appOrigins) {
+        const corsResult = await checkCors(url, appOrigin);
+        if ("error" in corsResult) {
+          corsLines.push(
+            `* ⚠️ CORS Policy: check failed (${corsResult.error})`
+          );
+          continue;
+        }
+
+        if (isCorsAllowed(corsResult.allowOrigin, appOrigin)) {
+          corsLines.push(`* ✅ CORS Policy: OK (\`${appOrigin}\`)`);
+        } else {
+          const allowOrigin = corsResult.allowOrigin ?? "missing header";
+          corsLines.push(
+            `* ⚠️ CORS Policy: not allowed (\`${appOrigin}\`) [${allowOrigin}]`
+          );
+        }
+      }
     }
+
+    const hasCorsWarning = corsLines.some((line) => line.includes("⚠️"));
+    logEndpointSummary(key, url, hasCorsWarning ? "warning" : "ok", corsLines);
   }
-
-  await logRuntimeChecks();
+  console.log("--------- END OF LOG ---------");
 };
-
-declare global {
-  var __startupLogRan: boolean | undefined;
-}
-
-if (!globalThis.__startupLogRan) {
-  globalThis.__startupLogRan = true;
-  void runStartupChecks();
-}
