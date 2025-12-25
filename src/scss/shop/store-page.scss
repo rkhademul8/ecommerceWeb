@@ -1,0 +1,39 @@
+@use "../variables" as *;
+
+.store-content {
+  // flex: 1;
+  // padding: 20px 0px 20px 20px;
+
+  .results-header {
+    .title {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-family: $theme-font !important;
+      color: $theme-text-title-color;
+    }
+
+    .subtitle {
+      display: block;
+      font-size: 14px;
+      margin-top: 5px;
+      font-family: $theme-font !important;
+      color: $theme-text-title-color;
+    }
+  }
+
+  .empty-state {
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    flex-direction: column;
+    font-family: $theme-font !important;
+
+    img {
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-weight: 500;
+    }
+  }
+}

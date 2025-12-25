@@ -1,0 +1,61 @@
+@use "../variables" as *;
+.background-container {
+  background-color: #f2f0f9 !important;
+  min-height: 100vh;
+}
+
+.chat-popup {
+  position: fixed;
+  bottom: 80px;
+  right: 16px;
+  width: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.header-container {
+  background-color: #fff;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  border-bottom: 1px solid #6e0a82;
+
+  .header-title {
+    margin-left: 10px;
+    font-size: 1rem;
+    color: #000;
+    font-family: $theme-font !important;
+  }
+}
+
+.body-container {
+  padding: 15px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .message {
+    color: #000;
+    margin-bottom: 16px;
+    font-family: $theme-font !important;
+  }
+
+  .start-chat-button {
+    font-family: $theme-font !important;
+    background-color: $theme-color;
+    font-size: 12px;
+
+    &:hover {
+      background-color: $theme-secondary-color;
+    }
+  }
+}

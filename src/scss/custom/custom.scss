@@ -1,0 +1,42 @@
+@use "../variables" as *;
+
+.custom-textfield {
+  width: 100%;
+
+  .MuiInputBase-root {
+    height: 35px;
+    border-radius: 4px;
+    color: $theme-text-subtitle-color; // from palette
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+    font-family: $theme-font !important;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+
+  .MuiOutlinedInput-root {
+    fieldset {
+      border-color: $theme-border-color; // palette border
+    }
+
+    &:hover fieldset {
+      border-color: $theme-color; // theme primary
+    }
+
+    &.Mui-focused {
+      background-color: $theme-color; // soft bg
+    }
+
+    &.Mui-focused fieldset {
+      border-color: $theme-color; // theme primary
+    }
+  }
+
+  .MuiInputBase-input {
+    font-weight: 500;
+
+    &:focus {
+      font-weight: 500;
+    }
+  }
+}

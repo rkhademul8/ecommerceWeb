@@ -1,0 +1,54 @@
+@use "../variables" as *;
+
+.reservation-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Button styling */
+.reservation-button {
+  background-color: $theme-background-color;
+  color: $theme-footer-bg-color;
+  font-size: 12px;
+  border: none;
+  height: 28px;
+  padding: 0px 8px;
+  border-radius: 5px;
+  font-family: $theme-font !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Tooltip box styling */
+.reservation-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  color: red;
+  padding: 12px;
+  border-radius: 4px;
+  display: none;
+  white-space: nowrap;
+  z-index: 1001;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.reservation-container:hover .reservation-tooltip {
+  display: block;
+}
+
+.view-balance {
+  background-color: #ccc;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 8px;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  // color: $theme-footer-bg-color;
+  font-family: $theme-font !important;
+}

@@ -1,0 +1,126 @@
+@use "../variables" as *;
+.footer {
+  padding: 20px 0px;
+  background: #fff;
+  font-family: $theme-font !important;
+
+  .footer-title {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-family: $theme-font !important;
+    color: $theme-text-title-color;
+  }
+
+  .footer-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-family: $theme-font !important;
+    color: $theme-text-title-color;
+
+    .footer-icon {
+      font-size: 16px;
+      color: $theme-text-title-color;
+      flex-shrink: 0;
+    }
+  }
+
+  .description {
+    display: block;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    font-family: $theme-font !important;
+    color: $theme-text-title-color;
+  }
+
+  .footer-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 6px;
+
+      a {
+        font-size: 14px;
+        text-decoration: none;
+        font-family: $theme-font !important;
+        color: $theme-text-title-color;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 12px;
+    font-family: $theme-font !important;
+
+    // a {
+    //   width: 30px;
+    //   height: 30px;
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: center;
+    //   border-radius: 40%; // round shape
+    //   font-size: 22px; // icon size
+    //   color: #fff; // icon color (white inside circle)
+    //   transition: all 0.3s ease;
+
+    //   &.facebook {
+    //     background-color: #1877f2; // Facebook blue
+    //   }
+
+    //   &.youtube {
+    //     background-color: #ff0000; // YouTube red
+    //   }
+
+    //   &.instagram {
+    //     background: radial-gradient(circle at 30% 30%, #f58529, #dd2a7b, #8134af, #515bd4);
+    //   }
+
+    //   &:hover {
+    //     transform: scale(1.1);
+    //     opacity: 0.9;
+    //   }
+    // }
+  }
+
+  .payment-icons {
+    gap: 10px;
+    display: flex;
+    margin-top: 8px;
+  }
+}
+
+.footer-bottom {
+  font-size: 13px;
+  text-align: center;
+  padding: 20px 10px;
+  background: #f9f9f9;
+  font-family: $theme-font !important;
+  border-top: 1px solid #e5e5e5;
+  color: $theme-text-title-color;
+
+  p {
+    margin: 0;
+    font-family: $theme-font !important;
+  }
+
+  a {
+    font-weight: 600;
+    text-decoration: none;
+    font-family: $theme-font !important;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

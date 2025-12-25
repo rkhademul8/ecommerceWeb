@@ -1,0 +1,18 @@
+@use "../variables" as *;
+
+.dashboard-notice {
+  background-color: $theme-color;
+  color: $wl-text-color;
+  padding: 5px 10px;
+  display: flex;
+  font-size: 10px;
+  font-family: $theme-font !important;
+}
+
+.dashboard-notice-span {
+  margin-right: 20px;
+  color: $wl-tertiary-text-color;
+  font-family: $theme-font !important;
+  font-weight: 500;
+  font-size: 12px;
+}

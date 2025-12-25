@@ -1,0 +1,1372 @@
+@use "../variables" as *;
+@use "./form-common/form";
+@use "./table-common/table";
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
+
+:root {
+  --background: $theme-background-color;
+  --foreground: $theme-background-color;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: $theme-background-color;
+    --foreground: $theme-background-color;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+}
+
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--foreground);
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $theme-font !important;
+  -webkit-font-smoothing: antialiased;
+  background-color: $theme-background-color;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+.root-container {
+  padding: 0px 35px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 0px 20px;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.rdrMonthAndYearPickers select {
+  font-family: $theme-font !important;
+}
+
+/* Slick slider styles */
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px !important;
+  color: $theme-color !important;
+  opacity: 0.5 !important;
+  position: absolute;
+  z-index: 999 !important;
+}
+
+.slick-prev:before {
+  content: "←";
+  left: 10px;
+}
+
+.slick-next:before {
+  content: "→";
+  left: -3px;
+}
+
+/* Switch button styling */
+.switch-image-btn {
+  position: absolute;
+  right: 10px;
+  top: 25px;
+  width: 20px;
+
+  @media (min-width: 1200px) {
+    top: 25px;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    width: 25px;
+    right: 35px;
+    top: 20px;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    width: 22px;
+    right: 30px;
+    top: 18px;
+  }
+
+  @media (min-width: 576px) and (max-width: 767px) {
+    width: 20px;
+    right: 25px;
+    top: 15px;
+  }
+
+  @media (max-width: 575px) {
+    width: 15px;
+    right: 15px;
+    top: 10px;
+  }
+
+  @media (max-width: 400px) {
+    width: 12px;
+    right: 10px;
+    top: 8px;
+  }
+}
+
+.rdrDefinedRangesWrapper {
+  display: none;
+}
+
+// global components scss
+.placeholderColor input::placeholder {
+  color: $theme-placeholder-color;
+  opacity: 1;
+  font-size: 14px;
+  font-family: $theme-font !important;
+  font-weight: 400;
+}
+
+.theme-placeholder-color input::placeholder {
+  color: #4b5563;
+  opacity: 1;
+  font-size: 12px;
+  font-family: $theme-font !important;
+  font-weight: 400;
+}
+
+#labelName {
+  color: $theme-label-color;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+#labelBorderBottom {
+  color: $theme-text-color;
+  font-size: 15px;
+  border-bottom: 2px solid $theme-border-color;
+}
+
+.customInput input,
+.customInput select,
+.customInputBottomColor input,
+.customInputBottomColor select {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid $theme-border-color;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  width: 100%;
+}
+
+.customInputBottomColor input,
+.customInputBottomColor select {
+  padding-bottom: 3px;
+}
+
+.primaryButton {
+  width: 100%;
+  position: relative;
+  border-radius: 8px;
+  background-color: var(--theme-active);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 13px;
+  box-sizing: border-box;
+  font-size: 17px;
+  color: #fff;
+  font-family: $theme-font !important;
+  cursor: pointer;
+}
+
+.my-confirm-button {
+  font-weight: 400;
+  border: none !important;
+  color: white !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  padding: 8px 20px !important;
+  font-family: $theme-font !important;
+  background-color: $theme-color !important;
+}
+
+.my-icon {
+  color: $theme-secondary-color !important;
+  font-size: 12px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.my-title {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  color: $theme-label-color !important;
+  font-family: $theme-font !important;
+}
+
+.my-text {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  font-family: $theme-font !important;
+  color: $theme-label-color !important;
+}
+
+.my-popup,
+.my-popup-reject,
+.my-popup-approve {
+  border-radius: 10px !important;
+  padding: 20px !important;
+  width: 80% !important;
+  max-width: 700px !important;
+  height: auto !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+}
+
+.my-popup {
+  max-width: 450px !important;
+  max-height: 260px !important;
+}
+
+.my-popup-reject {
+  max-height: 400px !important;
+}
+
+.my-popup-approve {
+  max-height: 260px !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: $theme-label-color !important;
+  background-color: transparent !important;
+}
+
+.add-button {
+  background-color: $theme-primary-button-color;
+  color: #ffffff !important;
+  padding: 12px 25px;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 8px;
+
+  &.long {
+    width: 200px;
+    padding: 12px 5px;
+    justify-content: center;
+  }
+}
+
+.secondary-button {
+  color: $theme-primary-button-color !important;
+  padding: 10px 25px;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  box-shadow: none;
+  border: 2px solid $theme-primary-button-color;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 8px;
+
+  &.disable {
+    cursor: not-allowed;
+  }
+
+  &.white {
+    background: #ffffff;
+  }
+
+  &.long {
+    width: 200px;
+    padding: 0px 5px;
+    justify-content: center;
+  }
+}
+
+.link-button {
+  background-color: $theme-primary-button-color;
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 8px 12px;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  text-transform: none;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 180px;
+  text-align: center;
+
+  &.light {
+    background-color: #a56eb4;
+  }
+
+  &.red {
+    background-color: #d32f2f;
+  }
+
+  &.disable {
+    cursor: not-allowed;
+    background-color: #b4b4cd;
+  }
+}
+
+.settle-button {
+  background-color: #ff7d95;
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 8px 25px;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  text-transform: none;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+
+  &.disable {
+    cursor: not-allowed;
+    background-color: #b4b4cd;
+  }
+}
+
+.main-box {
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+.main-bg-color {
+  background-color: #ffffff;
+}
+
+.css-13xfq8m-MuiTabPanel-root {
+  padding: 0 !important;
+}
+
+.popupSlider .slick-dots li button:before {
+  font-size: 13px;
+  line-height: 20px;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  content: "•";
+  text-align: center;
+  opacity: 0.75;
+  color: $theme-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.popupSlider .slick-dots li.slick-active button:before {
+  opacity: 0.75;
+  color: $theme-background-color;
+}
+
+.link {
+  font-size: 13px;
+  font-family: $theme-font !important;
+  text-decoration: underline;
+  color: $theme-secondary-color;
+}
+
+.link-green {
+  font-size: 13px;
+  font-family: $theme-font !important;
+  font-weight: 400;
+  color: #00ad79;
+  text-decoration: underline;
+}
+
+.not-uploaded {
+  font-size: 13px;
+  font-family: $theme-font !important;
+  font-weight: 400;
+  color: #ff7d95;
+}
+
+.primary-tab {
+  border-bottom: 2px solid #c7cacf;
+
+  .MuiTabs-indicator {
+    height: 2px;
+    border-radius: 0;
+    background-color: $theme-primary-text-color;
+  }
+
+  .MuiTab-root {
+    font-family: $theme-font !important;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: none;
+    color: $theme-text-subtitle-color;
+    min-height: 45px;
+    padding: 0 20px;
+
+    &.Mui-selected {
+      color: $theme-primary-text-color;
+      font-weight: 600;
+    }
+  }
+}
+
+.tab-divider {
+  height: 1px;
+  border: none;
+  background-color: #c7cacf;
+}
+
+.custom-checkbox {
+  color: #9493bd !important;
+  height: 15px !important;
+  box-shadow: none !important;
+
+  & .MuiSvgIcon-root {
+    font-size: 20px !important;
+    box-shadow: none !important;
+  }
+
+  &.Mui-checked {
+    color: #a56eb4 !important;
+    box-shadow: none !important;
+  }
+
+  &:hover {
+    background-color: transparent !important;
+  }
+
+  ~ .MuiFormControlLabel-label {
+    color: #9493bd !important;
+    font-size: 12px !important;
+    font-family: $theme-font !important;
+  }
+}
+
+.info-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.normal-label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: $theme-text-subtitle-color;
+  font-family: $theme-font !important;
+}
+
+.normal-text {
+  font-family: $theme-font !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  color: $theme-text-subtitle-color;
+}
+
+.normal-text-2 {
+  font-family: $theme-font !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  color: $theme-text-subtitle-color;
+}
+
+.bg-text {
+  font-family: $theme-font !important;
+  font-size: 12px !important;
+  color: #6e6996;
+  padding: 5px;
+  background-color: #ffffff !important;
+  border-radius: 2px;
+}
+
+.normal-link-text {
+  font-family: $theme-font !important;
+  font-size: 12px;
+  color: #6e6996;
+  display: block;
+  word-break: break-all;
+}
+
+.normal-header {
+  margin-bottom: 10px;
+  font-family: $theme-font !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #000;
+}
+
+.normal-header-2 {
+  font-family: $theme-font !important;
+  font-size: 14px !important;
+  color: #000;
+}
+
+.details-title {
+  margin-bottom: 10px;
+  color: $theme-primary-button-color;
+  font-family: $theme-font !important;
+}
+
+.deposit-status {
+  width: 100px;
+  padding: 5px 8px;
+  font-weight: 400;
+  color: #ffffff;
+  border-radius: 8px;
+  border-radius: 8px;
+  font-size: 12px !important;
+  margin: 0 auto !important;
+  font-family: "Public Sans", sans-serif !important;
+
+  &.rejected {
+    background-color: #d32f2f;
+  }
+
+  &.Unpaid {
+    background-color: #d32f2f;
+  }
+
+  &.pending {
+    background-color: #ffc736;
+  }
+
+  &.kam-approved {
+    background-color: #ffc736;
+  }
+
+  &.Partial {
+    background-color: #ffc736;
+  }
+
+  &.acc-approved {
+    background-color: #01783b;
+  }
+
+  &.Paid {
+    background-color: #01783b;
+  }
+
+  &.all,
+  &.default {
+    background-color: #ccc;
+  }
+}
+
+.bank-status {
+  font-size: 12px !important;
+  font-family: $theme-font !important;
+  margin: 0 auto !important;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-weight: 400;
+  color: #ffffff;
+  width: 100px;
+
+  &.rejected {
+    background-color: #d32f2f;
+  }
+
+  &.pending {
+    background-color: #ffc736;
+  }
+
+  &.approved {
+    background-color: #01783b;
+  }
+
+  &.default {
+    background-color: #ccc;
+  }
+}
+
+.transaction-status {
+  font-size: 10px !important;
+  font-family: $theme-font !important;
+  margin: 0 auto !important;
+  border-radius: 2px;
+  padding: 5px 10px;
+  font-weight: 400;
+  color: #ffffff;
+  width: 100px;
+
+  &.failed {
+    background-color: #d32f2f;
+  }
+
+  &.completed {
+    background-color: #01783b;
+  }
+
+  &.refunded {
+    background-color: #87b0ff;
+  }
+
+  &.cancelled,
+  &.default {
+    background-color: #ccc;
+  }
+}
+
+.confirmed-button {
+  background-color: #6e0a82;
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 9px 12px;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  text-transform: none;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s, cursor 0.3s;
+}
+
+.confirmed-button.disabled {
+  background-color: #a9a9a9;
+  cursor: not-allowed;
+  color: #ffffff;
+}
+
+.not-confirmed-button {
+  background-color: #ff7d95;
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 9px 12px;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  text-transform: none;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.otp-cancel-button {
+  background-color: #ffffff;
+  color: #6e6996;
+  border-radius: 8px;
+  border: 1px solid #6e6996;
+  padding: 11px 18px;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  text-transform: none;
+  box-shadow: none;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &.long {
+    width: 200px;
+    padding: 12px 5px;
+    justify-content: center;
+  }
+}
+
+.loading-icon {
+  color: #fff !important;
+  margin-right: 8px;
+}
+
+.resend-loading-icon {
+  color: #ff7d95 !important;
+  margin-right: 8px;
+}
+
+.error-msg {
+  font-family: $theme-font !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  color: #ff7d95;
+}
+
+.alert-msg {
+  font-family: $theme-font !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  color: #ff7d95;
+}
+
+.site-layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-main-content {
+  flex: 1;
+}
+
+.logout-container {
+  position: absolute;
+  bottom: 0;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0px;
+  background-color: #110f32;
+  left: 0;
+}
+
+.logout-container-mobile {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  // justify-content: center;
+  padding: 15px 0px;
+  background-color: #110f32;
+  left: 0;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  padding: 12px 10px;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  gap: 5px;
+  background-color: #110f32;
+  color: #ffffff;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.verification-methods {
+  .normal-text {
+    color: #333;
+    font-size: 14px;
+    font-family: $theme-font !important;
+  }
+
+  .status {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    font-family: $theme-font !important;
+
+    &.verified {
+      color: #00b561;
+      padding: 5px 15px;
+      background-color: #e6f7ec;
+    }
+
+    &.not-verified {
+      color: #ff4133;
+      padding: 5px 15px;
+      background-color: #fdecea;
+    }
+
+    &.verify {
+      color: #fff;
+      cursor: pointer;
+      font-size: 12px;
+      padding: 8px 15px;
+      border-radius: 6px;
+      background-color: #01783b;
+
+      &.disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.underline-link {
+  color: #ff7d95;
+  cursor: pointer;
+}
+
+.underline-link:hover {
+  color: #ff7d95;
+  text-decoration: underline;
+}
+
+.custom-tab {
+  flex-basis: 16.1%;
+  background-color: #b4b4cd;
+  color: #ffffff;
+  min-height: 30px;
+  border-radius: 2px;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  text-transform: none;
+  font-weight: 400;
+
+  &.selected {
+    background-color: #6e6996;
+    color: #ffffff !important;
+  }
+}
+
+.account-card {
+  &.selected {
+    border: 3px solid #ff7d95;
+  }
+}
+
+.copy-button {
+  color: #ffffff !important;
+  background-color: #b4b4cd;
+  padding: 4px 0px;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  width: 75px;
+  text-transform: none;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 5px;
+  gap: 5px;
+}
+
+.select-button {
+  color: #ffffff !important;
+  padding: 5px 0px;
+  font-family: $theme-font !important;
+  font-size: 12px;
+  width: 75px;
+  text-transform: none;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &.disabled {
+    background-color: #b4b4cd !important;
+  }
+
+  &.selected {
+    background-color: #ff7d95;
+  }
+}
+
+.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 0.2),
+    /* Top shadow */ 0px 0px 10px 1px rgba(0, 0, 0, 0.14),
+    /* Side shadow */ 0px 0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+
+.css-1am952f-MuiAutocomplete-root
+  .MuiAutocomplete-inputRoot
+  .MuiAutocomplete-input {
+  min-width: 40px !important;
+}
+
+.err-msg {
+  font-size: 14px;
+  font-weight: 500;
+  color: #d7182e;
+  font-family: $theme-font !important;
+}
+
+.password-requirements {
+  font-size: 12px;
+  padding: 10px 20px;
+  background: white;
+  font-family: $theme-font !important;
+
+  li {
+    color: #ff7d95;
+    font-family: $theme-font !important;
+
+    &.valid {
+      color: green;
+      font-family: $theme-font !important;
+    }
+  }
+}
+
+.MuiChip-root {
+  font-size: 12px;
+  padding: 2px 6px;
+  background-color: #e0e0e0;
+  height: 24px !important;
+  border-radius: 10px;
+  min-width: 50px;
+  max-width: 100px;
+  font-family: $theme-font !important;
+}
+
+.MuiChip-deleteIcon {
+  font-size: 11px !important;
+  font-family: $theme-font !important;
+}
+
+.uppercase-input {
+  text-transform: uppercase !important;
+}
+
+.rdrDayToday .rdrDayNumber span:after {
+  background: #ffffff !important;
+}
+
+.css-1086bdv-MuiPaper-root-MuiAccordion-root:last-of-type {
+  border-bottom-left-radius: 2px !important;
+  border-bottom-right-radius: 2px !important;
+}
+
+.css-1086bdv-MuiPaper-root-MuiAccordion-root:first-of-type {
+  border-top-left-radius: 2px !important;
+  border-top-right-radius: 2px !important;
+}
+
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-rhm49o-MuiAutocomplete-root
+  .MuiOutlinedInput-root {
+  padding-right: 20px !important;
+}
+
+// Alert
+div:where(.swal2-icon) {
+  margin: 1em auto 0.6em !important;
+}
+
+div:where(.swal2-container) div:where(.swal2-popup) {
+  width: 25em !important;
+  padding: 0px 0 1em !important;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title) {
+  padding: 0em 0em 0 !important;
+  font-size: 16px !important;
+  font-family: $theme-font !important;
+}
+
+div:where(.swal2-container) .swal2-html-container {
+  padding: 0em 0em 0.3 !important;
+  font-size: 14px !important;
+  font-family: $theme-font !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+  border: 0;
+  border-radius: 0.25em;
+  padding: 8px 20px !important;
+  background: initial;
+  background-color: $theme-color !important;
+  color: #fff;
+  font-size: 12px !important;
+  font-family: $theme-font !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-deny) {
+  border: 0;
+  border-radius: 0.25em;
+  padding: 8px 20px !important;
+  background: initial;
+  background-color: #ff5a7d !important;
+  color: #fff;
+  font-size: 12px !important;
+  font-family: $theme-font !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) {
+  border: 0;
+  color: #fff;
+  background: initial;
+  border-radius: 0.25em;
+  font-size: 12px !important;
+  padding: 8px 20px !important;
+  font-family: $theme-font !important;
+  background-color: #c7cacf !important;
+}
+
+.swal-custom-swal-title {
+  color: #1d1c1e !important;
+  font-weight: 600;
+}
+
+.swal-custom-confirm-btn {
+  background-color: #6e0a82 !important;
+  color: #ffffff !important;
+  border: none;
+  padding: 8px 16px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.swal-custom-cancel-btn {
+  background-color: #8081a5 !important;
+  color: #ffffff !important;
+  border: none;
+  padding: 8px 16px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.blinking-icon {
+  animation: blink 1s infinite;
+}
+
+.swal2-container {
+  z-index: 2000 !important;
+}
+
+.uppercase-input input {
+  text-transform: uppercase;
+}
+
+.tab-container {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #eceef5;
+  border-radius: 10px 10px 0px 0px !important;
+  padding: 0;
+
+  .MuiTabs-flexContainer {
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .tabWrapper {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 44px;
+    height: 44px;
+    padding: 0 12px;
+    text-transform: none;
+    min-height: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    color: #ffffff;
+    border-radius: 2px;
+
+    &.selectedTab {
+      .tabLabel {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .tabLabel {
+    color: #292f36;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: $theme-font !important;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+    filter: grayscale(1) opacity(0.8);
+  }
+}
+
+.css-46bh2p-MuiCardContent-root:last-child {
+  padding-bottom: 15px !important;
+}
+
+.css-46bh2p-MuiCardContent-root {
+  padding: 10px !important;
+}
+
+.view-all-btn {
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 10px 30px;
+  background: $theme-color;
+  font-family: $theme-font !important;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.view-selected-btn {
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 10px 30px;
+  background: $theme-secondary-color;
+  font-family: $theme-font !important;
+  display: inline-block;
+  width: auto;
+}
+
+@media (max-width: 500px) {
+  .view-selected-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+.product-details-page {
+  .MuiSkeleton-root {
+    background-color: #f1f1f1;
+
+    &::after {
+      background: linear-gradient(90deg, #f1f1f1, #e8e8e8, #f1f1f1);
+    }
+  }
+}
+
+.dashboard-calendar,
+.return-calendar {
+  position: absolute;
+  border-radius: 5px;
+  z-index: 9999;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px;
+  color: $theme-color !important;
+
+  &.dashboard-calendar {
+    top: 125%;
+    left: 0;
+    color: $theme-color !important;
+  }
+
+  &.return-calendar {
+    top: 125%;
+    right: -275px;
+    color: $theme-color !important;
+  }
+}
+
+.css-e6vmhl {
+  width: calc(100%) !important;
+  min-height: 100vh !important;
+}
+
+.cash-credit-balance {
+  background-color: #e5e9f2;
+  color: #2d233c;
+  font-size: 12px !important;
+  font-family: $theme-font !important;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.balance-highlight-color {
+  color: $theme-secondary-color !important;
+  font-family: $theme-font !important;
+  font-weight: 500 !important;
+}
+
+.custom-radio-group {
+  background-color: #e5e9f2;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+  .MuiRadio-root {
+    color: #6e6996;
+    font-size: 10px !important;
+
+    &.Mui-checked {
+      color: $theme-secondary-color !important;
+    }
+  }
+
+  .MuiFormControlLabel-root {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .MuiFormControlLabel-label {
+    color: #6e6996;
+    font-size: 13px !important;
+
+    &:hover {
+      color: #6e6996 !important;
+    }
+  }
+}
+
+.satement-time-title {
+  color: $theme-secondary-color !important;
+  font-family: $theme-font !important;
+  font-size: 12px !important;
+}
+
+.resend-otp-button {
+  background-color: #ffffff;
+  color: #6e6996;
+  border-radius: 8px;
+  border: 1px solid #6e6996;
+  padding: 10px 30px;
+  font-family: "Outfit", sans-serif !important;
+  font-size: 12px;
+  text-transform: none;
+  box-shadow: none;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.payment-credit-btn-disabled {
+  background-color: #eae8f4;
+  border: none;
+  color: #55507d;
+  font-size: 15px !important;
+  font-family: $theme-font !important;
+  width: 100%;
+  border-radius: 3px;
+  padding: 6px 10px;
+}
+
+.tabs-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #edeeef;
+  padding: 4px;
+  border-radius: 8px;
+  border: 2px solid #c7cacf;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d1cfe1 transparent;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $theme-color;
+    border-radius: 10px;
+  }
+
+  .MuiTab-root {
+    min-height: 32px !important;
+    height: 32px;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+    border-radius: 4px;
+    margin-right: 4px;
+    color: #000;
+
+    @media (max-width: 600px) {
+      font-size: 10px;
+    }
+
+    &.selected {
+      background-color: #ffffff !important;
+      color: $theme-color !important;
+    }
+
+    &:hover {
+      background-color: #ffffff !important;
+      color: $theme-color !important;
+    }
+  }
+
+  .MuiTabs-indicator {
+    background: transparent !important;
+  }
+}
+
+.results-header {
+  .title {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: $theme-font !important;
+    color: $theme-text-title-color;
+  }
+
+  .subtitle {
+    display: block;
+    font-size: 14px;
+    margin-top: 5px;
+    font-family: $theme-font !important;
+    color: $theme-text-title-color;
+  }
+}
+
+.delete-btn {
+  color: #c92a2a !important;
+  font-size: 14px !important;
+  font-family: $theme-font !important;
+}
+
+.order-initiate-btn {
+  border: none;
+  font-size: 11px;
+  cursor: pointer;
+  background: #d32f2f;
+  font-weight: 500;
+  color: #fff;
+  margin-left: 15px;
+  padding: 10px 30px;
+  border-radius: 2px;
+  text-transform: none;
+  font-family: $theme-font;
+  border-radius: 8px;
+}

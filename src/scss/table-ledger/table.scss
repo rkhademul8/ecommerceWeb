@@ -1,0 +1,72 @@
+@use "../variables" as *;
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  .table-head {
+    background-color: $theme-background-color;
+
+    .header-cell {
+      font-family: $theme-font !important;
+      font-size: 12px;
+      text-align: center;
+      vertical-align: middle;
+      padding: 8px;
+      font-weight: 500;
+
+      &.first-group {
+        background-color: $theme-color;
+        color: #ffffff;
+      }
+      &.second-group {
+        background-color: #daf3e7;
+        color: #000000;
+      }
+      &.third-group {
+        background-color: #ffe7eb;
+        color: #ff7b91;
+      }
+    }
+  }
+
+  .table-body {
+    .table-row {
+      border-bottom: 2px solid #d9d5ec;
+      margin-top: 5px;
+
+      .body-cell {
+        overflow: hidden;
+        font-family: $theme-font !important;
+        font-weight: 500;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+        padding: 10px;
+        border-bottom: none;
+
+        &.cash-balance {
+          background-color: #e5e4ec;
+        }
+
+        &.credit-due {
+          background-color: #ffe7eb;
+        }
+      }
+    }
+  }
+}

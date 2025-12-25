@@ -1,0 +1,73 @@
+@use "../variables" as *;
+
+.register-main-box {
+  margin-top: 30px;
+  font-family: $theme-font !important;
+}
+
+.register-form-container {
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  max-width: 1140px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form {
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  padding: 20px 30px 20px 30px;
+
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+    color: $theme-text-title-color;
+    font-family: $theme-font !important;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: $theme-text-subtitle-color;
+    margin: 15px 0px;
+  }
+
+  .register-footer {
+    font-size: 13px;
+    color: $theme-text-subtitle-color;
+  }
+}
+
+.register-form-label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: $theme-label-color;
+  font-family: $theme-font !important;
+}
+
+.register-form-required {
+  color: red;
+}
+
+.register-button {
+  width: 100%;
+  color: #ededfc;
+  font-size: 12px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: $theme-font !important;
+  background-color: $theme-color;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .loading-icon {
+    color: #fff;
+  }
+}

@@ -1,0 +1,139 @@
+@use "../variables" as *;
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  overflow: hidden;
+  box-sizing: border-box;
+  color: $theme-text-color;
+  font-family: $theme-font !important;
+  padding: 5px 30px 0px 30px;
+  background: $theme-background-color;
+
+  @media (max-width: 768px) {
+    padding: 5px 20px 0px 20px;
+  }
+
+  .logo-section {
+    img {
+      height: 50px;
+      cursor: pointer;
+    }
+  }
+
+  .search-bar {
+    display: flex;
+    height: 40px;
+    overflow: hidden;
+    align-items: center;
+    border-radius: 25px;
+    background: #ffffff;
+    border: 2px solid $theme-color;
+
+    .camera-btn {
+      color: #444;
+      padding: 0 12px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background: none !important;
+        color: #444 !important;
+      }
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 0 5px;
+      font-size: 14px;
+      font-family: $theme-font !important;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #000;
+
+      &::placeholder {
+        color: #888;
+        font-size: 13px;
+        font-family: $theme-font !important;
+      }
+    }
+
+    .search-btn {
+      background: $theme-color;
+      color: #fff;
+      padding: 0 16px;
+      height: 100%;
+      transition: background 0.3s;
+      border-radius: 0 25px 25px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .right-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+
+    .cart-count {
+      top: -4px;
+      right: -6px;
+      width: 18px;
+      color: #fff;
+      font-size: 11px;
+      height: 18px;
+      font-weight: 700;
+      display: flex;
+      position: absolute;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      font-family: $theme-font !important;
+      background-color: $theme-secondary-color;
+    }
+
+    .icon {
+      font-size: 28px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .user-info {
+      gap: 8px;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+
+      .user-name {
+        font-size: 13px;
+        font-weight: 500;
+        color: $theme-text-title-color;
+        font-family: $theme-font !important;
+      }
+
+      .user-email {
+        font-size: 12px;
+        color: $theme-text-subtitle-color;
+        font-family: $theme-font !important;
+      }
+
+      @media (max-width: 500px) {
+        .login-info {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.header-divider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}

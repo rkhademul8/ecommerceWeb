@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Deshmart API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search Products by Keyword",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.5"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br, zstd"
+					},
+					{
+						"key": "Origin",
+						"value": "https://deshmart.com"
+					},
+					{
+						"key": "DNT",
+						"value": "1"
+					},
+					{
+						"key": "Sec-GPC",
+						"value": "1"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Referer",
+						"value": "https://deshmart.com/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site"
+					},
+					{
+						"key": "If-None-Match",
+						"value": "W/\"2fec-QkbqNbI0c/zBe7TP3naLAXorqv8\""
+					}
+				],
+				"url": {
+					"raw": "https://apigwbe.deshmart.com/products-remote/search-by-keyword?page=1&limit=12&searchString=hand-bag",
+					"protocol": "https",
+					"host": [
+						"apigwbe",
+						"deshmart",
+						"com"
+					],
+					"path": [
+						"products-remote",
+						"search-by-keyword"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "12"
+						},
+						{
+							"key": "searchString",
+							"value": "hand-bag"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
