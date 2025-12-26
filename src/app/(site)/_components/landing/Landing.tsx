@@ -21,21 +21,21 @@ const LandingPage = () => {
       <Box className="root-container">
         <Hero />
       </Box>
-      <Box className="root-container">
+      {/* <Box className="root-container">
         <GlobalService />
-      </Box>
-      <Box className="root-container">
+      </Box> */}
+      {/* <Box className="root-container">
         <Category />
-      </Box>
-      <Box className="root-container">
+      </Box> */}
+      {/* <Box className="root-container">
         <Products />
-      </Box>
-      <Box className="root-container">
+      </Box> */}
+      {/* <Box className="root-container">
         <Countdown />
-      </Box>
-      <Box className="root-container">
+      </Box> */}
+      {/* <Box className="root-container">
         <Features />
-      </Box>
+      </Box> */}
     </Box>
   );
 };

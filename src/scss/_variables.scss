@@ -1,14 +1,24 @@
 @use "sass:color";
 
-$theme-color: #01783b;
-$theme-secondary-color: #d32f2f;
+
+$brand-purple: #4B2A7B;
+$brand-purple-dark: #3A1F5F;
+$brand-yellow: #F6C21C;
+$brand-gold: #C9A24D;
+$brand-white: #FFFFFF;
+$brand-gray-dark: #555555;
+$brand-gray-light: #BFBFBF;
+
+
+$theme-color: #3A1F5F;
+$theme-secondary-color: #F6C21C;
 $theme-font: "Outfit", sans-serif;
 
 $theme-body-background: #fff;
 $theme-footer-bg-color: #fff;
 $theme-background-color: #fff;
 
-$theme-text-color: #222222;
+$theme-text-color: #C9A24D;
 $theme-nav-text-active-color: $theme-color;
 $theme-footer-bg-color: color.adjust($theme-color, $lightness: -25%);
 

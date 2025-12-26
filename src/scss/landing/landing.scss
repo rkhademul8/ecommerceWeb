@@ -3,7 +3,7 @@
 .banner-landing-image-container {
   position: relative !important;
   width: 100% !important;
-  height: 60vh !important;
+  height: 50vh !important;
   overflow: hidden !important;
   border-radius: 0 !important;
 }
@@ -204,5 +204,45 @@
         }
       }
     }
+  }
+}
+
+.promoCard {
+
+  height: 235px;
+  border-radius: 5px;
+  background: lighten($theme-text-color, 20%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+
+  .title {
+    color: $theme-primary-text-color;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    margin-bottom: 6px;
+  }
+
+  .subtitle {
+    color: $theme-background-color;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    margin-bottom: 16px;
+  }
+
+  .cta {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 30px;
+    background: transparent;
+    border: 1px solid $theme-border-color;
+    color: $theme-primary-text-color;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
   }
 }

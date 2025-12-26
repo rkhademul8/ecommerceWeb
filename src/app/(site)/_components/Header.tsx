@@ -5,7 +5,13 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import { GridLegacy as Grid, Box, InputBase, IconButton } from "@mui/material";
+import {
+  GridLegacy as Grid,
+  Box,
+  InputBase,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -19,9 +25,12 @@ import { uploadProductSearchImage } from "@/features/product/product";
 import { handleApiErrors } from "@/utils/api-utils/hanle-api-error";
 import secureLocalStorage from "react-secure-storage";
 import logo from "../../../../public/assests/logo/logo.jpeg";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
 const Header = () => {
   const router = useRouter();
+  const [hover, setHover] = useState(false);
 
   const logoUrl = secureLocalStorage.getItem("site-logo");
   const safeLogoUrl =
