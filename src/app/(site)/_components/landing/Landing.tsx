@@ -18,9 +18,9 @@ const LandingPage = () => {
       {/* <Box className="root-container">
         <Notice />
       </Box> */}
-      {/* <Box className="root-container">
+      <Box className="root-container">
         <Hero />
-      </Box> */}
+      </Box>
       {/* <Box className="root-container">
         <GlobalService />
       </Box> */}
