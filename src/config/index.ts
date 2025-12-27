@@ -6,9 +6,9 @@ const siteUrl = getPublicAppUrl();
 
 export const projectConfig = {
   title:
-    "16anabd- Sourcing, Seamless Delivery - Bringing Chinese Products to Bangladesh",
+    "E-shop- Sourcing, Seamless Delivery - Bringing Chinese Products to Bangladesh",
   description:
-    "16anabd: Sourcing, Seamless Delivery - Bringing Chinese Products to Bangladesh",
+    "E-shop: Sourcing, Seamless Delivery - Bringing Chinese Products to Bangladesh",
   siteUrl,
 };
 

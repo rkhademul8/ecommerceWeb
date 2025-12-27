@@ -14,10 +14,23 @@ import Link from "next/link";
 import "../../../../scss/landing/landing.scss";
 import product1 from "../../../../../public/assests/product/product1.png";
 import product2 from "../../../../../public/assests/product/product2.png";
+import slider1 from "../../../../../public/assests/logo/slider1.png"
+import slider2 from "../../../../../public/assests/logo/slider2.png"
+import slider3 from "../../../../../public/assests/logo/slider3.png"
+import slider4 from "../../../../../public/assests/logo/slider4.png"
+import slider5 from "../../../../../public/assests/logo/slider5.png"
+
 
 const Hero = () => {
   const [loading, setLoading] = useState<any>({});
   const [banners, setBanners] = useState<any>([]);
+  const staticSliders = [
+    slider1,
+    slider2,
+    slider3,
+    slider4,
+    slider5,
+  ];
 
   useEffect(() => {
     const timer = setTimeout(async () => {
@@ -64,13 +77,15 @@ const Hero = () => {
         </Grid>
 
         <Grid item xs={12} md={8}>
-          {banners?.length > 1 ? (
+          {staticSliders?.length > 1 ? (
             <Box>
               <Slider {...settings}>
-                {banners.map((data: any, index: number) => (
+                {staticSliders.map((data: any, index: number) => (
                   <Box key={index} className="banner-landing-image-container">
                     <Image
-                      src={data.imgUrl}
+                      // src={data.imgUrl}
+                      src={data}
+
                       alt={`Banner ${index}`}
                       fill
                       priority={index === 0}

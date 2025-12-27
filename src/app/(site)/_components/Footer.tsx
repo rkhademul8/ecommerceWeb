@@ -28,18 +28,18 @@ const Footer = () => {
                   <Image
                     // src={String(safeLogoUrl)}
                     src={logo}
-                    alt="16anabd"
+                    alt="E-shop"
                     width={150}
                     height={50}
                     style={{ width: "40%", height: "auto" }}
                   />
                 </Link>
                 <span className="description">
-                  <strong>16anabd</strong>, a sister concern of{" "}
+                  <strong>E-shop</strong>, a sister concern of{" "}
                   <Link href="/" target="_blank" rel="noopener noreferrer">
-                    <strong>T16anabd</strong>
+                    <strong>E-shop</strong>
                   </Link>
-                  . 16anabd provides reliable access to quality products sourced
+                  . E-shop provides reliable access to quality products sourced
                   directly from trusted suppliers in China, ensuring
                   transparency, efficiency, and end-to-end sourcing support.
                 </span>
@@ -54,7 +54,7 @@ const Footer = () => {
                 </span>
                 <span className="footer-subtitle">
                   <EmailIcon fontSize="small" className="footer-icon" />
-                  <a href="mailto:info@deshmart.com">info@16anabd.com</a>
+                  <a href="mailto:info@deshmart.com">info@E-shop.com</a>
                 </span>
                 <span className="footer-subtitle">
                   <PhoneIcon fontSize="small" className="footer-icon" />
@@ -166,10 +166,10 @@ const Footer = () => {
       </Box>
       <Box className="footer-bottom">
         <p>
-          ©2025 <strong>16anabd</strong> - All Rights Reserved | Developed by{" "}
+          ©2025 <strong>E-shop</strong> - All Rights Reserved | Developed by{" "}
           <a href="/" target="_blank" rel="noopener noreferrer">
             {" "}
-            16anabd It
+            E-shop It
           </a>
         </p>
       </Box>
