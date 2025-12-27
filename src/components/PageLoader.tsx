@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { handleApiErrors } from "@/utils/api-utils/hanle-api-error";
 import { ErrorAlert } from "./alerts/ErrorAlert";
 import { getSiteLogo } from "@/features/common/setting/service";
+import logo from "../../public/assests/logo/logo.jpeg";
 
 const containerVariants: any = {
   initial: { opacity: 1 },
@@ -63,7 +64,8 @@ const PageLoader = () => {
       >
         {logoUrl ? (
           <Image
-            src={logoUrl}
+            // src={logoUrl}
+            src={logo}
             alt="Logo"
             priority
             width={280}

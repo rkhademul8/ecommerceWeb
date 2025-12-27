@@ -6,9 +6,9 @@ const siteUrl = getPublicAppUrl();
 
 export const projectConfig = {
   title:
-    "DeshMart- Sourcing, Seamless Delivery - Bringing Chinese Products to Bangladesh",
+    "16anabd- Sourcing, Seamless Delivery - Bringing Chinese Products to Bangladesh",
   description:
-    "DeshMart: Sourcing, Seamless Delivery - Bringing Chinese Products to Bangladesh",
+    "16anabd: Sourcing, Seamless Delivery - Bringing Chinese Products to Bangladesh",
   siteUrl,
 };
 

@@ -59,6 +59,10 @@ const Hero = () => {
   return (
     <Box mt={2}>
       <Grid spacing={2} container>
+        <Grid item xs={12} md={1.5}>
+         <Box></Box>
+        </Grid>
+
         <Grid item xs={12} md={8}>
           {banners?.length > 1 ? (
             <Box>
@@ -87,7 +91,7 @@ const Hero = () => {
             </Box>
           ) : null}
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={2.5}>
           <Box className="promoCard">
             <Box className="content">
               <Typography className="title">New Arrivals</Typography>
@@ -98,10 +102,7 @@ const Hero = () => {
             </Box>
 
             <Box className="imageBox">
-              <Image
-              width={100}
-              height={100}
-              src={product1} alt="image"  />
+              <Image width={100} height={100} src={product1} alt="image" />
             </Box>
           </Box>
 
@@ -115,10 +116,7 @@ const Hero = () => {
             </Box>
 
             <Box className="imageBox">
-              <Image
-              width={100}
-              height={100}
-              src={product2} alt="image"  />
+              <Image width={100} height={100} src={product2} alt="image" />
             </Box>
           </Box>
         </Grid>
