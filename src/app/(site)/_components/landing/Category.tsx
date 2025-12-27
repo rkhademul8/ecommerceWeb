@@ -19,7 +19,7 @@ const Category = () => {
   return (
     <Grid mt={1} container spacing={5}>
       {categories.map((cat, idx) => (
-        <Grid item xs={6} sm={4} md={1.2} key={idx}>
+        <Grid item xs={6} sm={4} md={2} lg={1.2} key={idx}>
           <Box
             className="category-card-link"
             onClick={() => router.push(`/shop/${cat.tag}`)}

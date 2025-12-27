@@ -18,15 +18,15 @@ $theme-body-background: #fff;
 $theme-footer-bg-color: #fff;
 $theme-background-color: #fff;
 
-$theme-text-color: #C9A24D;
+$theme-text-color: $theme-color;
 $theme-nav-text-active-color: $theme-color;
 $theme-footer-bg-color: color.adjust($theme-color, $lightness: -25%);
 
 $theme-primary-text-color: $theme-color;
 $theme-primary-button-color: $theme-color;
 
-$theme-secondary-text-color: #000000;
-$theme-secondary-button-color: #000000;
+$theme-secondary-text-color: $theme-secondary-color;
+$theme-secondary-button-color: $theme-secondary-color;
 
 $theme-label-color: #333333;
 $theme-text-title-color: #2b2b2b;

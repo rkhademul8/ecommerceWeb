@@ -1,37 +1,68 @@
 @use "../variables" as *;
 
-.category-card-link {
-  text-decoration: none;
-}
-
 .category-card {
-  height: 100%;
+  min-height: 110px;
   display: flex;
-  cursor: pointer;
-  text-align: center;
-  border-radius: 10px;
   flex-direction: column;
   justify-content: center;
-  transition: transform 0.2s ease;
-  box-shadow: 0px 0px 3px #01783b;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid $theme-color !important;
+  box-shadow: none !important;
+
+  transition: border-color 0.25s ease;
+
+  @media (min-width: 600px) {
+    min-height: 130px;
+  }
+
+  @media (min-width: 900px) {
+    min-height: 120px;
+  }
 
   &:hover {
-    border-color: #ddd;
-    border-radius: 12px;
-    box-shadow: 0px 2px 8px #01783b;
+    border-color: $theme-secondary-text-color !important;
+
+    .category-title {
+      color: $theme-secondary-text-color !important;
+    }
+  }
+}
+
+.category-img {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto;
+
+  @media (min-width: 600px) {
+    width: 48px;
+    height: 48px;
   }
 
-  .category-img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    margin: 0px auto 0px;
+  @media (min-width: 900px) {
+    width: 52px;
+    height: 52px;
   }
+}
 
-  .category-title {
+.category-title {
+  font-size: 12px !important;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.25s ease;
+
+  @media (min-width: 600px) {
     font-size: 13px;
-    font-weight: 550;
-    text-align: center;
-    color: $theme-text-title-color;
   }
+
+  @media (min-width: 900px) {
+    font-size: 14px;
+  }
+}
+
+.MuiCardContent-root {
+  padding: 8px !important;
 }
