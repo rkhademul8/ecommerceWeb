@@ -7,19 +7,17 @@
 .product-card {
   cursor: pointer;
   overflow: hidden;
-  border-radius: 10px;
-  border-color: #ddd !important;
+  border-radius: 5px;
   transition: transform 0.2s ease;
-  box-shadow: 0px 0px 3px #01783b !important;
+  border: 1px solid $theme-color !important;
 
   &:hover {
-    box-shadow: 0px 0px 3px #d32f2f !important;
-    border-color: #ddd;
-    border-radius: 15px;
+    border-color: $theme-tartiary-color !important;
+    border-radius: 5px;
   }
 
   .product-card-img {
-    height: 190px;
+    height: 180px;
     object-fit: contain;
     background-color: #fafafa;
     border-bottom: 1px solid #f0f0f0;
@@ -39,11 +37,12 @@
     .product-card-price {
       font-size: 18px;
       font-weight: 600;
-      color: $theme-color;
+      color: $theme-tartiary-text-color;
+      font-family: $theme-font !important;
     }
 
     .product-card-rating {
-      color: #ffc107;
+      color: $theme-secondary-text-color;
       font-size: 13px;
     }
 
@@ -55,13 +54,11 @@
   }
 
   .product-card-title {
-    margin-top: 6px;
-    margin-bottom: 5px;
-    font-size: 14px;
-    font-weight: 600;
+   padding: 5px 0px;
+    font-size: 15px !important;
+    font-weight: 500 !important;
     font-family: $theme-font !important;
-    color: $theme-text-subtitle-color;
-
+    color: $theme-text-title-color!important;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     /* max 2 lines */
@@ -71,19 +68,18 @@
   }
 
   .product-card-sold {
-    font-size: 11px;
-    font-weight: 500;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 500 !important;
     font-family: $theme-font !important;
-    color: $theme-text-subtitle-color;
+    color: $theme-tartiary-text-color;
   }
 
   .product-card-deli {
     display: block;
-    margin-top: 3px;
-    font-size: 13px;
-    font-weight: 500;
+    margin-top: 5px;
+    font-size: 11px;
+    font-weight: 500 !important;
     font-family: $theme-font !important;
-    color: $theme-text-subtitle-color;
+    color: $theme-text-subtitle-color !important;
   }
 }

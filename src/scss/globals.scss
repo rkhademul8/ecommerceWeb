@@ -518,9 +518,9 @@ input:-webkit-autofill:active {
 .normal-header {
   margin-bottom: 10px;
   font-family: $theme-font !important;
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  color: #000;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: $theme-tartiary-text-color;
 }
 
 .normal-header-2 {
@@ -1125,13 +1125,13 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) {
 
 .view-all-btn {
   border: none;
-  color: #fff;
+  color: $theme-background-color;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   border-radius: 8px;
   padding: 10px 30px;
-  background: $theme-color;
+  background: $theme-tartiary-button-color;
   font-family: $theme-font !important;
 
   &:disabled {

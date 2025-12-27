@@ -9,6 +9,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PlaceIcon from "@mui/icons-material/Place";
 import secureLocalStorage from "react-secure-storage";
+import logo from "../../../../public/assests/logo/logo.jpeg";
 
 const Footer = () => {
   const logoUrl = secureLocalStorage.getItem("site-logo");
@@ -25,20 +26,22 @@ const Footer = () => {
               <Grid item xs={12} sm={6} md={3}>
                 <Link href="/">
                   <Image
-                    src={String(safeLogoUrl)}
-                    alt="DeshMart Logo"
-                    width={180}
-                    height={60}
-                    style={{ width: "60%", height: "auto" }}
+                    // src={String(safeLogoUrl)}
+                    src={logo}
+                    alt="16anabd"
+                    width={150}
+                    height={50}
+                    style={{ width: "40%", height: "auto" }}
                   />
                 </Link>
                 <span className="description">
-                  <strong>DeshMart Ltd</strong>, a sister concern of{" "}
-                  <Link href="https://agent.tourmart.net/" target="_blank" rel="noopener noreferrer">
-                    <strong>Tour Mart Ltd</strong>
-                  </Link>. DeshMart provides reliable access to quality products sourced
-                  directly from trusted suppliers in China, ensuring transparency, efficiency,
-                  and end-to-end sourcing support.
+                  <strong>16anabd</strong>, a sister concern of{" "}
+                  <Link href="/" target="_blank" rel="noopener noreferrer">
+                    <strong>T16anabd</strong>
+                  </Link>
+                  . 16anabd provides reliable access to quality products sourced
+                  directly from trusted suppliers in China, ensuring
+                  transparency, efficiency, and end-to-end sourcing support.
                 </span>
               </Grid>
 
@@ -47,24 +50,19 @@ const Footer = () => {
                 <span className="footer-title">Contact</span>
 
                 <span className="footer-subtitle">
-                  {`43, TSL Tower (Level 4), Sonargaon Janapath Road, Sector - 12,
-                Uttara, Dhaka`}
+                  {`Uttara Dhaka Bangladesh`}
                 </span>
                 <span className="footer-subtitle">
                   <EmailIcon fontSize="small" className="footer-icon" />
-                  <a href="mailto:info@deshmart.com">info@deshmart.com</a>
+                  <a href="mailto:info@deshmart.com">info@16anabd.com</a>
                 </span>
                 <span className="footer-subtitle">
                   <PhoneIcon fontSize="small" className="footer-icon" />
-                  <a href="tel:01309977797">01309977797</a>
+                  <a href="tel:01309977797">0xxxxxxxx</a>
                 </span>
                 <span className="footer-subtitle">
                   <PlaceIcon fontSize="small" className="footer-icon" />
-                  <a
-                    href="https://www.google.com/maps/place/TSL+TOWER/@23.873966,90.379859,16z/data=!4m6!3m5!1s0x3755c54c8918278f:0xcbb6403327f86de9!8m2!3d23.8739662!4d90.3798593!16s%2Fg%2F11ts18dqdp?hl=en&entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="/" target="_blank" rel="noopener noreferrer">
                     Find us on map
                   </a>
                 </span>
@@ -75,19 +73,24 @@ const Footer = () => {
                 <span className="footer-title">Information</span>
                 <ul className="footer-list">
                   <li>
-                    <Link href="/about">About</Link>
+                    {/* <Link href="/about">About</Link> */}
+                    <Link href="/">About</Link>
                   </li>
                   <li>
-                    <Link href="/contact-us">Contact</Link>
+                    {/* <Link href="/contact-us">Contact</Link> */}
+                    <Link href="/">Contact</Link>
                   </li>
                   <li>
-                    <Link href="/privacy-policy">Privacy Policy</Link>
+                    {/* <Link href="/privacy-policy">Privacy Policy</Link> */}
+                    <Link href="/">Privacy Policy</Link>
                   </li>
                   <li>
-                    <Link href="/refunds-return-policy">Returns & Refund</Link>
+                    {/* <Link href="/refunds-return-policy">Returns & Refund</Link> */}
+                    <Link href="/">Returns & Refund</Link>
                   </li>
                   <li>
-                    <Link href="/terms-and-conditions">Terms & Conditions</Link>
+                    {/* <Link href="/terms-and-conditions">Terms & Conditions</Link> */}
+                    <Link href="/">Terms & Conditions</Link>
                   </li>
                 </ul>
               </Grid>
@@ -97,7 +100,7 @@ const Footer = () => {
                 <span className="footer-title">Social Links</span>
                 <Box className="social-icons" mb={2}>
                   <a
-                    href="https://www.facebook.com/deshmartcom"
+                    href="/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="facebook"
@@ -110,7 +113,7 @@ const Footer = () => {
                     />
                   </a>
                   <a
-                    href="https://www.youtube.com/@deshmartltd"
+                    href="/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="youtube"
@@ -123,7 +126,7 @@ const Footer = () => {
                     />
                   </a>
                   <a
-                    href="https://www.instagram.com/desh_mart/"
+                    href="/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="instagram"
@@ -163,13 +166,10 @@ const Footer = () => {
       </Box>
       <Box className="footer-bottom">
         <p>
-          ©2025 <strong>DeshMart Ltd</strong> - All Rights Reserved | Developed by{" "}
-          <a
-            href="https://qodemart.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Qode Mart Ltd
+          ©2025 <strong>16anabd</strong> - All Rights Reserved | Developed by{" "}
+          <a href="/" target="_blank" rel="noopener noreferrer">
+            {" "}
+            16anabd It
           </a>
         </p>
       </Box>

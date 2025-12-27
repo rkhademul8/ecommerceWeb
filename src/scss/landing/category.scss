@@ -10,6 +10,7 @@
   cursor: pointer;
   border: 1px solid $theme-color !important;
   box-shadow: none !important;
+  font-family: $theme-font !important;
 
   transition: border-color 0.25s ease;
 
@@ -22,7 +23,7 @@
   }
 
   &:hover {
-    border-color: $theme-tartiary-color!important;
+    border-color: $theme-tartiary-color !important;
 
     .category-title {
       color: $theme-tartiary-color !important;
@@ -53,6 +54,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   transition: color 0.25s ease;
+  font-family: $theme-font !important;
 
   @media (min-width: 600px) {
     font-size: 13px;

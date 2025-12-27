@@ -27,6 +27,7 @@ $theme-tartiary-button-color: $theme-tartiary-color;
 $theme-label-color: #333333;
 $theme-text-title-color: #2b2b2b;
 $theme-text-subtitle-color: #5c5c5c;
-$theme-placeholder-color: color.adjust($theme-color, $lightness: 20%);
 
+
+$theme-placeholder-color: color.adjust($theme-color, $lightness: 20%);
 $theme-border-color: color.adjust($theme-color, $lightness: 35%);

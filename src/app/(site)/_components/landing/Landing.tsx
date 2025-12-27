@@ -29,12 +29,14 @@ const LandingPage = () => {
         <Category />
       </Box>
 
-      {/* <Box className="root-container">
+      <Box className="root-container">
         <Products />
-      </Box> */}
+      </Box>
+
       {/* <Box className="root-container">
         <Countdown />
       </Box> */}
+      
       {/* <Box className="root-container">
         <Features />
       </Box> */}
