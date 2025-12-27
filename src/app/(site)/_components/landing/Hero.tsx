@@ -59,7 +59,7 @@ const Hero = () => {
   return (
     <Box mt={2}>
       <Grid spacing={2} container>
-        <Grid item xs={8} md={8}>
+        <Grid item xs={12} md={8}>
           {banners?.length > 1 ? (
             <Box>
               <Slider {...settings}>
@@ -87,7 +87,7 @@ const Hero = () => {
             </Box>
           ) : null}
         </Grid>
-        <Grid item xs={4} md={4}>
+        <Grid item xs={12} md={4}>
           <Box className="promoCard">
             <Box className="content">
               <Typography className="title">New Arrivals</Typography>

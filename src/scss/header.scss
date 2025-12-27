@@ -137,3 +137,68 @@
   border: none;
   border-top: 1px solid #ccc;
 }
+
+.service-dropdown {
+  user-select: none;
+
+  .service-trigger {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background-color 0.25s ease;
+  }
+
+  .service-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: $theme-color;
+    transition: color 0.25s ease;
+    font-family: $theme-font !important;
+  }
+
+  .dropdown-icon {
+    font-size: 22px;
+    color: $theme-color;
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+
+  &:hover {
+    .service-label,
+    .dropdown-icon {
+      color: $theme-text-color;
+    }
+
+    .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    .service-trigger {
+      background-color: rgba(1, 120, 59, 0.08);
+    }
+  }
+}
+
+/* Menu style */
+.MuiMenu-paper {
+  border-radius: 5px !important;
+  // min-width: 120px !important;
+  padding: 6px 5px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Menu items */
+.MuiMenuItem-root {
+  font-size: 14px;
+  padding: 10px 20px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  font-family: $theme-font !important;
+  color: $theme-text-color;
+
+  &:hover {
+    background-color: rgba(1, 120, 59, 0.1);
+    color: $theme-text-color;
+  }
+}

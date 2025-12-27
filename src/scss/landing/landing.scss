@@ -3,7 +3,7 @@
 .banner-landing-image-container {
   position: relative !important;
   width: 100% !important;
-  height: 50vh !important;
+  height: 52vh !important;
   overflow: hidden !important;
   border-radius: 0 !important;
 }
@@ -208,7 +208,6 @@
 }
 
 .promoCard {
-
   height: 235px;
   border-radius: 5px;
   background: lighten($theme-text-color, 20%);
@@ -220,16 +219,18 @@
 
   .title {
     color: $theme-primary-text-color;
-    font-size: 18px !important;
-    font-weight: 600 !important;
+    font-size: 16px !important;
+    // font-weight: 600 !important;
     margin-bottom: 6px;
+    font-family: $theme-font !important;
   }
 
   .subtitle {
     color: $theme-background-color;
-    font-size: 26px !important;
+    font-size: 22px !important;
     font-weight: 700 !important;
     margin-bottom: 16px;
+    font-family: $theme-font !important;
   }
 
   .cta {
@@ -239,10 +240,11 @@
     background: transparent;
     border: 1px solid $theme-border-color;
     color: $theme-primary-text-color;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 1px;
     text-decoration: none;
     transition: all 0.3s ease;
+    font-family: $theme-font !important;
   }
 }

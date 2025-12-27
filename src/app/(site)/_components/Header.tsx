@@ -11,6 +11,8 @@ import {
   InputBase,
   IconButton,
   Typography,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -26,11 +28,21 @@ import { handleApiErrors } from "@/utils/api-utils/hanle-api-error";
 import secureLocalStorage from "react-secure-storage";
 import logo from "../../../../public/assests/logo/logo.jpeg";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
 const Header = () => {
   const router = useRouter();
   const [hover, setHover] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const open = Boolean(anchorEl);
+
+  const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const logoUrl = secureLocalStorage.getItem("site-logo");
   const safeLogoUrl =
@@ -260,6 +272,37 @@ const Header = () => {
             justifyContent: "flex-end",
           }}
         >
+          <Box
+            className="service-dropdown"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: { xs: "flex-start", md: "flex-end" },
+              gap: "5px",
+            }}
+          >
+          
+            <Box
+              className="service-trigger"
+              onClick={handleOpen}
+              sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+            >
+              <Typography className="service-label">Service</Typography>
+              <ArrowDropDownIcon className="dropdown-icon" />
+            </Box>
+
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+              transformOrigin={{ vertical: "top", horizontal: "right" }}
+            >
+              <MenuItem onClick={handleClose}>Product</MenuItem>
+              <MenuItem onClick={handleClose}>Shipping</MenuItem>
+              <MenuItem onClick={handleClose}>Payment</MenuItem>
+            </Menu>
+          </Box>
           <Box
             sx={{
               display: "flex",
