@@ -25,13 +25,13 @@ const LandingPage = () => {
         <GlobalService />
       </Box> */}
 
-      {/* <Box className="root-container">
+      <Box className="root-container">
         <Category />
-      </Box> */}
+      </Box>
 
-      {/* <Box className="root-container">
+      <Box className="root-container">
         <Products />
-      </Box> */}
+      </Box>
 
       {/* <Box className="root-container">
         <Countdown />

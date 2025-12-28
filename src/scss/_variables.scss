@@ -1,8 +1,8 @@
 @use "sass:color";
 
-$theme-color: #3a1f5f;
-$theme-secondary-color: #f6c21c;
-$theme-tertiary-color: #c9a24d;
+$theme-color: #2c024d;
+$theme-secondary-color: #fdcd00;
+$theme-tertiary-color: #e1b771;
 $theme-font: "Outfit", sans-serif;
 
 $theme-body-background: #fff;
@@ -27,4 +27,4 @@ $theme-text-title-color: #2b2b2b;
 $theme-text-subtitle-color: #5c5c5c;
 
 $theme-placeholder-color: color.adjust($theme-color, $lightness: 20%);
-$theme-border-color: color.adjust($theme-color, $lightness: 35%);
+$theme-border-color: #666;
