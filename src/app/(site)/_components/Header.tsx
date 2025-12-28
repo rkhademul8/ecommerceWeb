@@ -281,7 +281,6 @@ const Header = () => {
               gap: "5px",
             }}
           >
-          
             <Box
               className="service-trigger"
               onClick={handleOpen}
