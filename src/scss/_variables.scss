@@ -1,10 +1,8 @@
 @use "sass:color";
 
-
-
-$theme-color: #3A1F5F;
-$theme-secondary-color: #F6C21C;
-$theme-tartiary-color:#C9A24D;
+$theme-color: #3a1f5f;
+$theme-secondary-color: #f6c21c;
+$theme-tertiary-color: #c9a24d;
 $theme-font: "Outfit", sans-serif;
 
 $theme-body-background: #fff;
@@ -21,13 +19,12 @@ $theme-primary-button-color: $theme-color;
 $theme-secondary-text-color: $theme-secondary-color;
 $theme-secondary-button-color: $theme-secondary-color;
 
-$theme-tartiary-text-color: $theme-tartiary-color;
-$theme-tartiary-button-color: $theme-tartiary-color;
+$theme-tertiary-text-color: $theme-tertiary-color;
+$theme-tertiary-button-color: $theme-tertiary-color;
 
 $theme-label-color: #333333;
 $theme-text-title-color: #2b2b2b;
 $theme-text-subtitle-color: #5c5c5c;
-
 
 $theme-placeholder-color: color.adjust($theme-color, $lightness: 20%);
 $theme-border-color: color.adjust($theme-color, $lightness: 35%);

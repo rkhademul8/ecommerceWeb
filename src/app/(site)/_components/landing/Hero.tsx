@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import Image from "next/image";
 import { Box, GridLegacy as Grid, Typography } from "@mui/material";
@@ -14,23 +14,24 @@ import Link from "next/link";
 import "../../../../scss/landing/landing.scss";
 import product1 from "../../../../../public/assests/product/product1.png";
 import product2 from "../../../../../public/assests/product/product2.png";
-import slider1 from "../../../../../public/assests/logo/slider1.png"
-import slider2 from "../../../../../public/assests/logo/slider2.png"
-import slider3 from "../../../../../public/assests/logo/slider3.png"
-import slider4 from "../../../../../public/assests/logo/slider4.png"
-import slider5 from "../../../../../public/assests/logo/slider5.png"
-
+import slider1 from "../../../../../public/assests/logo/slider1.png";
+import slider2 from "../../../../../public/assests/logo/slider2.png";
+import slider3 from "../../../../../public/assests/logo/slider3.png";
+import slider4 from "../../../../../public/assests/logo/slider4.png";
+import slider5 from "../../../../../public/assests/logo/slider5.png";
+import { categories } from "@/utils/product-category/product-category";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
+  const router = useRouter();
   const [loading, setLoading] = useState<any>({});
   const [banners, setBanners] = useState<any>([]);
-  const staticSliders = [
-    slider1,
-    slider2,
-    slider3,
-    slider4,
-    slider5,
-  ];
+  const staticSliders = [slider1, slider2, slider3, slider4, slider5];
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const [openCategory, setOpenCategory] = useState<any>(null);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(async () => {
@@ -67,13 +68,65 @@ const Hero = () => {
     arrows: false,
   };
 
-  if (loading.data) return <div>loading..........</div>;
+  // if (loading.data) return <div>loading..........</div>;
 
   return (
     <Box mt={2}>
       <Grid spacing={2} container>
         <Grid item xs={12} md={1.5}>
-         <Box></Box>
+          <Box>
+            <Box
+              ref={sidebarRef}
+              className={`hero-sidebar ${mobileSidebarOpen ? "open" : ""}`}
+            >
+              <Typography className="hero-section-categories-name">Choose Categories</Typography>
+
+              {categories.map((cat: any, i: any) => {
+                const isOpen = openCategory === cat.tag;
+
+                return (
+                  <Box key={i} className="category-wrapper">
+                    <Box
+                      className="category-item"
+                      onClick={() => setOpenCategory(isOpen ? null : cat.tag)}
+                    >
+                      {/* <Image
+                        src={cat.image}
+                        alt={cat.name}
+                        width={30}
+                        height={25}
+                        className="category-img"
+                      /> */}
+                      <span className="category-text">{cat.name}</span>
+                      {isOpen ? (
+                        <KeyboardArrowDownIcon className="arrow" />
+                      ) : (
+                        <KeyboardArrowRightIcon className="arrow" />
+                      )}
+                    </Box>
+
+                    {isOpen && cat.subCategories && (
+                      <Box className="subcategory-list">
+                        {cat.subCategories.map((sub: any, idx: any) => (
+                          <Typography
+                            key={idx}
+                            className="subcategory-item"
+                            onClick={() =>
+                              router.push(
+                                `/shop/${encodeURIComponent(sub.searchTag)}`
+                              )
+                            }
+                          >
+                            {sub.name}
+                          </Typography>
+                        ))}
+                      </Box>
+                    )}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
         </Grid>
 
         <Grid item xs={12} md={8}>
@@ -85,7 +138,6 @@ const Hero = () => {
                     <Image
                       // src={data.imgUrl}
                       src={data}
-
                       alt={`Banner ${index}`}
                       fill
                       priority={index === 0}

@@ -36,7 +36,7 @@ const LandingPage = () => {
       {/* <Box className="root-container">
         <Countdown />
       </Box> */}
-      
+
       {/* <Box className="root-container">
         <Features />
       </Box> */}

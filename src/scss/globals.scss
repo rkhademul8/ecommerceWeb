@@ -520,7 +520,7 @@ input:-webkit-autofill:active {
   font-family: $theme-font !important;
   font-size: 20px !important;
   font-weight: 600 !important;
-  color: $theme-tartiary-text-color;
+  color: $theme-tertiary-text-color;
 }
 
 .normal-header-2 {
@@ -1131,7 +1131,7 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) {
   font-weight: 500;
   border-radius: 8px;
   padding: 10px 30px;
-  background: $theme-tartiary-button-color;
+  background: $theme-tertiary-button-color;
   font-family: $theme-font !important;
 
   &:disabled {

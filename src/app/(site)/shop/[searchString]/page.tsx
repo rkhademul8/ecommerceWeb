@@ -166,8 +166,8 @@ export default function ShopPage({ params }: ShopPageProps) {
               </Box>
             );
           })}
-        </Box>
-
+        </Box> 
+        
         <Box className="shop-content">
           <Box
             className="results-header"
