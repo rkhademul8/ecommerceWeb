@@ -1,0 +1,8 @@
+@use "../variables" as *;
+
+.e-shop-works-title {
+  text-align: center;
+  font-size: 20px !important;
+  color: $theme-tertiary-text-color !important;
+  font-weight: 600 !important;
+}

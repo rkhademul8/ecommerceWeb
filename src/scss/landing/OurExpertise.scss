@@ -1,0 +1,25 @@
+@use "../variables" as *;
+
+.expertise-title {
+  text-align: center;
+  font-size: 20px !important;
+  color: $theme-tertiary-text-color !important;
+  font-weight: 600 !important;
+  text-align: center;
+}
+
+.expertiseCard {
+  border-radius: 5px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  padding: 10px;
+
+  .subtitle {
+    color: $theme-tertiary-text-color;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    margin-bottom: 16px;
+    font-family: $theme-font !important;
+    text-align: center;
+    padding-top: 10px;
+  }
+}

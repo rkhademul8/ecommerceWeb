@@ -11,6 +11,8 @@ import Products from "./Products";
 import Category from "./Category";
 import Countdown from "./Countdown";
 import GlobalService from "./GlobalService";
+import LandingPageVideo from "./LandingPageVideo";
+import OurExpertise from "./OurExpertise";
 
 const LandingPage = () => {
   return (
@@ -18,12 +20,16 @@ const LandingPage = () => {
       {/* <Box className="root-container">
         <Notice />
       </Box> */}
-      <Box className="root-container">
-        <Hero />
-      </Box>
       {/* <Box className="root-container">
         <GlobalService />
       </Box> */}
+
+      <Box className="root-container">
+        <Hero />
+      </Box>
+      <Box className="root-container">
+        <OurExpertise />
+      </Box>
 
       <Box className="root-container">
         <Category />
@@ -31,6 +37,10 @@ const LandingPage = () => {
 
       <Box className="root-container">
         <Products />
+      </Box>
+
+      <Box className="root-container">
+        <LandingPageVideo />
       </Box>
 
       {/* <Box className="root-container">
