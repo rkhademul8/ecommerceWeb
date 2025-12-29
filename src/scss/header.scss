@@ -176,7 +176,7 @@
     }
 
     .service-trigger {
-      background-color: rgba(1, 120, 59, 0.08);
+      background: lighten($theme-tertiary-color, 25%);
     }
   }
 }

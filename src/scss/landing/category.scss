@@ -1,12 +1,20 @@
 @use "../variables" as *;
 
+.top-categories-title {
+  color: $theme-tertiary-text-color;
+  font-size: 18px !important;
+  font-family: $theme-font !important;
+  font-weight: 600;
+}
+
 .category-card {
-  min-height: 110px;
+  width: 120px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 50% !important;
   cursor: pointer;
   border: 1px solid $theme-color !important;
   box-shadow: none !important;
@@ -15,11 +23,13 @@
   transition: border-color 0.25s ease;
 
   @media (min-width: 600px) {
-    min-height: 130px;
+    width: 140px;
+    height: 140px;
   }
 
   @media (min-width: 900px) {
-    min-height: 120px;
+    width: 140px;
+    height: 140px;
   }
 
   &:hover {

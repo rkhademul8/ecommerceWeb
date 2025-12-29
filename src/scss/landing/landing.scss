@@ -210,7 +210,7 @@
 .promoCard {
   height: 25.5vh;
   border-radius: 5px;
-  background: lighten($theme-tertiary-color, 20%);
+  background: lighten($theme-tertiary-color, 10%);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -249,15 +249,23 @@
   }
 }
 
+.hero-section-categories-name {
+  color: $theme-tertiary-color;
+  font-size: 13px !important;
+  text-align: center;
+  font-family: $theme-font;
+  padding-bottom: 5px;
+}
+
 .hero-sidebar {
   width: 220px;
-  height: 52vh; // full screen height
-  position: sticky; // stays in place while scrolling content
+  height: 52vh;
+  position: sticky;
   top: 0;
-  padding: 20px 10px;
+  padding: 20px 5px;
   border-right: 1px solid #eee;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05); // subtle right shadow
-  background: #fff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  background: $theme-background-color;
   overflow-y: auto;
 
   scrollbar-width: none;
@@ -279,7 +287,7 @@
   }
 
   &.open {
-    left: 0 !important; // slide in on toggle
+    left: 0 !important;
   }
 
   .category-wrapper {
@@ -289,7 +297,7 @@
   .category-item {
     display: flex;
     gap: 10px;
-    padding: 8px 0px;
+    padding: 8px 10px;
     border-radius: 6px;
     cursor: pointer;
     justify-content: space-between;
@@ -297,7 +305,7 @@
     transition: background 0.2s;
 
     &:hover {
-      background: #f9f9f9;
+      background: $theme-tertiary-color;
     }
 
     .category-img {
@@ -334,7 +342,7 @@
       padding: 4px 0;
 
       &:hover {
-        color: #e91e63;
+        color: $theme-tertiary-color;
       }
     }
   }

@@ -48,7 +48,7 @@ const SiteLayout = ({ children }: { children: React.ReactNode }) => {
         setEnvMsg(resultMsg.data?.payload);
         setEnvMode(resultMode.data?.payload);
 
-        const logo = resultSiteLogo.data?.payload?.metavalue || "";        
+        const logo = resultSiteLogo.data?.payload?.metavalue || "";
         secureLocalStorage.setItem("site-logo", logo);
       } catch (error) {
         const errorMessage = handleApiErrors(error);
