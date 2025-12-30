@@ -2,11 +2,13 @@
 
 .product-details-page {
   .product-title {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 18px !important;
+    font-weight: 600 !important;
     font-family: $theme-font !important;
     color: $theme-text-title-color;
   }
+
+
 
   .product-images {
     .main-image {
@@ -78,6 +80,7 @@
       }
     }
   }
+
 
   .product-summary {
     padding: 10px;

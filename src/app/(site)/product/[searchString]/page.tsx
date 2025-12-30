@@ -410,6 +410,39 @@ export default function ProductPage() {
   const payNow = (+totalPrice || 0) * 0.7;
   const payOnDelivery = (+totalPrice || 0) * 0.3;
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const lensRef = useRef<HTMLDivElement>(null);
+
+  const [showZoom, setShowZoom] = useState(false);
+  const [bgPos, setBgPos] = useState("50% 50%");
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const container = containerRef.current;
+    const lens = lensRef.current;
+    if (!container || !lens) return;
+
+    const rect = container.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
+
+    const lensSize = 150;
+    const half = lensSize / 2;
+
+    let left = x - half;
+    let top = y - half;
+
+    left = Math.max(0, Math.min(left, rect.width - lensSize));
+    top = Math.max(0, Math.min(top, rect.height - lensSize));
+
+    lens.style.left = `${left}px`;
+    lens.style.top = `${top}px`;
+
+    const bgX = (x / rect.width) * 100;
+    const bgY = (y / rect.height) * 100;
+
+    setBgPos(`${bgX}% ${bgY}%`);
+  };
+
   if (loadingProduct) return <ProductDetailsSkeleton />;
 
   return (
@@ -419,98 +452,87 @@ export default function ProductPage() {
           <Grid item xs={12} md={12} mt={3} mb={3}>
             <span className="product-title">{result?.title}</span>
           </Grid>
+
           <Grid item xs={12} md={4} className="product-images">
             <Box>
-              <Box className="main-media">
-                {selectedImage === "video" && result?.videoUrl ? (
-                  <video
-                    controls
-                    autoPlay
-                    width="95%"
-                    height={375}
-                    style={{
-                      objectFit: "cover",
-                      borderRadius: "8px",
+              <Box
+                sx={{
+                  position: "relative",
+                  display: "inline-block",
+                  width: "100%",
+                }}
+              >
+                <Box
+                  ref={containerRef}
+                  onMouseMove={handleMouseMove}
+                  onMouseEnter={() => setShowZoom(true)}
+                  onMouseLeave={() => setShowZoom(false)}
+                  sx={{
+                    position: "relative",
+                    overflow: "hidden",
+                    cursor: "crosshair",
+                  }}
+                >
+                  {selectedImage === "video" && result?.videoUrl ? (
+                    <video
+                      src={result.videoUrl}
+                      controls
+                      autoPlay
+                      width="95%"
+                      height={375}
+                      style={{
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                        border: "1px solid #ddd",
+                        background: "#000",
+                      }}
+                    />
+                  ) : (
+                    <Image
+                      alt=""
+                      unoptimized
+                      width={500}
+                      height={500}
+                      src={fixImageUrl(selectedImage)}
+                      className="main-image"
+                    />
+                  )}
+
+                  {showZoom && selectedImage !== "video" && (
+                    <Box
+                      ref={lensRef}
+                      sx={{
+                        position: "absolute",
+                        width: 50,
+                        height: 50,
+                        border: "2px solid #00798c",
+                        backgroundColor: "rgba(255,255,255,0.35)",
+                        pointerEvents: "none",
+                      }}
+                    />
+                  )}
+                </Box>
+                {showZoom && selectedImage !== "video" && (
+                  <Box
+                    sx={{
+                      position: "fixed",
+                      top: "35%",
+                      left: "52%",
+                      transform: "translate(-50%, -50%)",
+                      width: "35vw",
+                      maxWidth: "900px",
+                      height: "40.5vh",
                       border: "1px solid #ddd",
-                      background: "#000",
+                      backgroundImage: `url(${selectedImage})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "250%",
+                      backgroundPosition: bgPos,
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                      zIndex: 9999,
+                      borderRadius: 2,
+                      pointerEvents: "none",
                     }}
-                  >
-                    <source src={result.videoUrl} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
-                  <>
-                    {/* Clickable main image */}
-                    {selectedImage ? (
-                      <div style={{ cursor: "pointer" }} onClick={handleOpen}>
-                        <Image
-                          alt="Product"
-                          unoptimized
-                          width={500}
-                          height={500}
-                          src={fixImageUrl(selectedImage)}
-                          className="main-image"
-                          onContextMenu={(e) => e.preventDefault()}
-                        />
-                      </div>
-                    ) : (
-                      <Image
-                        alt="No Image"
-                        unoptimized
-                        width={500}
-                        height={500}
-                        src="/no-image.png"
-                        className="main-image"
-                      />
-                    )}
-
-                    <Modal open={open} onClose={() => setOpen(false)}>
-                      <Box
-                        sx={{
-                          position: "fixed",
-                          top: "50%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          width: "90vw",
-                          maxWidth: 600,
-                          maxHeight: "90vh",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          outline: "none",
-                        }}
-                      >
-                        <IconButton
-                          onClick={() => setOpen(false)}
-                          sx={{
-                            position: "absolute",
-                            top: 10,
-                            right: 10,
-                            backgroundColor: "rgba(0,0,0,0.4)",
-                            "&:hover": { backgroundColor: "rgba(0,0,0,0.6)" },
-                            color: "#fff",
-                          }}
-                        >
-                          <CloseIcon />
-                        </IconButton>
-
-                        <Image
-                          alt="Product Preview"
-                          unoptimized
-                          src={fixImageUrl(selectedImage)}
-                          width={0}
-                          height={0}
-                          style={{
-                            width: "100%",
-                            height: "auto",
-                            maxHeight: "90vh",
-                            borderRadius: "8px",
-                            objectFit: "contain",
-                          }}
-                        />
-                      </Box>
-                    </Modal>
-                  </>
+                  />
                 )}
               </Box>
 
@@ -554,8 +576,6 @@ export default function ProductPage() {
                         </Box>
                       )}
                     </Box>
-
-                    <br />
 
                     {selectedImage !== "video" && (
                       <Box className="download-section">
@@ -686,7 +706,6 @@ export default function ProductPage() {
                   </Box>
                 ))}
 
-                {/* Variation Table */}
                 <Box className="variation-table">
                   <table className="sku-table">
                     <thead>
@@ -754,7 +773,7 @@ export default function ProductPage() {
               </Box>
             </Box>
           </Grid>
-
+          {/* 
           <Grid item xs={12} md={4} className="product-extra-summary">
             <Box>
               <Box className="product-summary">
@@ -900,7 +919,7 @@ export default function ProductPage() {
                 </button>
               </Box>
             </Box>
-          </Grid>
+          </Grid> */}
 
           {/* <Container>
             <Grid item xs={12} md={12} mt={3} mb={3}>
