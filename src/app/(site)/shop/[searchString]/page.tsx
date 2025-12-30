@@ -10,7 +10,7 @@ import {
   similerProductSearch,
 } from "@/features/product/product";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import "../../../../scss/shop/shop-page.scss";
 import EmptyState from "../_components/EmptyState";
 import ProductCardSkeleton from "../_components/ProductCardSkeleton";
@@ -20,14 +20,13 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { ErrorAlert } from "@/components/alerts/ErrorAlert";
 import MenuIcon from "@mui/icons-material/Menu";
 
-interface ShopPageProps {
-  params: { searchString: string };
-}
-
-export default function ShopPage({ params }: ShopPageProps) {
+export default function ShopPage() {
   const router = useRouter();
+  const params = useParams<{ searchString: string }>();
 
-  const { searchString } = params;
+  const searchString = params.searchString;
+
+  console.log("searchString", searchString);
 
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -131,13 +130,6 @@ export default function ShopPage({ params }: ShopPageProps) {
                   className="category-item"
                   onClick={() => setOpenCategory(isOpen ? null : cat.tag)}
                 >
-                  <Image
-                    src={cat.image}
-                    alt={cat.name}
-                    width={30}
-                    height={25}
-                    className="category-img"
-                  />
                   <span className="category-text">{cat.name}</span>
                   {isOpen ? (
                     <KeyboardArrowDownIcon className="arrow" />
@@ -166,8 +158,8 @@ export default function ShopPage({ params }: ShopPageProps) {
               </Box>
             );
           })}
-        </Box> 
-        
+        </Box>
+
         <Box className="shop-content">
           <Box
             className="results-header"
