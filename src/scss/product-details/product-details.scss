@@ -8,8 +8,6 @@
     color: $theme-text-title-color;
   }
 
-
-
   .product-images {
     .main-image {
       width: 95%;
@@ -80,7 +78,6 @@
       }
     }
   }
-
 
   .product-summary {
     padding: 10px;
@@ -452,6 +449,16 @@
     }
   }
 
+ .product-cart-sticky {
+  position: sticky;
+  top: 50px; /* distance from viewport top */
+  width: 100%;
+  z-index: 1000;
+
+  max-height: calc(100vh - 50px); /* full viewport minus top offset */
+  overflow-y: auto; /* scroll inside if content is taller */
+  box-sizing: border-box;
+}
   .product-extra-summary {
     padding: 10px;
     background: #fff;
@@ -478,6 +485,13 @@
         line-height: 1.5;
         font-family: $theme-font !important;
       }
+    }
+
+    .cart-title {
+      font-weight: 500 !important;
+      font-size: 14px;
+      color: $theme-secondary-text-color;
+      font-family: $theme-font !important;
     }
 
     .seller-card {

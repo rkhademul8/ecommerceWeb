@@ -39,7 +39,6 @@ export default function ProductPage() {
   const searchString = params.searchString;
   const [tabIndex, setTabIndex] = useState(0);
   const [result, setResult] = useState<any>({});
-
   const [selectedImage, setSelectedImage] = useState("/no-image.png");
 
   const [isSaved, setIsSaved] = useState(false);
@@ -49,6 +48,9 @@ export default function ProductPage() {
   const [isFetching, setIsFetching] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [selectedSku, setSelectedSku] = useState<any>({});
+
+  console.log("selectedSku", selectedSku);
+
   const [packageInfo, setPackageInfo] = useState<any>([]);
   const [similerProducts, setSimilerProducts] = useState<any[]>([]);
   const [descriptionImageUrls, setDescriptionImageUrls] = useState<any[]>([]);
@@ -410,36 +412,37 @@ export default function ProductPage() {
   const payNow = (+totalPrice || 0) * 0.7;
   const payOnDelivery = (+totalPrice || 0) * 0.3;
 
+  // Inside your component
+  const [bgPos, setBgPos] = useState("0% 0%");
+  const [showZoom, setShowZoom] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const lensRef = useRef<HTMLDivElement>(null);
 
-  const [showZoom, setShowZoom] = useState(false);
-  const [bgPos, setBgPos] = useState("50% 50%");
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!containerRef.current || !lensRef.current) return;
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const container = containerRef.current;
+    const rect = containerRef.current.getBoundingClientRect();
     const lens = lensRef.current;
-    if (!container || !lens) return;
 
-    const rect = container.getBoundingClientRect();
+    // Cursor position relative to image container
     let x = e.clientX - rect.left;
     let y = e.clientY - rect.top;
 
-    const lensSize = 150;
-    const half = lensSize / 2;
+    // Lens dimensions
+    const lensWidth = lens.offsetWidth;
+    const lensHeight = lens.offsetHeight;
 
-    let left = x - half;
-    let top = y - half;
+    // Keep lens inside the container
+    x = Math.max(lensWidth / 2, Math.min(rect.width - lensWidth / 2, x));
+    y = Math.max(lensHeight / 2, Math.min(rect.height - lensHeight / 2, y));
 
-    left = Math.max(0, Math.min(left, rect.width - lensSize));
-    top = Math.max(0, Math.min(top, rect.height - lensSize));
+    // Position the lens
+    lens.style.left = `${x - lensWidth / 2}px`;
+    lens.style.top = `${y - lensHeight / 2}px`;
 
-    lens.style.left = `${left}px`;
-    lens.style.top = `${top}px`;
-
-    const bgX = (x / rect.width) * 100;
-    const bgY = (y / rect.height) * 100;
-
+    // Calculate background position for zoom preview
+    const bgX = ((x / rect.width) * 100).toFixed(2);
+    const bgY = ((y / rect.height) * 100).toFixed(2);
     setBgPos(`${bgX}% ${bgY}%`);
   };
 
@@ -487,13 +490,22 @@ export default function ProductPage() {
                         background: "#000",
                       }}
                     />
-                  ) : (
+                  ) : selectedImage ? (
                     <Image
-                      alt=""
+                      alt="Product"
                       unoptimized
                       width={500}
                       height={500}
                       src={fixImageUrl(selectedImage)}
+                      className="main-image"
+                    />
+                  ) : (
+                    <Image
+                      alt="No Image"
+                      unoptimized
+                      width={500}
+                      height={500}
+                      src="/no-image.png"
                       className="main-image"
                     />
                   )}
@@ -503,11 +515,12 @@ export default function ProductPage() {
                       ref={lensRef}
                       sx={{
                         position: "absolute",
-                        width: 50,
-                        height: 50,
+                        width: 60,
+                        height: 60,
                         border: "2px solid #00798c",
                         backgroundColor: "rgba(255,255,255,0.35)",
-                        pointerEvents: "none",
+                        pointerEvents: "auto",
+                        cursor: "crosshair",
                       }}
                     />
                   )}
@@ -711,6 +724,7 @@ export default function ProductPage() {
                     <thead>
                       <tr>
                         <th style={{ width: "50%", color: "#000" }}>Product</th>
+                        <th style={{ width: "50%", color: "#000" }}>Stock</th>
                         <th style={{ width: "25%", color: "#000" }}>Price</th>
                         <th style={{ width: "25%", color: "#000" }}>
                           Quantity
@@ -723,6 +737,9 @@ export default function ProductPage() {
                           <td style={{ color: "#000" }}>
                             {selectedSku?.props_names_translated ||
                               "Select Variation"}
+                          </td>
+                          <td style={{ color: "#000" }}>
+                            {selectedSku?.stock}
                           </td>
                           <td style={{ color: "#000" }}>
                             {selectedSku
@@ -773,42 +790,42 @@ export default function ProductPage() {
               </Box>
             </Box>
           </Grid>
-          {/* 
+
           <Grid item xs={12} md={4} className="product-extra-summary">
             <Box>
-              <Box className="product-summary">
+              <Box className="product-summary ">
                 <Box className="product-meta">
-                  <Typography mb={1.5}>
+                  <Typography mb={1.5} className="cart-title">
                     <strong>Product Quantity:</strong>{" "}
                     <span style={{ color: "#000", fontFamily: "Outfit" }}>
                       {totalQty}
                     </span>
                   </Typography>
-                  <Typography mb={1.5}>
+                  <Typography mb={1.5} className="cart-title">
                     <strong>Product Price:</strong>{" "}
                     <span style={{ color: "#000", fontFamily: "Outfit" }}>
                       ৳ {(+totalPrice || 0)?.toFixed(2)}
                     </span>
                   </Typography>
-                  <Typography mb={1.5} className="shipping">
+                  <Typography mb={1.5} className="shipping cart-title">
                     <strong>Shipping Charge:</strong> ৳ 750/1100 Per Kg{" "}
                     <span className="note" onClick={handleDetailsOpen}>
                       (বিস্তারিত)
                     </span>
                   </Typography>
-                  <Typography mb={1.5}>
+                  <Typography mb={1.5} className="cart-title">
                     <strong>Approximate Weight:</strong>{" "}
                     <span style={{ color: "#000", fontFamily: "Outfit" }}>
                       Check below package info or contact support.
                     </span>
                   </Typography>
-                  <Typography mb={1.5}>
+                  <Typography mb={1.5} className="cart-title">
                     <strong>Pay Now (70%):</strong>{" "}
                     <span style={{ color: "#000", fontFamily: "Outfit" }}>
                       ৳ {payNow.toFixed(2)}
                     </span>
                   </Typography>
-                  <Typography>
+                  <Typography className="cart-title">
                     <strong>Pay on Delivery:</strong>{" "}
                     <span style={{ color: "#000", fontFamily: "Outfit" }}>
                       ৳ {payOnDelivery.toFixed(2)} + চায়না কুরিয়ার বিল + চায়না
@@ -830,12 +847,12 @@ export default function ProductPage() {
                     <Tooltip title="Facebook">
                       <IconButton
                         className="share-btn fb"
-                        onClick={() =>
-                          window.open(
-                            `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`,
-                            "_blank"
-                          )
-                        }
+                        // onClick={() =>
+                        //   window.open(
+                        //     `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`,
+                        //     "_blank"
+                        //   )
+                        // }
                       >
                         <FacebookIcon />
                       </IconButton>
@@ -844,12 +861,12 @@ export default function ProductPage() {
                     <Tooltip title="WhatsApp">
                       <IconButton
                         className="share-btn wa"
-                        onClick={() =>
-                          window.open(
-                            `https://wa.me/?text=${window.location.href}`,
-                            "_blank"
-                          )
-                        }
+                        // onClick={() =>
+                        //   window.open(
+                        //     `https://wa.me/?text=${window.location.href}`,
+                        //     "_blank"
+                        //   )
+                        // }
                       >
                         <WhatsAppIcon />
                       </IconButton>
@@ -858,9 +875,9 @@ export default function ProductPage() {
                     <Tooltip title="Copy Link">
                       <IconButton
                         className="share-btn copy"
-                        onClick={() =>
-                          navigator.clipboard.writeText(window.location.href)
-                        }
+                        // onClick={() =>
+                        //   navigator.clipboard.writeText(window.location.href)
+                        // }
                       >
                         <ContentCopyIcon />
                       </IconButton>
@@ -875,6 +892,7 @@ export default function ProductPage() {
                   >
                     Add to Cart
                   </button>
+
                   <button
                     className="buy-now"
                     onClick={() => handleAddToCartOrBuy("buy")}
@@ -919,10 +937,12 @@ export default function ProductPage() {
                 </button>
               </Box>
             </Box>
-          </Grid> */}
+          </Grid>
+        </Grid>
 
-          {/* <Container>
-            <Grid item xs={12} md={12} mt={3} mb={3}>
+        <Box>
+          <Grid container>
+            <Grid item xs={12} md={8}>
               <Box className="product-tabs" mb={5}>
                 <Tabs
                   value={tabIndex}
@@ -938,41 +958,6 @@ export default function ProductPage() {
                   <Tab label="Description" />
                   <Tab label="Seller Info" />
                 </Tabs>
-
-                {tabIndex === 0 && (
-                  <Grid container spacing={3} mb={2}>
-                    {loadingSimilar
-                      ? [...Array(10)].map((_, idx) => (
-                          <Grid item xs={6} md={2.4} key={idx}>
-                            <ProductCardSkeleton />
-                          </Grid>
-                        ))
-                      : similerProducts.map((item, idx) => (
-                          <Grid item xs={6} md={2.4} key={idx}>
-                            <ProductCard
-                              id={item.id}
-                              source="osee"
-                              name={item.title}
-                              price={item.equivalentPrice?.current}
-                              image={item.image}
-                              soldCount={item.sales?.total || 0}
-                              ratings={item.ratings?.score}
-                            />
-                          </Grid>
-                        ))}
-
-                    <Grid item xs={12} mt={2} textAlign="center">
-                      <button
-                        className="view-all-btn"
-                        onClick={() =>
-                          router.push(`/shop/cat-${result?.categoryRemote?.id}`)
-                        }
-                      >
-                        Load More
-                      </button>
-                    </Grid>
-                  </Grid>
-                )}
 
                 {tabIndex === 1 && (
                   <Grid container spacing={0} className="spec-list">
@@ -1069,9 +1054,45 @@ export default function ProductPage() {
                   </Grid>
                 )}
               </Box>
+
+              <Box>
+                <Grid container spacing={3} mb={2}>
+                  {loadingSimilar
+                    ? [...Array(10)].map((_, idx) => (
+                        <Grid item xs={6} md={2.4} key={idx}>
+                          <ProductCardSkeleton />
+                        </Grid>
+                      ))
+                    : similerProducts.map((item, idx) => (
+                        <Grid item xs={6} md={2.4} key={idx}>
+                          <ProductCard
+                            id={item.id}
+                            source="osee"
+                            name={item.title}
+                            price={item.equivalentPrice?.current}
+                            image={item.image}
+                            soldCount={item.sales?.total || 0}
+                            ratings={item.ratings?.score}
+                          />
+                        </Grid>
+                      ))}
+
+                  <Grid item xs={12} mt={2} textAlign="center">
+                    <button
+                      className="view-all-btn"
+                      onClick={() =>
+                        router.push(`/shop/cat-${result?.categoryRemote?.id}`)
+                      }
+                    >
+                      Load More
+                    </button>
+                  </Grid>
+                </Grid>
+              </Box>
             </Grid>
-          </Container> */}
-        </Grid>
+            <Grid item xs={12} md={4}></Grid>
+          </Grid>
+        </Box>
       </Box>
 
       <Modal
