@@ -13,7 +13,7 @@ import {
   Container,
   Modal,
 } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { ErrorAlert } from "@/components/alerts/ErrorAlert";
 import {
   getDescriptions,
@@ -33,15 +33,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { fixImageUrl } from "@/utils/common/function/fix-image";
 import ProductCardSkeleton from "../../shop/_components/ProductCardSkeleton";
 
-interface ProductPageProps {
-  params: { searchString: string };
-}
-
-export default function ProductPage({ params }: ProductPageProps) {
+export default function ProductPage() {
   const router = useRouter();
-
-  const { searchString } = params;
-
+  const params = useParams<{ searchString: string }>();
+  const searchString = params.searchString;
   const [tabIndex, setTabIndex] = useState(0);
   const [result, setResult] = useState<any>({});
 
@@ -446,17 +441,28 @@ export default function ProductPage({ params }: ProductPageProps) {
                 ) : (
                   <>
                     {/* Clickable main image */}
-                    <div style={{ cursor: "pointer" }} onClick={handleOpen}>
+                    {selectedImage ? (
+                      <div style={{ cursor: "pointer" }} onClick={handleOpen}>
+                        <Image
+                          alt="Product"
+                          unoptimized
+                          width={500}
+                          height={500}
+                          src={fixImageUrl(selectedImage)}
+                          className="main-image"
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
+                      </div>
+                    ) : (
                       <Image
-                        alt="Product"
+                        alt="No Image"
                         unoptimized
                         width={500}
                         height={500}
-                        src={fixImageUrl(selectedImage)}
+                        src="/no-image.png"
                         className="main-image"
-                        onContextMenu={(e) => e.preventDefault()}
                       />
-                    </div>
+                    )}
 
                     <Modal open={open} onClose={() => setOpen(false)}>
                       <Box
@@ -569,7 +575,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={5} className="product-summary">
+          <Grid item xs={12} md={4} className="product-summary">
             <Box>
               <Box className="variation-section">
                 {result?.skuProps?.map((prop: any, propIndex: number) => (
@@ -746,120 +752,122 @@ export default function ProductPage({ params }: ProductPageProps) {
                   </table>
                 </Box>
               </Box>
-
-              <Box className="product-meta">
-                <Typography mb={1.5}>
-                  <strong>Product Quantity:</strong>{" "}
-                  <span style={{ color: "#000", fontFamily: "Outfit" }}>
-                    {totalQty}
-                  </span>
-                </Typography>
-                <Typography mb={1.5}>
-                  <strong>Product Price:</strong>{" "}
-                  <span style={{ color: "#000", fontFamily: "Outfit" }}>
-                    ৳ {(+totalPrice || 0)?.toFixed(2)}
-                  </span>
-                </Typography>
-                <Typography mb={1.5} className="shipping">
-                  <strong>Shipping Charge:</strong> ৳ 750/1100 Per Kg{" "}
-                  <span className="note" onClick={handleDetailsOpen}>
-                    (বিস্তারিত)
-                  </span>
-                </Typography>
-                <Typography mb={1.5}>
-                  <strong>Approximate Weight:</strong>{" "}
-                  <span style={{ color: "#000", fontFamily: "Outfit" }}>
-                    Check below package info or contact support.
-                  </span>
-                </Typography>
-                <Typography mb={1.5}>
-                  <strong>Pay Now (70%):</strong>{" "}
-                  <span style={{ color: "#000", fontFamily: "Outfit" }}>
-                    ৳ {payNow.toFixed(2)}
-                  </span>
-                </Typography>
-                <Typography>
-                  <strong>Pay on Delivery:</strong>{" "}
-                  <span style={{ color: "#000", fontFamily: "Outfit" }}>
-                    ৳ {payOnDelivery.toFixed(2)} + চায়না কুরিয়ার বিল + চায়না
-                    থেকে বাংলাদেশ শিপিং চার্জ
-                  </span>
-                </Typography>
-              </Box>
-
-              <Box className="extra-info">
-                <Typography className="extra-label">
-                  Product Code: {searchString}
-                </Typography>
-                <Typography className="extra-label">
-                  Total Sold: {result?.saleCount || "N/A"}
-                </Typography>
-                <Box className="share-section">
-                  <span className="share-label">Share:</span>
-
-                  <Tooltip title="Facebook">
-                    <IconButton
-                      className="share-btn fb"
-                      onClick={() =>
-                        window.open(
-                          `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`,
-                          "_blank"
-                        )
-                      }
-                    >
-                      <FacebookIcon />
-                    </IconButton>
-                  </Tooltip>
-
-                  <Tooltip title="WhatsApp">
-                    <IconButton
-                      className="share-btn wa"
-                      onClick={() =>
-                        window.open(
-                          `https://wa.me/?text=${window.location.href}`,
-                          "_blank"
-                        )
-                      }
-                    >
-                      <WhatsAppIcon />
-                    </IconButton>
-                  </Tooltip>
-
-                  <Tooltip title="Copy Link">
-                    <IconButton
-                      className="share-btn copy"
-                      onClick={() =>
-                        navigator.clipboard.writeText(window.location.href)
-                      }
-                    >
-                      <ContentCopyIcon />
-                    </IconButton>
-                  </Tooltip>
-                </Box>
-              </Box>
-
-              <Box className="action-buttons">
-                <button
-                  className="add-cart"
-                  onClick={() => handleAddToCartOrBuy("cart")}
-                >
-                  Add to Cart
-                </button>
-                <button
-                  className="buy-now"
-                  onClick={() => handleAddToCartOrBuy("buy")}
-                >
-                  Buy Now
-                </button>
-                <button className="save-btn" onClick={handleSaveProduct}>
-                  {isSaved ? "Unsave" : "Save"}
-                </button>
-              </Box>
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={3} className="product-extra-summary">
+          <Grid item xs={12} md={4} className="product-extra-summary">
             <Box>
+              <Box className="product-summary">
+                <Box className="product-meta">
+                  <Typography mb={1.5}>
+                    <strong>Product Quantity:</strong>{" "}
+                    <span style={{ color: "#000", fontFamily: "Outfit" }}>
+                      {totalQty}
+                    </span>
+                  </Typography>
+                  <Typography mb={1.5}>
+                    <strong>Product Price:</strong>{" "}
+                    <span style={{ color: "#000", fontFamily: "Outfit" }}>
+                      ৳ {(+totalPrice || 0)?.toFixed(2)}
+                    </span>
+                  </Typography>
+                  <Typography mb={1.5} className="shipping">
+                    <strong>Shipping Charge:</strong> ৳ 750/1100 Per Kg{" "}
+                    <span className="note" onClick={handleDetailsOpen}>
+                      (বিস্তারিত)
+                    </span>
+                  </Typography>
+                  <Typography mb={1.5}>
+                    <strong>Approximate Weight:</strong>{" "}
+                    <span style={{ color: "#000", fontFamily: "Outfit" }}>
+                      Check below package info or contact support.
+                    </span>
+                  </Typography>
+                  <Typography mb={1.5}>
+                    <strong>Pay Now (70%):</strong>{" "}
+                    <span style={{ color: "#000", fontFamily: "Outfit" }}>
+                      ৳ {payNow.toFixed(2)}
+                    </span>
+                  </Typography>
+                  <Typography>
+                    <strong>Pay on Delivery:</strong>{" "}
+                    <span style={{ color: "#000", fontFamily: "Outfit" }}>
+                      ৳ {payOnDelivery.toFixed(2)} + চায়না কুরিয়ার বিল + চায়না
+                      থেকে বাংলাদেশ শিপিং চার্জ
+                    </span>
+                  </Typography>
+                </Box>
+
+                <Box className="extra-info">
+                  <Typography className="extra-label">
+                    Product Code: {searchString}
+                  </Typography>
+                  <Typography className="extra-label">
+                    Total Sold: {result?.saleCount || "N/A"}
+                  </Typography>
+                  <Box className="share-section">
+                    <span className="share-label">Share:</span>
+
+                    <Tooltip title="Facebook">
+                      <IconButton
+                        className="share-btn fb"
+                        onClick={() =>
+                          window.open(
+                            `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`,
+                            "_blank"
+                          )
+                        }
+                      >
+                        <FacebookIcon />
+                      </IconButton>
+                    </Tooltip>
+
+                    <Tooltip title="WhatsApp">
+                      <IconButton
+                        className="share-btn wa"
+                        onClick={() =>
+                          window.open(
+                            `https://wa.me/?text=${window.location.href}`,
+                            "_blank"
+                          )
+                        }
+                      >
+                        <WhatsAppIcon />
+                      </IconButton>
+                    </Tooltip>
+
+                    <Tooltip title="Copy Link">
+                      <IconButton
+                        className="share-btn copy"
+                        onClick={() =>
+                          navigator.clipboard.writeText(window.location.href)
+                        }
+                      >
+                        <ContentCopyIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                </Box>
+
+                <Box className="action-buttons">
+                  <button
+                    className="add-cart"
+                    onClick={() => handleAddToCartOrBuy("cart")}
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    className="buy-now"
+                    onClick={() => handleAddToCartOrBuy("buy")}
+                  >
+                    Buy Now
+                  </button>
+                  <button className="save-btn" onClick={handleSaveProduct}>
+                    {isSaved ? "Unsave" : "Save"}
+                  </button>
+                </Box>
+              </Box>
+
               <Box className="disclaimer-box">
                 <span className="disclaimer-title">
                   <i className="fas fa-info-circle"></i> Disclaimer
@@ -894,7 +902,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             </Box>
           </Grid>
 
-          <Container>
+          {/* <Container>
             <Grid item xs={12} md={12} mt={3} mb={3}>
               <Box className="product-tabs" mb={5}>
                 <Tabs
@@ -1043,7 +1051,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                 )}
               </Box>
             </Grid>
-          </Container>
+          </Container> */}
         </Grid>
       </Box>
 

@@ -23,11 +23,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 export default function ShopPage() {
   const router = useRouter();
   const params = useParams<{ searchString: string }>();
-
   const searchString = params.searchString;
-
-  console.log("searchString", searchString);
-
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
