@@ -21,6 +21,10 @@ const SubHeader = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
+  const hideButton = pathname.split("-")[0] === "/product/osee";
+
+  console.log("hideButton", hideButton);
+
   // Handle outside click to close dropdown
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -56,14 +60,16 @@ const SubHeader = () => {
 
         <Grid size={{ xs: 12, sm: 4, md: 3 }}>
           <Box style={{ position: "relative" }}>
-            <Button
-              ref={buttonRef}
-              startIcon={<MenuIcon />}
-              className="category-btn"
-              onClick={() => setDropdownOpen((prev) => !prev)}
-            >
-              SHOP BY CATEGORIES
-            </Button>
+            {!hideButton && (
+              <Button
+                ref={buttonRef}
+                startIcon={<MenuIcon />}
+                className="category-btn"
+                onClick={() => setDropdownOpen((prev) => !prev)}
+              >
+                SHOP BY CATEGORIES
+              </Button>
+            )}
 
             {dropdownOpen && (
               <Box ref={dropdownRef} className="floating-categories">

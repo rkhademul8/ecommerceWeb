@@ -465,7 +465,6 @@ export default function ProductPage() {
                   width: "100%",
                 }}
               >
-                
                 <Box
                   ref={containerRef}
                   onMouseMove={handleMouseMove}
@@ -475,6 +474,7 @@ export default function ProductPage() {
                     position: "relative",
                     overflow: "hidden",
                     cursor: "crosshair",
+                    // zIndex: -999,
                   }}
                 >
                   {selectedImage === "video" && result?.videoUrl ? (
@@ -526,7 +526,6 @@ export default function ProductPage() {
                     />
                   )}
                 </Box>
-
                 {showZoom && selectedImage !== "video" && (
                   <Box
                     sx={{
