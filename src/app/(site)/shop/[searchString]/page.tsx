@@ -19,6 +19,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { ErrorAlert } from "@/components/alerts/ErrorAlert";
 import MenuIcon from "@mui/icons-material/Menu";
+import FilterProducts from "../_components/FilterProducts";
 
 export default function ShopPage() {
   const router = useRouter();
@@ -117,7 +118,9 @@ export default function ShopPage() {
           ref={sidebarRef}
           className={`sidebar ${mobileSidebarOpen ? "open" : ""}`}
         >
-          {categories.map((cat, i) => {
+          <FilterProducts />
+
+          {/* {categories.map((cat, i) => {
             const isOpen = openCategory === cat.tag;
 
             return (
@@ -153,7 +156,7 @@ export default function ShopPage() {
                 )}
               </Box>
             );
-          })}
+          })} */}
         </Box>
 
         <Box className="shop-content">

@@ -146,3 +146,341 @@
 //     display: none;
 //   }
 // }
+
+// FilterProducts.scss
+.filter-sidebar {
+  width: 100%;
+  max-width: 300px;
+  background-color: $theme-background-color;
+  border: 1px solid #e0e0e0;
+
+  // Category Header Section
+  .category-header {
+    background-color: $theme-label-color;
+    padding: 15px 20px;
+
+    .MuiTypography-h6 {
+      color: $theme-background-color;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+  }
+
+  // Category Links Section
+  .category-links {
+    padding: 15px 20px;
+    border-bottom: 1px solid $theme-border-color;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .MuiTypography-body2 {
+      color: $theme-text-subtitle-color;
+      font-size: 14px;
+      margin: 0;
+      cursor: pointer;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $theme-text-title-color;
+      }
+    }
+  }
+
+  // Refine By Header
+  .refine-header {
+    background-color: $theme-label-color;
+    padding: 15px 20px;
+    margin-top: 0;
+
+    .MuiTypography-h6 {
+      color: $theme-background-color;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+  }
+
+  // Filter Chip
+  .chip-container {
+    padding: 15px 20px;
+  }
+
+  .filter-chip {
+    font-size: 12px;
+    font-weight: 500;
+    height: auto;
+    padding: 6px 12px;
+    border-radius: 4px;
+
+    &.MuiChip-colorPrimary {
+      background-color: $theme-primary-button-color;
+      color: $theme-background-color;
+    }
+
+    .MuiChip-label {
+      padding: 0;
+    }
+  }
+
+  // Accordion Styles
+  .filter-accordion {
+    box-shadow: none !important;
+    border-top: 1px solid $theme-border-color;
+    border-radius: 0 !important;
+
+    &:before {
+      display: none;
+    }
+
+    &.Mui-expanded {
+      margin: 0 !important;
+    }
+
+    // Accordion Summary (Header)
+    .MuiAccordionSummary-root {
+      padding: 15px 20px;
+      min-height: auto !important;
+      background-color: $theme-background-color;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: rgba($theme-label-color, 0.05);
+      }
+
+      &.Mui-expanded {
+        min-height: auto !important;
+      }
+    }
+
+    .MuiAccordionSummary-content {
+      margin: 0 !important;
+
+      &.Mui-expanded {
+        margin: 0 !important;
+      }
+    }
+
+    .MuiAccordionSummary-expandIconWrapper {
+      color: $theme-text-subtitle-color;
+
+      .MuiSvgIcon-root {
+        font-size: 20px;
+      }
+    }
+
+    .filter-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: $theme-label-color;
+    }
+
+    // Accordion Details (Content)
+    .MuiAccordionDetails-root {
+      padding: 10px 20px 15px;
+      background-color: rgba($theme-label-color, 0.02);
+    }
+
+    // Form Control Labels (Checkboxes) - COMPACT VERSION
+    .MuiFormGroup-root {
+      gap: 4px;
+    }
+
+    .MuiFormControlLabel-root {
+      margin-left: 0;
+      margin-right: 0;
+      padding: 2px 0; // smaller vertical spacing
+
+      .MuiTypography-root {
+        font-size: 13px; // smaller label text
+        color: $theme-text-subtitle-color;
+      }
+
+      .MuiCheckbox-root {
+        padding: 2px; // smaller clickable area
+        color: $theme-border-color;
+
+        &.Mui-checked {
+          color: $theme-primary-button-color;
+        }
+
+        .MuiSvgIcon-root {
+          font-size: 16px; // smaller checkbox icon
+        }
+      }
+
+      &:hover {
+        .MuiTypography-root {
+          color: $theme-label-color;
+        }
+      }
+    }
+  }
+
+  // Price Filter Section
+  .price-filter {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .price-input {
+      flex: 1;
+      min-width: 70px;
+
+      .MuiInputBase-root {
+        font-size: 14px;
+      }
+
+      .MuiOutlinedInput-root {
+        border-radius: 4px;
+
+        fieldset {
+          border-color: $theme-border-color;
+        }
+
+        &:hover fieldset {
+          border-color: $theme-label-color;
+        }
+
+        &.Mui-focused fieldset {
+          border-color: $theme-primary-button-color;
+        }
+      }
+
+      .MuiInputBase-input {
+        padding: 8px 10px;
+        color: $theme-text-title-color;
+
+        &::placeholder {
+          color: $theme-placeholder-color;
+          opacity: 1;
+        }
+      }
+    }
+
+    .update-button {
+      padding: 8px 20px;
+      background-color: $theme-secondary-button-color;
+      color: $theme-background-color;
+      font-weight: 500;
+      font-size: 14px;
+      text-transform: none;
+      box-shadow: none !important;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: rgba($theme-secondary-button-color, 0.8);
+      }
+    }
+  }
+
+  // Empty state text
+  .empty-text {
+    font-size: 13px;
+    color: $theme-text-subtitle-color;
+    margin: 0;
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    max-width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+// Dark theme support (optional)
+[data-theme="dark"] {
+  .filter-sidebar {
+    background-color: #1e1e1e;
+    border-color: rgba($theme-border-color, 0.3);
+
+    .category-header,
+    .refine-header {
+      background-color: #2a2a2a;
+    }
+
+    .category-links {
+      border-bottom-color: rgba($theme-border-color, 0.3);
+
+      .MuiTypography-body2 {
+        color: #aaa;
+
+        &:hover {
+          color: #ddd;
+        }
+      }
+    }
+
+    .filter-accordion {
+      border-color: rgba($theme-border-color, 0.3);
+
+      .MuiAccordionSummary-root {
+        background-color: #1e1e1e;
+
+        &:hover {
+          background-color: #252525;
+        }
+      }
+
+      .filter-title {
+        color: #ddd;
+      }
+
+      .MuiAccordionDetails-root {
+        background-color: #252525;
+      }
+
+      .MuiFormControlLabel-root .MuiTypography-root {
+        color: #aaa;
+      }
+
+      .MuiCheckbox-root {
+        color: #666;
+
+        &.Mui-checked {
+          color: $theme-primary-button-color;
+        }
+
+        .MuiSvgIcon-root {
+          font-size: 16px; // smaller for dark theme as well
+        }
+      }
+    }
+
+    .price-filter {
+      .price-input {
+        .MuiOutlinedInput-root {
+          color: #ddd;
+
+          fieldset {
+            border-color: rgba($theme-border-color, 0.3);
+          }
+
+          &:hover fieldset {
+            border-color: rgba($theme-border-color, 0.5);
+          }
+        }
+
+        .MuiInputBase-input {
+          color: #ddd;
+        }
+      }
+
+      .update-button {
+        background-color: $theme-secondary-button-color;
+        color: $theme-background-color;
+
+        &:hover {
+          background-color: rgba($theme-secondary-button-color, 0.8);
+        }
+      }
+    }
+  }
+}
