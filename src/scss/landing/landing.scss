@@ -1,15 +1,18 @@
 @use "../variables" as *;
 
 .banner-landing-image-container {
-  position: relative !important;
+  position: relative !important; /* keep relative so image stays inside */
   width: 100% !important;
   height: 52vh !important;
   overflow: hidden !important;
   border-radius: 0 !important;
+  z-index: 1; /* make slider lower */
 }
 
 .banner-image {
   object-fit: cover !important;
+  position: relative; /* ensure image does not break stacking */
+  z-index: -999 !important; /* lower than dropdown */
 }
 
 @media (max-width: 900px) {

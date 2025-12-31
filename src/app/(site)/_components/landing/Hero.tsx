@@ -77,7 +77,7 @@ const Hero = () => {
 
         <Grid item xs={12} md={8}>
           {staticSliders?.length > 1 ? (
-            <Box>
+            <Box sx={{ position: "relative", zIndex: -999 }}>
               <Slider {...settings}>
                 {staticSliders.map((data: any, index: number) => (
                   <Box key={index} className="banner-landing-image-container">

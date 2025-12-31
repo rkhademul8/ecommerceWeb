@@ -82,17 +82,18 @@
 }
 
 .floating-categories {
-  position: absolute;
-  top: 160%;
+  position: absolute; // fixed so it stays above all content
+  top: 70px; // adjust this to place dropdown correctly
   left: 0;
   width: 220px;
-  height: 52vh;
-  overflow-y: auto; // keep scrolling
-  background: $theme-background-color;
+  max-height: 52vh; // use max-height instead of height for better responsiveness
+  overflow-y: auto;
+  background: #fff; // fallback background color
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 10px 5px;
   border-radius: 5px;
   z-index: 9999 !important;
+
   scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
@@ -113,19 +114,19 @@
     cursor: pointer;
 
     &:hover {
-      background: $theme-tertiary-color;
+      background: #f2f0f9; // example hover color
     }
 
     .category-text {
       flex: 1;
       font-size: 13px;
       font-weight: 550;
-      color: $theme-text-title-color;
+      color: #333; // example text color
     }
 
     .arrow {
       font-size: 18px;
-      color: $theme-text-title-color;
+      color: #333;
     }
   }
 
@@ -140,10 +141,10 @@
       font-size: 13px;
       cursor: pointer;
       padding: 3px 0;
-      color: $theme-text-title-color;
+      color: #333;
 
       &:hover {
-        color: $theme-tertiary-color;
+        color: #ff7d95; // example hover color
       }
     }
   }
