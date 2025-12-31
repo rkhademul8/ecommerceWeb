@@ -465,6 +465,7 @@ export default function ProductPage() {
                   width: "100%",
                 }}
               >
+                
                 <Box
                   ref={containerRef}
                   onMouseMove={handleMouseMove}
@@ -525,6 +526,7 @@ export default function ProductPage() {
                     />
                   )}
                 </Box>
+
                 {showZoom && selectedImage !== "video" && (
                   <Box
                     sx={{

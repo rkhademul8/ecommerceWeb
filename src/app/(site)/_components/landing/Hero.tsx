@@ -73,61 +73,7 @@ const Hero = () => {
   return (
     <Box mt={2}>
       <Grid spacing={2} container>
-        <Grid item xs={12} md={1.5}>
-          <Box>
-            <Box
-              ref={sidebarRef}
-              className={`hero-sidebar ${mobileSidebarOpen ? "open" : ""}`}
-            >
-              <Typography className="hero-section-categories-name">Choose Categories</Typography>
-
-              {categories.map((cat: any, i: any) => {
-                const isOpen = openCategory === cat.tag;
-
-                return (
-                  <Box key={i} className="category-wrapper">
-                    <Box
-                      className="category-item"
-                      onClick={() => setOpenCategory(isOpen ? null : cat.tag)}
-                    >
-                      {/* <Image
-                        src={cat.image}
-                        alt={cat.name}
-                        width={30}
-                        height={25}
-                        className="category-img"
-                      /> */}
-                      <span className="category-text">{cat.name}</span>
-                      {isOpen ? (
-                        <KeyboardArrowDownIcon className="arrow" />
-                      ) : (
-                        <KeyboardArrowRightIcon className="arrow" />
-                      )}
-                    </Box>
-
-                    {isOpen && cat.subCategories && (
-                      <Box className="subcategory-list">
-                        {cat.subCategories.map((sub: any, idx: any) => (
-                          <Typography
-                            key={idx}
-                            className="subcategory-item"
-                            onClick={() =>
-                              router.push(
-                                `/shop/${encodeURIComponent(sub.searchTag)}`
-                              )
-                            }
-                          >
-                            {sub.name}
-                          </Typography>
-                        ))}
-                      </Box>
-                    )}
-                  </Box>
-                );
-              })}
-            </Box>
-          </Box>
-        </Grid>
+        <Grid item xs={12} md={1.5}></Grid>
 
         <Grid item xs={12} md={8}>
           {staticSliders?.length > 1 ? (

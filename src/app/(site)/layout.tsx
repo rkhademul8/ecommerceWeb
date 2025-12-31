@@ -18,6 +18,7 @@ import Image from "next/image";
 import "../../scss/dashboard-layout.scss";
 import logo from "../../../public/favicon.png";
 import secureLocalStorage from "react-secure-storage";
+import SubHeader from "./_components/landing/SubHeader";
 
 const SiteLayout = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
@@ -88,6 +89,7 @@ const SiteLayout = ({ children }: { children: React.ReactNode }) => {
           ) : (
             <>
               <Header />
+              <SubHeader />
               <Box component="main" className="site-main-content">
                 {children}
               </Box>
