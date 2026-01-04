@@ -49,8 +49,6 @@ export default function ProductPage() {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [selectedSku, setSelectedSku] = useState<any>({});
 
-  console.log("selectedSku", selectedSku);
-
   const [packageInfo, setPackageInfo] = useState<any>([]);
   const [similerProducts, setSimilerProducts] = useState<any[]>([]);
   const [descriptionImageUrls, setDescriptionImageUrls] = useState<any[]>([]);
@@ -960,6 +958,41 @@ export default function ProductPage() {
                   <Tab label="Seller Info" />
                 </Tabs>
 
+                {tabIndex === 0 && (
+                  <Grid container spacing={3} mb={2}>
+                    {loadingSimilar
+                      ? [...Array(10)].map((_, idx) => (
+                          <Grid item xs={6} md={2.4} key={idx}>
+                            <ProductCardSkeleton />
+                          </Grid>
+                        ))
+                      : similerProducts.map((item, idx) => (
+                          <Grid item xs={6} md={2.4} key={idx}>
+                            <ProductCard
+                              id={item.id}
+                              source="osee"
+                              name={item.title}
+                              price={item.equivalentPrice?.current}
+                              image={item.image}
+                              soldCount={item.sales?.total || 0}
+                              ratings={item.ratings?.score}
+                            />
+                          </Grid>
+                        ))}
+
+                    <Grid item xs={12} mt={2} textAlign="center">
+                      <button
+                        className="view-all-btn"
+                        onClick={() =>
+                          router.push(`/shop/cat-${result?.categoryRemote?.id}`)
+                        }
+                      >
+                        Load More
+                      </button>
+                    </Grid>
+                  </Grid>
+                )}
+
                 {tabIndex === 1 && (
                   <Grid container spacing={0} className="spec-list">
                     {result?.productProperties?.map(
@@ -1045,50 +1078,8 @@ export default function ProductPage() {
                         {result?.vendor?.name}
                       </span>
                     </Grid>
-
-                    <Grid item xs={12} className="seller-row odd">
-                      <span className="seller-key">Shop URL</span>
-                      <span className="seller-value">
-                        {result?.vendor?.url}
-                      </span>
-                    </Grid>
                   </Grid>
                 )}
-              </Box>
-
-              <Box>
-                <Grid container spacing={3} mb={2}>
-                  {loadingSimilar
-                    ? [...Array(10)].map((_, idx) => (
-                        <Grid item xs={6} md={2.4} key={idx}>
-                          <ProductCardSkeleton />
-                        </Grid>
-                      ))
-                    : similerProducts.map((item, idx) => (
-                        <Grid item xs={6} md={2.4} key={idx}>
-                          <ProductCard
-                            id={item.id}
-                            source="osee"
-                            name={item.title}
-                            price={item.equivalentPrice?.current}
-                            image={item.image}
-                            soldCount={item.sales?.total || 0}
-                            ratings={item.ratings?.score}
-                          />
-                        </Grid>
-                      ))}
-
-                  <Grid item xs={12} mt={2} textAlign="center">
-                    <button
-                      className="view-all-btn"
-                      onClick={() =>
-                        router.push(`/shop/cat-${result?.categoryRemote?.id}`)
-                      }
-                    >
-                      Load More
-                    </button>
-                  </Grid>
-                </Grid>
               </Box>
             </Grid>
             <Grid item xs={12} md={4}></Grid>
