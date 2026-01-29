@@ -71,11 +71,9 @@ const Hero = () => {
   // if (loading.data) return <div>loading..........</div>;
 
   return (
-    <Box mt={2}>
+    <Box>
       <Grid spacing={2} container>
-        <Grid item xs={12} md={1.5}></Grid>
-
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={12}>
           {staticSliders?.length > 1 ? (
             <Box sx={{ position: "relative", zIndex: -999 }}>
               <Slider {...settings}>
@@ -103,35 +101,6 @@ const Hero = () => {
               />
             </Box>
           ) : null}
-        </Grid>
-        <Grid item xs={12} md={2.5}>
-          <Box className="promoCard">
-            <Box className="content">
-              <Typography className="title">New Arrivals</Typography>
-              <Typography className="subtitle">Winter Sale 20% OFF</Typography>
-              <Link href="/" className="cta">
-                EXPLORE NOW
-              </Link>
-            </Box>
-
-            <Box className="imageBox">
-              <Image width={100} height={100} src={product1} alt="image" />
-            </Box>
-          </Box>
-
-          <Box className="promoCard" mt={1}>
-            <Box className="content">
-              <Typography className="title">New Arrivals</Typography>
-              <Typography className="subtitle">Winter Sale 20% OFF</Typography>
-              <Link href="/" className="cta">
-                EXPLORE NOW
-              </Link>
-            </Box>
-
-            <Box className="imageBox">
-              <Image width={100} height={100} src={product2} alt="image" />
-            </Box>
-          </Box>
         </Grid>
       </Grid>
     </Box>
