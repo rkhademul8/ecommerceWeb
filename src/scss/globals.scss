@@ -4,14 +4,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
 
 :root {
-  --background: $theme-background-color;
-  --foreground: $theme-background-color;
+  --background: $background-color-white;
+  --foreground: $background-color-white;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: $theme-background-color;
-    --foreground: $theme-background-color;
+    --background: $background-color-white;
+    --foreground: $background-color-white;
   }
 }
 
@@ -28,7 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: $theme-font !important;
   -webkit-font-smoothing: antialiased;
-  background-color: $theme-background-color;
+  background-color: $background-color-white;
 }
 
 * {
@@ -389,7 +389,7 @@ input:-webkit-autofill:active {
 
 .popupSlider .slick-dots li.slick-active button:before {
   opacity: 0.75;
-  color: $theme-background-color;
+  color: $background-color-white;
 }
 
 .link {
@@ -649,7 +649,9 @@ input:-webkit-autofill:active {
   gap: 5px;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s, cursor 0.3s;
+  transition:
+    background-color 0.3s,
+    cursor 0.3s;
 }
 
 .confirmed-button.disabled {
@@ -892,7 +894,8 @@ input:-webkit-autofill:active {
 }
 
 .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
-  box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 0.2),
+  box-shadow:
+    0px 0px 5px -3px rgba(0, 0, 0, 0.2),
     /* Top shadow */ 0px 0px 10px 1px rgba(0, 0, 0, 0.14),
     /* Side shadow */ 0px 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
@@ -1125,7 +1128,7 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) {
 
 .view-all-btn {
   border: none;
-  color: $theme-background-color;
+  color: $background-color-white;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;

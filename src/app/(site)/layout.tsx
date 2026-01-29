@@ -89,11 +89,11 @@ const SiteLayout = ({ children }: { children: React.ReactNode }) => {
           ) : (
             <>
               <Header />
-              <SubHeader />
+              {/* <SubHeader /> */}
               <Box component="main" className="site-main-content">
                 {children}
               </Box>
-              <Footer />
+              {/* <Footer /> */}
             </>
           )}
         </>

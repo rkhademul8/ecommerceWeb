@@ -13,7 +13,7 @@
   padding: 20px 10px;
   border-right: 1px solid #eee;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05); // subtle right shadow
-  background: $theme-background-color;
+  background: $background-color-white;
   overflow-y: auto;
 
   scrollbar-width: none;
@@ -151,7 +151,7 @@
 .filter-sidebar {
   width: 100%;
   max-width: 300px;
-  background-color: $theme-background-color;
+  background-color: $background-color-white;
   border: 1px solid #e0e0e0;
 
   // Category Header Section
@@ -160,7 +160,7 @@
     padding: 15px 20px;
 
     .MuiTypography-h6 {
-      color: $theme-background-color;
+      color: $background-color-white;
       font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.5px;
@@ -197,7 +197,7 @@
     margin-top: 0;
 
     .MuiTypography-h6 {
-      color: $theme-background-color;
+      color: $background-color-white;
       font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.5px;
@@ -220,7 +220,7 @@
 
     &.MuiChip-colorPrimary {
       background-color: $theme-primary-button-color;
-      color: $theme-background-color;
+      color: $background-color-white;
     }
 
     .MuiChip-label {
@@ -246,7 +246,7 @@
     .MuiAccordionSummary-root {
       padding: 15px 20px;
       min-height: auto !important;
-      background-color: $theme-background-color;
+      background-color: $background-color-white;
       transition: background-color 0.2s ease;
 
       &:hover {
@@ -367,7 +367,7 @@
     .update-button {
       padding: 8px 20px;
       background-color: $theme-secondary-button-color;
-      color: $theme-background-color;
+      color: $background-color-white;
       font-weight: 500;
       font-size: 14px;
       text-transform: none;
@@ -475,7 +475,7 @@
 
       .update-button {
         background-color: $theme-secondary-button-color;
-        color: $theme-background-color;
+        color: $background-color-white;
 
         &:hover {
           background-color: rgba($theme-secondary-button-color, 0.8);

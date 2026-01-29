@@ -193,7 +193,7 @@ const Header = () => {
         }
       } else {
         ErrorAlert(
-          "This link is not valid. Please enter a correct product link."
+          "This link is not valid. Please enter a correct product link.",
         );
       }
     } else {
@@ -250,7 +250,7 @@ const Header = () => {
               value={searchValue}
               onChange={handleChange}
               className="search-input"
-              placeholder="Search by keyword or link"
+              placeholder="Search by keyword, image or links"
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             />
             <IconButton className="search-btn" onClick={handleSearch}>
@@ -286,7 +286,7 @@ const Header = () => {
               onClick={handleOpen}
               sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
             >
-              <Typography className="service-label">Service</Typography>
+              <Typography className="service-label">Eng</Typography>
               <ArrowDropDownIcon className="dropdown-icon" />
             </Box>
 
@@ -297,9 +297,8 @@ const Header = () => {
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               transformOrigin={{ vertical: "top", horizontal: "right" }}
             >
-              <MenuItem onClick={handleClose}>Product</MenuItem>
-              <MenuItem onClick={handleClose}>Shipping</MenuItem>
-              <MenuItem onClick={handleClose}>Payment</MenuItem>
+              <MenuItem onClick={handleClose}>Bangla</MenuItem>
+              <MenuItem onClick={handleClose}>English</MenuItem>
             </Menu>
           </Box>
           <Box

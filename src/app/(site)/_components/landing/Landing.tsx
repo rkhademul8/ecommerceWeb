@@ -24,24 +24,25 @@ const LandingPage = () => {
         <GlobalService />
       </Box> */}
 
-      <Box className="root-container">
+      {/* <Box className="root-container">
         <Hero />
-      </Box>
-      <Box className="root-container">
+      </Box> */}
+
+      {/* <Box className="root-container">
         <OurExpertise />
-      </Box>
+      </Box> */}
 
-      <Box className="root-container">
+      {/* <Box className="root-container">
         <Category />
-      </Box>
+      </Box> */}
 
-      <Box className="root-container">
+      {/* <Box className="root-container">
         <Products />
-      </Box>
+      </Box> */}
 
-      <Box className="root-container">
+      {/* <Box className="root-container">
         <LandingPageVideo />
-      </Box>
+      </Box> */}
 
       {/* <Box className="root-container">
         <Countdown />

@@ -9,7 +9,7 @@
   color: $theme-color;
   font-family: $theme-font !important;
   padding: 5px 30px 0px 30px;
-  background: $theme-background-color;
+  background: $black-color;
 
   @media (max-width: 768px) {
     padding: 5px 20px 0px 20px;
@@ -29,8 +29,6 @@
     align-items: center;
     border-radius: 25px;
     background: #ffffff;
-    border: 2px solid $theme-secondary-color;
-
     .camera-btn {
       color: #444;
       padding: 0 12px;
@@ -63,8 +61,8 @@
     }
 
     .search-btn {
-      background: $theme-color;
-      color: #fff;
+      background: $yellow-color;
+      color: $black-color;
       padding: 0 16px;
       height: 100%;
       transition: background 0.3s;
@@ -95,13 +93,14 @@
       align-items: center;
       justify-content: center;
       font-family: $theme-font !important;
-      background-color: $theme-secondary-color;
+      background-color: $background-color-white;
     }
 
     .icon {
-      font-size: 28px;
+      font-size: 25px;
       cursor: pointer;
       transition: color 0.3s;
+      color: $background-color-white;
     }
 
     .user-info {
@@ -154,30 +153,17 @@
   .service-label {
     font-size: 15px;
     font-weight: 500;
-    color: $theme-color;
+    color: $background-color-white;
     transition: color 0.25s ease;
     font-family: $theme-font !important;
   }
 
   .dropdown-icon {
     font-size: 22px;
-    color: $theme-color;
-    transition: transform 0.25s ease, color 0.25s ease;
-  }
-
-  &:hover {
-    .service-label,
-    .dropdown-icon {
-      color: $theme-text-color;
-    }
-
-    .dropdown-icon {
-      transform: rotate(180deg);
-    }
-
-    .service-trigger {
-      background: lighten($theme-tertiary-color, 25%);
-    }
+    color: $background-color-white;
+    transition:
+      transform 0.25s ease,
+      color 0.25s ease;
   }
 }
 
@@ -193,7 +179,9 @@
 .MuiMenuItem-root {
   font-size: 14px;
   padding: 10px 20px;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
   font-family: $theme-font !important;
   color: $theme-text-color;
 

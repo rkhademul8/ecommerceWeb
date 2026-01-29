@@ -3,28 +3,28 @@
 $theme-color: #2c024d;
 $theme-secondary-color: #fdcd00;
 $theme-tertiary-color: #e1b771;
+
 $theme-font: "Outfit", sans-serif;
 
-$theme-body-background: #fff;
-$theme-footer-bg-color: #fff;
-$theme-background-color: #fff;
+$theme-body-background: #f2f4f8;
+$background-color-white: #ffffff;
 
+$purple-color: #2f0051;
+$black-color: #10001c;
+$gray-color: #747a80;
+$yellow-color: #ffce00;
+
+//  old color
 $theme-text-color: $theme-color;
-$theme-nav-text-active-color: $theme-color;
 $theme-footer-bg-color: color.adjust($theme-color, $lightness: -25%);
-
 $theme-primary-text-color: $theme-color;
 $theme-primary-button-color: $theme-color;
-
 $theme-secondary-text-color: $theme-secondary-color;
 $theme-secondary-button-color: $theme-secondary-color;
-
 $theme-tertiary-text-color: $theme-tertiary-color;
 $theme-tertiary-button-color: $theme-tertiary-color;
-
 $theme-label-color: #333333;
 $theme-text-title-color: #2b2b2b;
 $theme-text-subtitle-color: #5c5c5c;
-
 $theme-placeholder-color: color.adjust($theme-color, $lightness: 20%);
 $theme-border-color: #666;
