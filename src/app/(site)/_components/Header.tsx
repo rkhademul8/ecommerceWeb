@@ -362,7 +362,7 @@ const Header = () => {
           </Box>
         </Grid>
       </Grid>
-      <hr className="header-divider" />
+      {/* <hr className="header-divider" /> */}
     </Box>
   );
 };
