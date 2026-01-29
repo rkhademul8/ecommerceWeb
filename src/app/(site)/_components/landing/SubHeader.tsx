@@ -54,6 +54,7 @@ const SubHeader = () => {
     <Box className="sub-header" data-aos="fade-up">
       <Box px={3.5} py={0.5}>
         <Grid container alignItems="center" spacing={2}>
+          
           <Grid size={{ xs: 12, sm: 4, md: 3 }}>
             <Box>
               {!hideButton && (
@@ -124,7 +125,6 @@ const SubHeader = () => {
               )}
             </Box>
           </Grid>
-
           {/* CENTER */}
           <Grid size={{ xs: 12, sm: 8, md: 6 }} className="center-nav">
             <Stack direction="row" spacing={3} justifyContent="center">
@@ -140,7 +140,6 @@ const SubHeader = () => {
               </Stack>
             </Stack>
           </Grid>
-
           {/* RIGHT */}
           <Grid size={{ xs: 12, sm: 12, md: 3 }} className="right-section">
             {/* <Box className="promo-badge">Free Shipping On Order $99</Box> */}

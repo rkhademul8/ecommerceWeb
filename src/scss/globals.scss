@@ -1134,8 +1134,9 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) {
   font-weight: 500;
   border-radius: 20px;
   padding: 10px 30px;
-  background: $background-color-white;
+  background: #2f0051;
   font-family: $theme-font !important;
+  color: #fff;
   &:disabled {
     opacity: 0.4;
     cursor: not-allowed;

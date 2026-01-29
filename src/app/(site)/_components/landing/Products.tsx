@@ -68,7 +68,7 @@ const Products = () => {
   }, [categories]);
 
   return (
-    <Box mt={4}>
+    <Box mt={2}>
       {categories.map((cat) => (
         <Box key={cat.tag} sx={{ mb: 6 }}>
           <Box
