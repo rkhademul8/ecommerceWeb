@@ -37,7 +37,7 @@
 
     .product-card-price {
       font-size: 25px;
-      font-weight: 600 !important;
+      font-weight: 700 !important;
       color: $purple-color;
       font-family: $theme-font !important;
     }
@@ -68,10 +68,9 @@
     color: $theme-text-title-color !important;
     display: -webkit-box !important;
     -webkit-line-clamp: 1 !important;
-    /* max 2 lines */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   .product-card-sold {
@@ -84,9 +83,25 @@
   .product-card-deli {
     display: block;
     margin-top: 5px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500 !important;
     font-family: $theme-font !important;
     color: $theme-text-subtitle-color !important;
   }
+}
+
+.product-add-to-cart {
+  width: 100%;
+  padding: 10px 5px;
+  border-radius: 15px;
+  border: 1px solid #e5e5e5;
+  background-color: #fbfbfb;
+  color: $gray-color;
+  font-size: 15px;
+  font-weight: 600 !important;
+  cursor: pointer;
+}
+
+.product-card-link :hover .product-add-to-cart {
+  background-color: $yellow-color;
 }
