@@ -15,15 +15,13 @@ const SubHeader = () => {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
 
-  const [dropdownOpen, setDropdownOpen] = useState(isHomePage); // open by default on home page
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [openCategory, setOpenCategory] = useState<string | null>(null);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const hideButton = pathname.split("-")[0] === "/product/osee";
-
-  console.log("hideButton", hideButton);
 
   // Handle outside click to close dropdown
   useEffect(() => {
@@ -44,101 +42,113 @@ const SubHeader = () => {
     };
   }, []);
 
-  // Close dropdown when navigating to other pages
   useEffect(() => {
-    if (!isHomePage) {
-      setDropdownOpen(false);
-    } else {
-      setDropdownOpen(true); // always open by default on home page
-    }
+    // if (!isHomePage) {
+    //   setDropdownOpen(false);
+    // } else {
+    //   setDropdownOpen(true);
+    // }
   }, [pathname, isHomePage]);
 
   return (
     <Box className="sub-header" data-aos="fade-up">
-      <Grid container alignItems="center" spacing={2}>
-        {/* LEFT */}
+      <Box px={3.5} py={0.5}>
+        <Grid container alignItems="center" spacing={2}>
+          <Grid size={{ xs: 12, sm: 4, md: 3 }}>
+            <Box>
+              {!hideButton && (
+                <Box
+                  ref={buttonRef}
+                  onClick={() => setDropdownOpen((prev) => !prev)}
+                  sx={{
+                    display: "flex",
+                    gap: "5px",
+                    alignItems: "center",
+                    cursor: "pointer",
+                  }}
+                >
+                  <MenuIcon className="sub-header-category-icon" />
 
-        <Grid size={{ xs: 12, sm: 4, md: 3 }}>
-          <Box style={{ position: "relative" }}>
-            {!hideButton && (
-              <Button
-                ref={buttonRef}
-                startIcon={<MenuIcon />}
-                className="category-btn"
-                onClick={() => setDropdownOpen((prev) => !prev)}
-              >
-                SHOP BY CATEGORIES
-              </Button>
-            )}
+                  <Typography className="sub-header-category-Name">
+                    {" "}
+                    All Category
+                  </Typography>
+                </Box>
+              )}
 
-            {dropdownOpen && (
-              <Box ref={dropdownRef} className="floating-categories">
-                <Typography className="hero-section-categories-name">
-                  Choose Categories
-                </Typography>
+              {dropdownOpen && (
+                <Box ref={dropdownRef} className="floating-categories">
+                  <Typography className="hero-section-categories-name">
+                    Choose Categories
+                  </Typography>
 
-                {categories.map((cat, i) => {
-                  const isOpen = openCategory === cat.tag;
-                  return (
-                    <Box key={i} className="category-wrapper">
-                      <Box
-                        className="category-item"
-                        onClick={() => setOpenCategory(isOpen ? null : cat.tag)}
-                      >
-                        <span className="category-text">{cat.name}</span>
-                        {isOpen ? (
-                          <KeyboardArrowDownIcon className="arrow" />
-                        ) : (
-                          <KeyboardArrowRightIcon className="arrow" />
+                  {categories.map((cat, i) => {
+                    const isOpen = openCategory === cat.tag;
+                    return (
+                      <Box key={i} className="category-wrapper">
+                        <Box
+                          className="category-item"
+                          onClick={() =>
+                            setOpenCategory(isOpen ? null : cat.tag)
+                          }
+                        >
+                          <span className="category-text">{cat.name}</span>
+                          {isOpen ? (
+                            <KeyboardArrowDownIcon className="arrow" />
+                          ) : (
+                            <KeyboardArrowRightIcon className="arrow" />
+                          )}
+                        </Box>
+
+                        {isOpen && cat.subCategories && (
+                          <Box className="subcategory-list">
+                            {cat.subCategories.map((sub, idx) => (
+                              <Typography
+                                key={idx}
+                                className="subcategory-item"
+                                onClick={() =>
+                                  router.push(
+                                    `/shop/${encodeURIComponent(sub.searchTag)}`,
+                                  )
+                                }
+                              >
+                                {sub.name}
+                              </Typography>
+                            ))}
+                          </Box>
                         )}
                       </Box>
+                    );
+                  })}
+                </Box>
+              )}
+            </Box>
+          </Grid>
 
-                      {isOpen && cat.subCategories && (
-                        <Box className="subcategory-list">
-                          {cat.subCategories.map((sub, idx) => (
-                            <Typography
-                              key={idx}
-                              className="subcategory-item"
-                              onClick={() =>
-                                router.push(
-                                  `/shop/${encodeURIComponent(sub.searchTag)}`
-                                )
-                              }
-                            >
-                              {sub.name}
-                            </Typography>
-                          ))}
-                        </Box>
-                      )}
-                    </Box>
-                  );
-                })}
-              </Box>
-            )}
-          </Box>
-        </Grid>
+          {/* CENTER */}
+          <Grid size={{ xs: 12, sm: 8, md: 6 }} className="center-nav">
+            <Stack direction="row" spacing={3} justifyContent="center">
+              <Typography className="nav-item">About Us</Typography>
+              <Typography className="nav-item">Affiliate</Typography>
+              <Typography className="nav-item">Contact Us</Typography>
+              <Typography className="nav-item">Return Policy</Typography>
+              <Typography className="nav-item">Terms & Conditions</Typography>
 
-        {/* CENTER */}
-        <Grid size={{ xs: 12, sm: 8, md: 6 }} className="center-nav">
-          <Stack direction="row" spacing={3} justifyContent="center">
-            <Typography className="nav-item">About Us</Typography>
-            <Typography className="nav-item">Affiliate</Typography>
-            <Typography className="nav-item">Contact Us</Typography>
-            <Typography className="nav-item">Return Policy</Typography>
-            <Typography className="nav-item">Terms & Conditions</Typography>
-
-            <Stack direction="row" spacing={0.5} alignItems="center">
-              <Typography className="nav-item">More</Typography>
-              <KeyboardArrowDownIcon className="nav-icon" />
+              <Stack direction="row" spacing={0.5} alignItems="center">
+                <Typography className="nav-item">More</Typography>
+                <KeyboardArrowDownIcon className="nav-icon" />
+              </Stack>
             </Stack>
-          </Stack>
-        </Grid>
+          </Grid>
 
-        {/* RIGHT */}
-        <Grid size={{ xs: 12, sm: 12, md: 3 }} className="right-section">
-          <Box className="promo-badge">Free Shipping On Order $99</Box>
+          {/* RIGHT */}
+          <Grid size={{ xs: 12, sm: 12, md: 3 }} className="right-section">
+            {/* <Box className="promo-badge">Free Shipping On Order $99</Box> */}
+          </Grid>
         </Grid>
-      </Grid>
+      </Box>
+
+      <hr className="header-divider" />
     </Box>
   );
 };

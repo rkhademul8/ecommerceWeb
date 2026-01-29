@@ -1,10 +1,17 @@
 @use "../variables" as *;
 
-.sub-header {
-  background-color: #f57c00;
-  padding: 10px 36px;
+.sub-header-category-icon {
+  font-size: 25px !important;
+  color: $black-color;
+  font-weight: 600 !important;
 }
 
+.sub-header-category-Name {
+  font-size: 14px !important;
+  color: $black-color;
+  font-family: $theme-font;
+  font-weight: 600 !important;
+}
 /* LEFT */
 .category-btn {
   background-color: #3b3b3b !important;
@@ -26,8 +33,8 @@
   justify-content: center;
 
   .nav-item {
-    color: #fff;
-    font-size: 14px;
+    color: $black-color;
+    font-size: 13px;
     font-weight: 500;
     cursor: pointer;
     white-space: nowrap;
