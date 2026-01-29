@@ -34,11 +34,11 @@ const LandingPage = () => {
       </Box>
 
       {/* <Box className="root-container">
-        <OurExpertise />
+        <Products />
       </Box> */}
 
       {/* <Box className="root-container">
-        <Products />
+        <OurExpertise />
       </Box> */}
 
       {/* <Box className="root-container">

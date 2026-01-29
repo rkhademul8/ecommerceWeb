@@ -71,7 +71,14 @@ const Products = () => {
     <Box mt={4}>
       {categories.map((cat) => (
         <Box key={cat.tag} sx={{ mb: 6 }}>
-          <Box sx={{ display: "flex", justifyContent: "space-between" }} mb={2}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+            mb={2}
+          >
             <Typography className="normal-header">{cat.name}</Typography>
             <button
               className="view-all-btn"

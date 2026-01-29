@@ -52,7 +52,7 @@ const SubHeader = () => {
 
   return (
     <Box className="sub-header" data-aos="fade-up">
-      <Box px={3.5} py={0.5}>
+      <Box px={3.5} py={0.8}>
         <Grid container alignItems="center" spacing={2}>
           <Grid size={{ xs: 12, sm: 4, md: 3 }}>
             <Box>

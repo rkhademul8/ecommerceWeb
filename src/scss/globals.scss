@@ -520,7 +520,7 @@ input:-webkit-autofill:active {
   font-family: $theme-font !important;
   font-size: 20px !important;
   font-weight: 600 !important;
-  color: $theme-tertiary-text-color;
+  color: $black-color;
 }
 
 .normal-header-2 {
@@ -1127,20 +1127,23 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) {
 }
 
 .view-all-btn {
-  border: none;
-  color: $background-color-white;
+  border: 1px solid $theme-border-color;
+  color: $black-color;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 10px 30px;
-  background: $theme-tertiary-button-color;
+  background: $background-color-white;
   font-family: $theme-font !important;
-
   &:disabled {
     opacity: 0.4;
     cursor: not-allowed;
   }
+}
+
+.view-all-btn:hover {
+  background: $yellow-color;
 }
 
 .view-selected-btn {
