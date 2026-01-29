@@ -41,18 +41,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <CardContent className="product-card-content">
           <Box className="product-card-price-rating">
             <span className="product-card-price">৳ {price}</span>
-            <Rating
-              name="read-only"
-              value={ratings}
-              precision={0.5}
-              readOnly
-              size="small"
-              className="product-card-rating"
-            />
+            <span className="home-product-old-price">৳ 200</span>
           </Box>
           <span className="product-card-title">{name}</span>
           <span className="product-card-sold">{soldCount || 0} SOLD</span>
-          <span className="product-card-deli">CN to BD: 10-12 days</span>
+          <span className="product-card-deli">
+            China to Bangladesh: 10-12 days
+          </span>
         </CardContent>
       </Card>
     </Box>
