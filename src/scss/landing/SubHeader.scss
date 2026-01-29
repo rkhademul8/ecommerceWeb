@@ -1,5 +1,9 @@
 @use "../variables" as *;
 
+.sub-header {
+  background-color: $background-color-white !important;
+}
+
 .sub-header-category-icon {
   font-size: 25px !important;
   color: $black-color;
