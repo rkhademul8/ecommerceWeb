@@ -13,6 +13,7 @@ import Countdown from "./Countdown";
 import GlobalService from "./GlobalService";
 import LandingPageVideo from "./LandingPageVideo";
 import OurExpertise from "./OurExpertise";
+import HotDeal from "./HotDeal";
 
 const LandingPage = () => {
   return (
@@ -25,21 +26,25 @@ const LandingPage = () => {
         <GlobalService />
       </Box> */}
 
-      <Box>
+      {/* <Box>
         <Hero />
-      </Box>
-
-      <Box className="root-container">
-        <Category />
-      </Box>
-
-      <Box className="root-container">
-        <Products />
-      </Box>
+      </Box> */}
 
       {/* <Box className="root-container">
-        <OurExpertise />
+        <Category />
       </Box> */}
+
+      {/* <Box className="root-container">
+        <Products />
+      </Box> */}
+
+      <Box className="root-container">
+        <HotDeal />
+      </Box>
+
+      <Box>
+        <OurExpertise />
+      </Box>
 
       {/* <Box className="root-container">
         <LandingPageVideo />

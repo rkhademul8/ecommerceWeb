@@ -38,7 +38,7 @@ body {
 }
 
 .root-container {
-  padding: 0px 35px;
+  padding: 0px 35px !important;
   box-sizing: border-box;
 
   @media (max-width: 768px) {

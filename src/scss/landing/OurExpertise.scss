@@ -1,25 +1,43 @@
 @use "../variables" as *;
 
+.expertise-box {
+  background-color: #eae6ee;
+}
+
 .expertise-title {
   text-align: center;
-  font-size: 20px !important;
-  color: $theme-tertiary-text-color !important;
+  font-size: 22px !important;
+  color: $purple-color !important;
   font-weight: 600 !important;
   text-align: center;
 }
 
+.expertise-text {
+  text-align: center;
+  font-size: 14px !important;
+  color: $gray-color;
+}
+
 .expertiseCard {
   border-radius: 5px;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  background-color: $background-color-white;
   padding: 10px;
 
   .subtitle {
-    color: $theme-tertiary-text-color;
+    color: $black-color;
     font-size: 16px !important;
     font-weight: 500 !important;
-    margin-bottom: 16px;
     font-family: $theme-font !important;
     text-align: center;
     padding-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  .subtitle-text {
+    color: $gray-color;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    font-family: $theme-font !important;
+    text-align: center;
   }
 }

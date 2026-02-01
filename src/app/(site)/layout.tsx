@@ -72,6 +72,8 @@ const SiteLayout = ({ children }: { children: React.ReactNode }) => {
         <PageLoader />
       ) : (
         <>
+          {/* envMode.metavalue === "Yes" */}
+
           {envMode.metavalue === "Yes" ? (
             <Typography
               sx={{
