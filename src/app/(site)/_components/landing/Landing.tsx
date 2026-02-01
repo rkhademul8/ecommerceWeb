@@ -46,9 +46,9 @@ const LandingPage = () => {
         <OurExpertise />
       </Box>
 
-      {/* <Box className="root-container">
+      <Box className="root-container">
         <LandingPageVideo />
-      </Box> */}
+      </Box>
 
       {/* <Box className="root-container">
         <Countdown />

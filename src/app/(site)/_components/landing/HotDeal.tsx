@@ -16,7 +16,7 @@ const HotDeal = () => {
             <Image
               style={{
                 width: "100%",
-                height: "auto",
+                height: "450px",
               }}
               src={deal1}
               alt="A beautiful view"
@@ -28,7 +28,7 @@ const HotDeal = () => {
             <Image
               style={{
                 width: "100%",
-                height: "auto",
+                height: "450px",
               }}
               src={deal2}
               alt="A beautiful view"
@@ -40,7 +40,7 @@ const HotDeal = () => {
             <Image
               style={{
                 width: "100%",
-                height: "auto",
+                height: "450px",
               }}
               src={deal3}
               alt="A beautiful view"
@@ -52,7 +52,7 @@ const HotDeal = () => {
             <Image
               style={{
                 width: "100%",
-                height: "auto",
+                height: "450px",
               }}
               src={deal1}
               alt="A beautiful view"

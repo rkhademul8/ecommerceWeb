@@ -74,7 +74,7 @@ const SiteLayout = ({ children }: { children: React.ReactNode }) => {
         <>
           {/* envMode.metavalue === "Yes" */}
 
-          {envMode.metavalue === "Yes" ? (
+          {envMode.metavalue === "yes" ? (
             <Typography
               sx={{
                 textAlign: "center",
