@@ -118,9 +118,9 @@ export default function ShopPage() {
           ref={sidebarRef}
           className={`sidebar ${mobileSidebarOpen ? "open" : ""}`}
         >
-          <FilterProducts />
+          {/* <FilterProducts /> */}
 
-          {/* {categories.map((cat, i) => {
+          {categories.map((cat, i) => {
             const isOpen = openCategory === cat.tag;
 
             return (
@@ -145,7 +145,7 @@ export default function ShopPage() {
                         className="subcategory-item"
                         onClick={() =>
                           router.push(
-                            `/shop/${encodeURIComponent(sub.searchTag)}`
+                            `/shop/${encodeURIComponent(sub.searchTag)}`,
                           )
                         }
                       >
@@ -156,7 +156,7 @@ export default function ShopPage() {
                 )}
               </Box>
             );
-          })} */}
+          })}
         </Box>
 
         <Box className="shop-content">
@@ -178,11 +178,14 @@ export default function ShopPage() {
                 />
 
                 <span className="title">
-                  Showing Results for{" "}
-                  <span className="highlight">{formattedSearch}</span>
+                  {formattedSearch}{" "}
+                  <span className="highlight"> Results Showing </span>
+                </span>
+                <span className="results-count">
+                  ( {results.length} Results )
                 </span>
               </Box>
-              <span className="results-count">{results.length} Results</span>
+              {/* <span className="results-count">{results.length} Results</span> */}
             </Box>
           </Box>
           {loading ? (

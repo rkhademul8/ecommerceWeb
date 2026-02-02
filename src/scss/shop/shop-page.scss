@@ -103,16 +103,17 @@
   .results-header {
     .title {
       font-weight: 600;
-      text-transform: uppercase;
       font-family: $theme-font !important;
-      color: $theme-text-title-color;
+      color: $black-color;
+      font-size: 20px !important;
+      text-transform: capitalize !important;
     }
 
     .highlight {
-      color: #e91e63;
+      color: $gray-color;
       font-weight: 600;
       font-family: $theme-font !important;
-      text-transform: uppercase;
+      text-transform: capitalize !important;
     }
 
     .results-count {
@@ -120,7 +121,7 @@
       font-size: 14px;
       margin-top: 5px;
       font-family: $theme-font !important;
-      color: $theme-text-title-color;
+      color: $gray-color;
     }
   }
 

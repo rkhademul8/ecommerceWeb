@@ -1,9 +1,7 @@
 "use client";
 
 import { Box } from "@mui/material";
-
 import "../../../../scss/landing/landing.scss";
-
 import Hero from "./Hero";
 import Notice from "./Notice";
 import Features from "./Features";
@@ -26,17 +24,17 @@ const LandingPage = () => {
         <GlobalService />
       </Box> */}
 
-      {/* <Box>
+      <Box>
         <Hero />
-      </Box> */}
+      </Box>
 
-      {/* <Box className="root-container">
+      <Box className="root-container">
         <Category />
-      </Box> */}
+      </Box>
 
-      {/* <Box className="root-container">
+      <Box className="root-container">
         <Products />
-      </Box> */}
+      </Box>
 
       <Box className="root-container">
         <HotDeal />

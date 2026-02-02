@@ -1127,16 +1127,16 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) {
 }
 
 .view-all-btn {
-  border: 1px solid $theme-border-color;
-  color: $black-color;
+  border: none;
+
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 12px !important;
+  font-weight: 500 !important;
   border-radius: 20px;
   padding: 10px 30px;
-  background: #2f0051;
+  background: $yellow-color;
   font-family: $theme-font !important;
-  color: #fff;
+  color: $black-color;
   &:disabled {
     opacity: 0.4;
     cursor: not-allowed;

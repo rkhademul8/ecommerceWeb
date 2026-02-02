@@ -20,8 +20,9 @@ const SubHeader = () => {
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-
-  const hideButton = pathname.split("-")[0] === "/product/osee";
+  const hideButton =
+    pathname.split("-")[0] === "/product/osee" ||
+    pathname.split("/")[1] === "shop";
 
   // Handle outside click to close dropdown
   useEffect(() => {
@@ -37,24 +38,24 @@ const SubHeader = () => {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
-  useEffect(() => {
-    // if (!isHomePage) {
-    //   setDropdownOpen(false);
-    // } else {
-    //   setDropdownOpen(true);
-    // }
-  }, [pathname, isHomePage]);
+  // useEffect(() => {
+  //   if (!isHomePage) {
+  //     setDropdownOpen(false);
+  //   } else {
+  //     setDropdownOpen(true);
+  //   }
+  // }, [pathname, isHomePage]);
 
   return (
     <Box className="sub-header" data-aos="fade-up">
       <Box px={3.5} py={0.5}>
         <Grid container alignItems="center" spacing={2}>
-          
           <Grid size={{ xs: 12, sm: 4, md: 3 }}>
             <Box>
               {!hideButton && (
