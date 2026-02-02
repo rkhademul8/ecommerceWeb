@@ -59,7 +59,7 @@ const FilterProducts: React.FC = () => {
 
   const handleCheckboxChange = (
     category: keyof FilterState,
-    value: string | number
+    value: string | number,
   ) => {
     setFilters((prev) => ({
       ...prev,
@@ -79,47 +79,13 @@ const FilterProducts: React.FC = () => {
     // Add your price filter logic here
   };
 
-  const brands: Brand[] = [
-    { name: "OFS", count: 1 },
-    { name: "Panasonic", count: 2 },
-    { name: "Premium Quality", count: 1 },
-    { name: "Sagaform", count: 1 },
-    { name: "Trendyzone", count: 1 },
-  ];
+  const brands: Brand[] = [{ name: "OFS", count: 1 }];
 
-  const sizes: string[] = ["L", "M", "S", "XL", "XS"];
+  const sizes: string[] = ["L"];
   const vintageYears: VintageYear[] = [{ year: 1991, count: 1 }];
 
   return (
-    <Box
-      className="filter-sidebar"
- 
-    >
-      {/* Category Header */}
-      <Box className="category-header">
-        <Typography variant="h6">WOMEN'S FASHION</Typography>
-      </Box>
-
-      {/* Category Links */}
-      <Box className="category-links">
-        <Typography variant="body2">Active & Sportswear</Typography>
-        <Typography variant="body2">Western Wear</Typography>
-      </Box>
-
-      {/* Refine By Header */}
-      <Box className="refine-header">
-        <Typography variant="h6">REFINE BY</Typography>
-      </Box>
-
-      {/* Filter Chip */}
-      <Box className="chip-container">
-        <Chip
-          label="No filters applied"
-          className="filter-chip"
-          color="primary"
-        />
-      </Box>
-
+    <Box className="filter-sidebar">
       {/* Brand Filter */}
       <Accordion
         expanded={expanded.brand}
@@ -210,44 +176,8 @@ const FilterProducts: React.FC = () => {
         </AccordionDetails>
       </Accordion>
 
-      {/* Wine Vintage Filter */}
-      <Accordion
-        expanded={expanded.vintage}
-        onChange={handleAccordionChange("vintage")}
-        className="filter-accordion"
-        disableGutters
-        elevation={0}
-      >
-        <AccordionSummary
-          expandIcon={expanded.vintage ? <RemoveIcon /> : <AddIcon />}
-          aria-controls="vintage-content"
-          id="vintage-header"
-        >
-          <Typography className="filter-title">Wine Vintage</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <FormGroup>
-            {vintageYears.map((vintage) => (
-              <FormControlLabel
-                key={vintage.year}
-                control={
-                  <Checkbox
-                    checked={filters.vintage.includes(vintage.year)}
-                    onChange={() =>
-                      handleCheckboxChange("vintage", vintage.year)
-                    }
-                    size="small"
-                  />
-                }
-                label={`${vintage.year} (${vintage.count})`}
-              />
-            ))}
-          </FormGroup>
-        </AccordionDetails>
-      </Accordion>
-
       {/* Price Filter */}
-      <Accordion
+      {/* <Accordion
         expanded={expanded.price}
         onChange={handleAccordionChange("price")}
         className="filter-accordion"
@@ -288,29 +218,7 @@ const FilterProducts: React.FC = () => {
             </Button>
           </Box>
         </AccordionDetails>
-      </Accordion>
-
-      {/* Other Filter */}
-      <Accordion
-        expanded={expanded.other}
-        onChange={handleAccordionChange("other")}
-        className="filter-accordion"
-        disableGutters
-        elevation={0}
-      >
-        <AccordionSummary
-          expandIcon={expanded.other ? <RemoveIcon /> : <AddIcon />}
-          aria-controls="other-content"
-          id="other-header"
-        >
-          <Typography className="filter-title">Other</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography variant="body2" className="empty-text">
-            No other options available
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+      </Accordion> */}
     </Box>
   );
 };

@@ -118,7 +118,7 @@ export default function ShopPage() {
           ref={sidebarRef}
           className={`sidebar ${mobileSidebarOpen ? "open" : ""}`}
         >
-          {/* <FilterProducts /> */}
+          <FilterProducts />
 
           {categories.map((cat, i) => {
             const isOpen = openCategory === cat.tag;
