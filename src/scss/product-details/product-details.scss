@@ -10,11 +10,10 @@
 
   .product-images {
     .main-image {
-      width: 95%;
-      max-height: 380px;
+      width: 100%;
+      max-height: auto;
       border-radius: 6px;
       object-fit: contain;
-      border: 1px solid #ddd;
     }
 
     .thumbnail-list {
@@ -42,7 +41,6 @@
 
       .video-thumb {
         position: relative;
-
         .play-icon {
           position: absolute;
           top: 50%;
@@ -449,16 +447,16 @@
     }
   }
 
- .product-cart-sticky {
-  position: sticky;
-  top: 50px; /* distance from viewport top */
-  width: 100%;
-  z-index: 1000;
+  .product-cart-sticky {
+    position: sticky;
+    top: 50px; /* distance from viewport top */
+    width: 100%;
+    z-index: 1000;
 
-  max-height: calc(100vh - 50px); /* full viewport minus top offset */
-  overflow-y: auto; /* scroll inside if content is taller */
-  box-sizing: border-box;
-}
+    max-height: calc(100vh - 50px); /* full viewport minus top offset */
+    overflow-y: auto; /* scroll inside if content is taller */
+    box-sizing: border-box;
+  }
   .product-extra-summary {
     padding: 10px;
     background: #fff;

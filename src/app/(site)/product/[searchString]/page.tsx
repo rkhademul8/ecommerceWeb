@@ -131,7 +131,7 @@ export default function ProductPage() {
         .join(";");
 
       const matchedSku = result?.itemSkus?.find(
-        (sku: any) => sku.props_ids === propsIds
+        (sku: any) => sku.props_ids === propsIds,
       );
 
       setSelectedImage(result?.images?.[0]);
@@ -165,7 +165,7 @@ export default function ProductPage() {
 
           setPackageInfo(payload?.description?.packageInfo ?? []);
           setDescriptionImageUrls(
-            payload?.description?.descriptionImageUrls ?? []
+            payload?.description?.descriptionImageUrls ?? [],
           );
           hasFetched.current = true;
         } catch (err) {
@@ -287,7 +287,7 @@ export default function ProductPage() {
     const productIndex = existingData.result.items.findIndex(
       (item: any) =>
         item.product._id === (result?.id || "") ||
-        item.product.code === (result?.productCode || searchString)
+        item.product.code === (result?.productCode || searchString),
     );
 
     let targetItem;
@@ -330,19 +330,19 @@ export default function ProductPage() {
                 const [key, value] = pair.split(":").map((s) => s.trim());
                 return [key || "Unknown", value || ""];
               })
-              .filter(([key, _value]: [string, string]) => key)
+              .filter(([key, _value]: [string, string]) => key),
           )
         : {};
 
       const variantIndex = targetItem.variations.findIndex(
-        (v: any) => JSON.stringify(v.variant) === JSON.stringify(variant)
+        (v: any) => JSON.stringify(v.variant) === JSON.stringify(variant),
       );
 
       let variantImage = selectedImage;
       result.skuProps?.forEach((prop: any) => {
         const propIdPairs = sku.props_ids.split(";");
         const matchedPair = propIdPairs.find((p: any) =>
-          p.startsWith(`${prop.pid}:`)
+          p.startsWith(`${prop.pid}:`),
         );
         if (!matchedPair) return;
 
@@ -381,9 +381,9 @@ export default function ProductPage() {
         acc +
         item.variations.reduce(
           (sum: number, v: any) => sum + (v.price || 0),
-          0
+          0,
         ),
-      0
+      0,
     );
 
     secureLocalStorage.setItem("cartData", JSON.stringify(existingData));
@@ -399,7 +399,7 @@ export default function ProductPage() {
 
   const totalQty = Object.values(quantities).reduce(
     (acc, qty) => acc + qty || 0,
-    0
+    0,
   );
 
   const totalPrice = result?.itemSkus?.reduce((acc: number, sku: any) => {
@@ -480,21 +480,17 @@ export default function ProductPage() {
                       src={result.videoUrl}
                       controls
                       autoPlay
-                      width="95%"
-                      height={375}
+                      width="100%"
+                      height={"auto"}
                       style={{
                         objectFit: "cover",
                         borderRadius: "8px",
-                        border: "1px solid #ddd",
-                        background: "#000",
                       }}
                     />
                   ) : selectedImage ? (
-                    <Image
+                    <img
                       alt="Product"
-                      unoptimized
-                      width={500}
-                      height={500}
+                      // unoptimized
                       src={fixImageUrl(selectedImage)}
                       className="main-image"
                     />
@@ -607,7 +603,7 @@ export default function ProductPage() {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={4} className="product-summary">
+          <Grid item xs={12} md={5} className="product-summary">
             <Box>
               <Box className="variation-section">
                 {result?.skuProps?.map((prop: any, propIndex: number) => (
@@ -790,7 +786,7 @@ export default function ProductPage() {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={4} className="product-extra-summary">
+          <Grid item xs={12} md={3} className="product-extra-summary">
             <Box>
               <Box className="product-summary ">
                 <Box className="product-meta">
@@ -939,7 +935,7 @@ export default function ProductPage() {
           </Grid>
         </Grid>
 
-        <Box>
+        {/* <Box>
           <Grid container>
             <Grid item xs={12} md={8}>
               <Box className="product-tabs" mb={5}>
@@ -1084,10 +1080,10 @@ export default function ProductPage() {
             </Grid>
             <Grid item xs={12} md={4}></Grid>
           </Grid>
-        </Box>
+        </Box> */}
       </Box>
 
-      <Modal
+      {/* <Modal
         open={detailsOpen}
         onClose={handleDetailsClose}
         aria-labelledby="category-details-modal"
@@ -1172,7 +1168,7 @@ export default function ProductPage() {
             </Button>
           </Box>
         </Box>
-      </Modal>
+      </Modal> */}
     </Box>
   );
 }
