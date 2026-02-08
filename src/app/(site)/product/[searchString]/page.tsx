@@ -608,10 +608,22 @@ export default function ProductPage() {
               <Box className="variation-section">
                 {result?.skuProps?.map((prop: any, propIndex: number) => (
                   <Box key={propIndex} className="variation-block">
-                    <span className="variation-title">{prop.prop_name}</span>
+                    <span className="variation-title">
+                      {prop.prop_name}:
+                      <span className="variation-title-product-name">
+                        {" "}
+                        {selectedVariation?.color?.name}
+                      </span>{" "}
+                    </span>
 
-                    <Box className="variation-images" mt={1}>
-                      {prop.values.map((val: any, index: number) => (
+                    <Box
+                      className="variation-images"
+                      mt={1}
+                      sx={{
+                        position: "relative",
+                      }}
+                    >
+                      {prop?.values.map((val: any, index: number) => (
                         <Box
                           key={index}
                           className={`variation-option ${
@@ -656,15 +668,14 @@ export default function ProductPage() {
                                 <Image
                                   alt=""
                                   unoptimized
-                                  width={60}
-                                  height={60}
+                                  width={50}
+                                  height={50}
                                   className="thumb"
                                   src={fixImageUrl(val.imageUrl)}
                                 />
-
-                                <Typography className="option-text">
+                                {/* <Typography className="option-text">
                                   {val.name}
-                                </Typography>
+                                </Typography> */}
                               </Box>
                             ) : (
                               <Typography className="option-text">
@@ -672,41 +683,44 @@ export default function ProductPage() {
                               </Typography>
                             )}
 
-                            {(() => {
-                              const isSelected =
-                                selectedSku &&
-                                selectedSku.props_ids?.includes(
-                                  `${prop.pid}:${val.vid}`,
-                                ) &&
-                                quantities[selectedSku.skuid] > 0;
-
-                              const anyQty = result?.itemSkus?.some(
-                                (sku: any) =>
-                                  sku.props_ids?.includes(
+                            <Box>
+                              {(() => {
+                                const isSelected =
+                                  selectedSku &&
+                                  selectedSku.props_ids?.includes(
                                     `${prop.pid}:${val.vid}`,
-                                  ) && (quantities[sku.skuid] || 0) > 0,
-                              );
+                                  ) &&
+                                  quantities[selectedSku.skuid] > 0;
 
-                              if (isSelected || anyQty) {
-                                const totalQty = result?.itemSkus
-                                  ?.filter((sku: any) =>
+                                const anyQty = result?.itemSkus?.some(
+                                  (sku: any) =>
                                     sku.props_ids?.includes(
                                       `${prop.pid}:${val.vid}`,
-                                    ),
-                                  )
-                                  .reduce(
-                                    (acc: number, sku: any) =>
-                                      acc + (quantities[sku.skuid] || 0),
-                                    0,
-                                  );
-
-                                return (
-                                  <span className="qty-badge">{totalQty}</span>
+                                    ) && (quantities[sku.skuid] || 0) > 0,
                                 );
-                              }
 
-                              return null;
-                            })()}
+                                if (isSelected || anyQty) {
+                                  const totalQty = result?.itemSkus
+                                    ?.filter((sku: any) =>
+                                      sku.props_ids?.includes(
+                                        `${prop.pid}:${val.vid}`,
+                                      ),
+                                    )
+                                    .reduce(
+                                      (acc: number, sku: any) =>
+                                        acc + (quantities[sku.skuid] || 0),
+                                      0,
+                                    );
+
+                                  return (
+                                    <span className="qty-badge">
+                                      {totalQty}
+                                    </span>
+                                  );
+                                }
+                                return null;
+                              })()}
+                            </Box>
                           </div>
                         </Box>
                       ))}
