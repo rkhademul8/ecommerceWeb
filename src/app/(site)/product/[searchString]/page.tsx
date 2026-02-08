@@ -639,7 +639,7 @@ export default function ProductPage() {
                               .join(";");
 
                             const matchedSku = result?.itemSkus?.find(
-                              (sku: any) => sku.props_ids === propsIds
+                              (sku: any) => sku.props_ids === propsIds,
                             );
 
                             setSelectedSku(matchedSku || {});
@@ -676,28 +676,28 @@ export default function ProductPage() {
                               const isSelected =
                                 selectedSku &&
                                 selectedSku.props_ids?.includes(
-                                  `${prop.pid}:${val.vid}`
+                                  `${prop.pid}:${val.vid}`,
                                 ) &&
                                 quantities[selectedSku.skuid] > 0;
 
                               const anyQty = result?.itemSkus?.some(
                                 (sku: any) =>
                                   sku.props_ids?.includes(
-                                    `${prop.pid}:${val.vid}`
-                                  ) && (quantities[sku.skuid] || 0) > 0
+                                    `${prop.pid}:${val.vid}`,
+                                  ) && (quantities[sku.skuid] || 0) > 0,
                               );
 
                               if (isSelected || anyQty) {
                                 const totalQty = result?.itemSkus
                                   ?.filter((sku: any) =>
                                     sku.props_ids?.includes(
-                                      `${prop.pid}:${val.vid}`
-                                    )
+                                      `${prop.pid}:${val.vid}`,
+                                    ),
                                   )
                                   .reduce(
                                     (acc: number, sku: any) =>
                                       acc + (quantities[sku.skuid] || 0),
-                                    0
+                                    0,
                                   );
 
                                 return (
@@ -756,7 +756,7 @@ export default function ProductPage() {
                                   onChange={(e) =>
                                     handleQuantityChange(
                                       selectedSku.skuid,
-                                      Number(e.target.value)
+                                      Number(e.target.value),
                                     )
                                   }
                                 />
