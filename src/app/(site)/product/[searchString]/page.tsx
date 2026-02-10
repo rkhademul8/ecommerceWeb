@@ -32,6 +32,10 @@ import ProductCard from "../../shop/_components/ProductCard";
 import CloseIcon from "@mui/icons-material/Close";
 import { fixImageUrl } from "@/utils/common/function/fix-image";
 import ProductCardSkeleton from "../../shop/_components/ProductCardSkeleton";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import ElectricBoltOutlinedIcon from "@mui/icons-material/ElectricBoltOutlined";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
 export default function ProductPage() {
   const router = useRouter();
@@ -449,12 +453,12 @@ export default function ProductPage() {
   return (
     <Box className="root-container">
       <Box className="product-details-page">
-        <Grid container>
+        <Grid container gap={1}>
           <Grid item xs={12} md={12} mt={3} mb={3}>
             <span className="product-title">{result?.title}</span>
           </Grid>
 
-          <Grid item xs={12} md={4} className="product-images">
+          <Grid item xs={12} md={4.8} className="product-images">
             <Box>
               <Box
                 sx={{
@@ -603,7 +607,7 @@ export default function ProductPage() {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={5} className="product-summary">
+          <Grid item xs={12} md={4} className="product-summary">
             <Box>
               <Box mb={1.5}>
                 <Grid container gap={1.5}>
@@ -832,6 +836,29 @@ export default function ProductPage() {
                   </table>
                 </Box>
               </Box>
+
+              <Box>
+                <Box className="seller-card">
+                  <Box className="seller-header">
+                    <i className="fas fa-store"></i>
+                    <Box className="seller-details">
+                      <Typography className="seller-name">
+                        {result?.vendor?.id}
+                      </Typography>
+                      <Typography className="seller-username">
+                        {result?.vendor?.name}
+                      </Typography>
+                    </Box>
+                  </Box>
+
+                  <button
+                    className="visit-store-btn"
+                    onClick={() => router.push(`/store/${result?.vendor?.id}`)}
+                  >
+                    Visit Seller Store
+                  </button>
+                </Box>
+              </Box>
             </Box>
           </Grid>
 
@@ -934,6 +961,10 @@ export default function ProductPage() {
                     className="add-cart"
                     onClick={() => handleAddToCartOrBuy("cart")}
                   >
+                    <span>
+                      {" "}
+                      <ShoppingBagIcon />
+                    </span>
                     Add to Cart
                   </button>
 
@@ -941,15 +972,24 @@ export default function ProductPage() {
                     className="buy-now"
                     onClick={() => handleAddToCartOrBuy("buy")}
                   >
+                    <span>
+                      <ElectricBoltOutlinedIcon />
+                    </span>
                     Buy Now
                   </button>
                   <button className="save-btn" onClick={handleSaveProduct}>
-                    {isSaved ? "Unsave" : "Save"}
+                    <span>
+                      {isSaved ? (
+                        <FavoriteOutlinedIcon className="product-save" />
+                      ) : (
+                        <FavoriteBorderOutlinedIcon className="product-unsaved" />
+                      )}
+                    </span>
                   </button>
                 </Box>
               </Box>
 
-              <Box className="disclaimer-box">
+              <Box className="disclaimer-box" mt={1}>
                 <span className="disclaimer-title">
                   <i className="fas fa-info-circle"></i> Disclaimer
                 </span>
@@ -959,32 +999,11 @@ export default function ProductPage() {
                   শিপিং চার্জ আলাদাভাবে হিসাব করা হবে।
                 </span>
               </Box>
-
-              <Box className="seller-card">
-                <Box className="seller-header">
-                  <i className="fas fa-store"></i>
-                  <Box className="seller-details">
-                    <Typography className="seller-name">
-                      {result?.vendor?.id}
-                    </Typography>
-                    <Typography className="seller-username">
-                      {result?.vendor?.name}
-                    </Typography>
-                  </Box>
-                </Box>
-
-                <button
-                  className="visit-store-btn"
-                  onClick={() => router.push(`/store/${result?.vendor?.id}`)}
-                >
-                  Visit Seller Store
-                </button>
-              </Box>
             </Box>
           </Grid>
         </Grid>
 
-        {/* <Box> 
+        <Box>
           <Grid container>
             <Grid item xs={12} md={8}>
               <Box className="product-tabs" mb={5}>
@@ -1058,7 +1077,7 @@ export default function ProductPage() {
                             </span>
                           </Grid>
                         );
-                      }
+                      },
                     )}
                   </Grid>
                 )}
@@ -1129,7 +1148,7 @@ export default function ProductPage() {
             </Grid>
             <Grid item xs={12} md={4}></Grid>
           </Grid>
-        </Box> */}
+        </Box>
       </Box>
 
       {/* <Modal
