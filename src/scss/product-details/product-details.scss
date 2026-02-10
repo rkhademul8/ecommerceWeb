@@ -726,4 +726,37 @@
     background-color: #fff;
     color: #000;
   }
+
+  .products-price-bar {
+    background-color: #e1b87142;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .products-price-bar-second {
+    background-color: #2f00512c;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .products-price-bar-third {
+    background-color: #10001c31;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .products-price-bar-title {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    font-family: $theme-font !important;
+    color: $black-color;
+  }
+  .products-price-bar-text {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    font-family: $theme-font !important;
+    color: $gray-color;
+    padding-top: 5px;
+  }
 }

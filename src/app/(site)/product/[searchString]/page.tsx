@@ -605,6 +605,41 @@ export default function ProductPage() {
 
           <Grid item xs={12} md={5} className="product-summary">
             <Box>
+              <Box mb={1.5}>
+                <Grid container gap={1.5}>
+                  <Grid xs={12} md={3.8}>
+                    <Box className="products-price-bar">
+                      <Typography className="products-price-bar-title">
+                        ৳697
+                      </Typography>
+                      <Typography className="products-price-bar-text">
+                        1 or more
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Grid xs={12} md={3.8}>
+                    <Box className="products-price-bar-second">
+                      <Typography className="products-price-bar-title">
+                        ৳676
+                      </Typography>
+                      <Typography className="products-price-bar-text">
+                        5 or more
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Grid xs={12} md={3.8}>
+                    <Box className="products-price-bar-third">
+                      <Typography className="products-price-bar-title">
+                        ৳654
+                      </Typography>
+                      <Typography className="products-price-bar-text">
+                        300 or more
+                      </Typography>
+                    </Box>
+                  </Grid>
+                </Grid>
+              </Box>
+
               <Box className="variation-section">
                 {result?.skuProps?.map((prop: any, propIndex: number) => (
                   <Box key={propIndex} className="variation-block">
@@ -949,7 +984,7 @@ export default function ProductPage() {
           </Grid>
         </Grid>
 
-        {/* <Box>
+        {/* <Box> 
           <Grid container>
             <Grid item xs={12} md={8}>
               <Box className="product-tabs" mb={5}>
