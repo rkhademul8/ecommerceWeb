@@ -1,11 +1,11 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import "../../../../scss/landing/OurExpertise.scss";
-import first from "../../../../../public/assests/homeService/first.png";
-import refund from "../../../../../public/assests/homeService/refund.png";
-import safe from "../../../../../public/assests/homeService/safe.png";
-import worldWide from "../../../../../public/assests/homeService/worldWide.png";
-import transparency from "../../../../../public/assests/homeService/transparency.png";
+import first from "../../../../../public/assests/homeService/first.svg";
+import refund from "../../../../../public/assests/homeService/refund.svg";
+import safe from "../../../../../public/assests/homeService/safe.svg";
+import worldWide from "../../../../../public/assests/homeService/worldWide.svg";
+import transparency from "../../../../../public/assests/homeService/transparency.svg";
 import Image from "next/image";
 
 const OurExpertise = () => {
@@ -16,10 +16,12 @@ const OurExpertise = () => {
           Quality Choices, Affordable Prices!
         </Typography>
 
-        <Typography className="expertise-text">
+        <Typography className="expertise-text" pt={1}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum
-          aliquet accumsan porta lectus ridiculus in mattis. Netus sodales in
-          volutpat ullamcorper amet adipiscing fermentum.
+          aliquet accumsan porta lectus ridiculus in mattis.
+        </Typography>
+        <Typography className="expertise-text">
+          Netus sodales in volutpat ullamcorper amet adipiscing fermentum.
         </Typography>
       </Box>
       <Grid spacing={2} container>

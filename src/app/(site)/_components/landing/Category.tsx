@@ -34,7 +34,9 @@ const Category = () => {
                     className="category-img"
                   />
                   <Box>
-                    <Typography className="category-title">{cat.name}</Typography>
+                    <Typography className="category-title">
+                      {cat.name}
+                    </Typography>
                   </Box>
                 </Box>
               </Card>

@@ -32,7 +32,7 @@ const LandingPageVideo = () => {
         </Box>
       </Box> */}
 
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Box className="growBusiness-section">
           <Grid
             spacing={2}
