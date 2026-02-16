@@ -20,7 +20,7 @@ const Category = () => {
     <Box mt={5}>
       <Grid mt={1} container spacing={1.5}>
         {categories.map((cat, idx) => (
-          <Grid item xs={6} sm={4} md={1.71} key={idx}>
+          <Grid item xs={6} sm={4} md={1.5} key={idx}>
             <Box
               className="category-card-link"
               onClick={() => router.push(`/shop/${cat.tag}`)}
@@ -33,9 +33,9 @@ const Category = () => {
                     image={cat.image}
                     className="category-img"
                   />
-                  <CardContent>
-                    <span className="category-title">{cat.name}</span>
-                  </CardContent>
+                  <Box>
+                    <Typography className="category-title">{cat.name}</Typography>
+                  </Box>
                 </Box>
               </Card>
             </Box>

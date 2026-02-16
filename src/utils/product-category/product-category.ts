@@ -1,10 +1,8 @@
-export const 
-
-categories = [
+export const categories = [
   {
     tag: "bags",
     name: "Bags",
-    image: "/categories/bag.png",
+    image: "/categories/bag.svg",
     subCategories: [
       { searchTag: "purse", name: "Purse" },
       { searchTag: "bags", name: "Bags" },
@@ -24,7 +22,7 @@ categories = [
   {
     tag: "shoes",
     name: "Shoes",
-    image: "/categories/shoes.png",
+    image: "/categories/shoes.svg",
     subCategories: [
       { searchTag: "men-shoes", name: "Men Shoes" },
       { searchTag: "men-boots", name: "Men Boots" },
@@ -47,7 +45,7 @@ categories = [
   {
     tag: "jewelry",
     name: "Jewelry",
-    image: "/categories/jewelry.png",
+    image: "/categories/jewelry.svg",
     subCategories: [
       { searchTag: "men-bracelets", name: "Men Bracelets" },
       { searchTag: "women-bracelets", name: "Women Bracelets" },
@@ -70,7 +68,7 @@ categories = [
   {
     tag: "beauty-products",
     name: "Beauty Products",
-    image: "/categories/beauty.png",
+    image: "/categories/beauty.svg",
     subCategories: [
       { searchTag: "eyeshadow", name: "Eyeshadow" },
       { searchTag: "eyeliner", name: "Eyeliner" },
@@ -109,7 +107,7 @@ categories = [
   {
     tag: "mens-clothing",
     name: "Mens Clothing",
-    image: "/categories/mens-clothing.png",
+    image: "/categories/mens-clothing.svg",
     subCategories: [
       { searchTag: "casual-pants-men", name: "Casual Pants For Men" },
       { searchTag: "jeans-men", name: "Mens Jeans Pant" },
@@ -133,7 +131,7 @@ categories = [
   {
     tag: "womens-clothing",
     name: "Womens Clothing",
-    image: "/categories/womens-clothing.png",
+    image: "/categories/womens-clothing.svg",
     subCategories: [
       { searchTag: "hoodies-women", name: "Hoodies & Sweatshirts" },
       { searchTag: "suits-women", name: "Womens Suits Blazers" },
@@ -157,7 +155,7 @@ categories = [
   {
     tag: "baby-items",
     name: "Baby Items",
-    image: "/categories/baby-items.png",
+    image: "/categories/baby-items.svg",
     subCategories: [
       { searchTag: "baby-bottle", name: "Baby Bottle" },
       { searchTag: "diapers", name: "Diapers" },
@@ -175,10 +173,21 @@ categories = [
       { searchTag: "baby-sports-shoes", name: "Baby Sports Shoes" },
     ],
   },
+
+  {
+    tag: "football",
+    name: "Sport Items",
+    image: "/categories/sport.svg",
+    subCategories: [
+      { searchTag: "cricket", name: "Cricket Items" },
+      { searchTag: "football", name: "Football Items" },
+    ],
+  },
+
   {
     tag: "sunglass",
     name: "Sunglass",
-    image: "/categories/sunglass.png",
+    image: "/categories/sunglass.svg",
     subCategories: [
       { searchTag: "sunglass", name: "Sunglass" },
       { searchTag: "women-sunglass", name: "Women Sunglass" },
@@ -188,10 +197,11 @@ categories = [
       { searchTag: "reading-glasses", name: "Reading Glasses" },
     ],
   },
+
   {
     tag: "phone-accessories",
     name: "Phone Accessories",
-    image: "/categories/phone-accessories.png",
+    image: "/categories/phone-accessories.svg",
     subCategories: [
       { searchTag: "xiaomi", name: "Xiaomi" },
       { searchTag: "apple", name: "Apple" },
@@ -212,7 +222,7 @@ categories = [
   {
     tag: "fitness",
     name: "Fitness",
-    image: "/categories/fitness.png",
+    image: "/categories/fitness.svg",
     subCategories: [
       { searchTag: "snowboard", name: "Snowboard" },
       { searchTag: "jet-ski", name: "Jet Ski" },
@@ -227,7 +237,7 @@ categories = [
   {
     tag: "watches",
     name: "Watches",
-    image: "/categories/watches.png",
+    image: "/categories/watches.svg",
     subCategories: [
       { searchTag: "watch", name: "Watch" },
       { searchTag: "womens-watch", name: "Womens Watch" },
@@ -241,7 +251,7 @@ categories = [
   {
     tag: "food-items",
     name: "Food Items",
-    image: "/categories/food-items.png",
+    image: "/categories/food-items.svg",
     subCategories: [
       { searchTag: "breakfast", name: "Breakfast" },
       { searchTag: "laundry-&-household", name: "Laundry & Household" },
@@ -256,7 +266,7 @@ categories = [
   {
     tag: "traveling",
     name: "Traveling",
-    image: "/categories/traveling.png",
+    image: "/categories/traveling.svg",
     subCategories: [
       { searchTag: "fishing-reel", name: "Fishing Reel" },
       { searchTag: "fishing", name: "Fishing" },
@@ -274,7 +284,7 @@ categories = [
   {
     tag: "gadgets",
     name: "Gadgets",
-    image: "/categories/gadgets.png",
+    image: "/categories/gadgets.svg",
     subCategories: [
       { searchTag: "electronics", name: "Electronics" },
       { searchTag: "camera", name: "Camera" },

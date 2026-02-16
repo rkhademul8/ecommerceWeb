@@ -27,7 +27,7 @@
   }
 
   .category-img {
-    width: 70%;
+    width: 30%;
     height: auto;
     object-fit: contain;
     margin: 0px auto 0px;
@@ -38,5 +38,6 @@
     font-weight: 550;
     text-align: center;
     color: $theme-text-title-color;
+    padding: 8px !important;
   }
 }

@@ -95,14 +95,17 @@
   padding: 10px 5px;
   border-radius: 15px;
   border: 1px solid #e5e5e5;
-  background-color: #987c00;
+  background-color: rgba(251, 251, 251, 1);
   color: $gray-color;
   font-size: 15px;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
   cursor: pointer;
-  color: #fff;
+  color: rgba(116, 122, 128, 1);
 }
 
 .product-card-link :hover .product-add-to-cart {
   background-color: $yellow-color;
+  border: 1px solid $yellow-color;
+  color: $black-color;
+  font-weight: 500 !important;
 }
