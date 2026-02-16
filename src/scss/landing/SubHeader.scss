@@ -1,13 +1,13 @@
 @use "../variables" as *;
 
 .sub-header {
-  background-color: rgba(255, 241, 176, 0.548) !important;
+  background-color: rgba(255, 255, 255, 1) !important;
 }
 
 .sub-header-category-icon {
   font-size: 25px !important;
   color: $black-color;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
 }
 
 .sub-header-category-Name {
@@ -39,7 +39,7 @@
   .nav-item {
     color: $black-color;
     font-size: 14px;
-    font-weight: 600 !important;
+    // font-weight: 600 !important;
     cursor: pointer;
     white-space: nowrap;
 
